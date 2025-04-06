@@ -48,7 +48,7 @@ function YourRoute() {
 ### A Note
 Some of the rules I specified above are highly opinionated and may not resonate with how some of you code. However, there is a need for us all to be consistent on how we code, so that nga ma make sure naton that we are all on the same page and indi magka conflicts later on (especially on pull request reviews). 
 
-And yes, of course indi pa ni sya final kay need pa ni i review ni Kirk. However, I believe that this is a good baseline for our project. I hope that this proposal be checked as soon as possible para nga indi na ta magka issues later on. 
+And yes, of course indi pa ni sya final kay need pa ni i review ni Kirk. However, I believe that this is a good baseline for our project. I hope that this proposal be checked as soon as possible para nga indi na ta magka issues later on. (Kirk: Approved 👍)
 
 Best wishes to everyone and code your best! 😉
 
