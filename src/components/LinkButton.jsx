@@ -5,7 +5,7 @@ export default function LinkButton({ href, children }) {
         <Link
             href={href}
             className="
-                w-fit h-fit py-4 px-6 flex-shrink-0 rounded-[50px] bg-accent
+                w-fit h-fit py-4 px-6 flex-shrink-0 rounded-[50px] bg-primary
                 text-white flex items-center justify-center text-2xl font-bold"
         >
             {children}
