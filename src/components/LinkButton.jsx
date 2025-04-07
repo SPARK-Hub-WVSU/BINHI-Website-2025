@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight";
+
+
 
 export default function LinkButton({ href, children }) {
     return (
@@ -9,6 +12,7 @@ export default function LinkButton({ href, children }) {
                 text-white flex items-center justify-center text-2xl font-bold"
         >
             {children}
+            <ArrowRight size={32} className='ml-4' />
         </Link>
     );
 }
