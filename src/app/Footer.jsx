@@ -1,22 +1,16 @@
-import Image from "next/image"
+import Logo from "@/components/Logo"
 import Link from 'next/link'
+import bgWave from '@/assets/bg-wave-footer.svg';
+import Image from "next/image";
 
 export default function Footer() {
     return (
-        <footer className="text-white ">
-            <img src="/footer.svg" alt="" className="w-screen" />
-
-            <div className="bg-[#0d3b09] w-screen h-[300px] 
-            flex px-35 items-center
-            ">
+        <footer className="text-white flex flex-col">
+            <Image src={bgWave} className="w-full" />
+            <div className="bg-dark-accent flex px-36 py-8 items-center">
 
                 <div className="w-fit h-fit" >
-                    <Image src="/logo-footer.png" alt="Logo" width={195} height={120} className="" />
-                    <span className="text-[#389731] text-6xl font-extrabold
-                    flex justify-center 
-                    ">
-                        BINHI
-                    </span>
+                    <Logo />
                 </div>
 
                 <section className="h-[172px] flex  w-full justify-between items-center px-10 ">

@@ -1,6 +1,5 @@
-import Image from "next/image"
+import Logo from "@/components/Logo";
 
-Image
 export default function Header() {
     return (
 
@@ -8,11 +7,7 @@ export default function Header() {
         flex flex-wrap mt-2 sm:mt-0 sm:justify-between sm:items-center ">
 
             <div className="flex w-screen sm:w-fit justify-center  ">
-                <Image src="/logo-header.png" alt="Logo" width={60} height={35} className="w-[60px] h-[35px]" />
-
-                <h1 className="text-[#389731] text-4xl font-extrabold ml-2">
-                    BINHI
-                </h1>
+                <Logo />
             </div>
 
             <ul className="flex space-x-4 sm:space-x-10 mx-auto sm:mx-0 
