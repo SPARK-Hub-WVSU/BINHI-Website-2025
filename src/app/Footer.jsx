@@ -1,20 +1,21 @@
 import Image from "next/image"
 import Link from 'next/link'
 import Logo from "@/components/Logo"
-import { FacebookLogo } from "@phosphor-icons/react/dist/ssr/FacebookLogo";
-import { EnvelopeSimple } from "@phosphor-icons/react/dist/ssr/EnvelopeSimple";
-
+import bgWave from '@/assets/bg-wave-footer.svg'
+import { EnvelopeIcon } from "@heroicons/react/24/solid"
+import FacebookIcon from '@/assets/facebook-icon.svg'
 
 export default function Footer() {
     return (
         <footer className="text-white ">
 
-            <img src="/footer.svg" alt="" className="w-screen" />
+            <Image src={bgWave} className="w-full" alt="Wave Footer Background" />
 
-            <div className="bg-[#0d3b09] w-screen h-[300px] 
+            <div className="bg-secondary w-full h-[300px] 
             flex px-35 items-center
             ">
                 <div className="w-fit h-fit" >
+
                     <Logo version={2}></Logo>
                 </div>
 
@@ -23,15 +24,15 @@ export default function Footer() {
                     <div className="flex flex-col justify-between h-full" >
 
                         <div className=" flex flex-col gap-4  ">
-                            <a href="" className="flex items-center text-base">
-                                <EnvelopeSimple size={40} weight="fill" className="text-[#7ed957] mr-2" />
+                            <Link href="" className="flex items-center text-base">
+                                <EnvelopeIcon className="text-primary-light mr-2 w-[40px] h-[40px]" />
                                 binhi@wvsu.edu.ph
-                            </a>
+                            </Link>
 
-                            <a href="" className="flex items-center text-base">
-                                <FacebookLogo size={40} weight="fill" className="text-[#7ed957] mr-2" />
+                            <Link href="" className="flex items-center text-base">
+                                <Image src={FacebookIcon} className="mr-2 w-[40px] h-[40px]" alt="Facebook Icon" />
                                 Follow us on Facebook
-                            </a>
+                            </Link>
                         </div>
 
 

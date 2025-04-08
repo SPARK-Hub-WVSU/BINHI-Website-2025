@@ -17,23 +17,23 @@ export default function Header() {
             text-base font-medium
             ">
                 <li>
-                    <Link href={"/"} className="text-[#1D1D1F] hover:text-gray-400">
+                    <Link href={"/"} className="text-secondary-neutral hover:text-gray-400">
                         About BINHI
                     </Link>
                 </li>
                 <li>
-                    <Link href={"/"} className="text-[#1D1D1F] hover:text-gray-400">
+                    <Link href={"/"} className="text-secondary-neutral hover:text-gray-400">
                         Services
 
                     </Link>
                 </li>
                 <li>
-                    <Link href={"/"} className="text-[#1D1D1F] hover:text-gray-400">
+                    <Link href={"/"} className="text-secondary-neutral hover:text-gray-400">
                         News
                     </Link>
                 </li>
                 <li>
-                    <Link href={"/"} className="text-[#1D1D1F] hover:text-gray-400">
+                    <Link href={"/"} className="text-secondary-neutral hover:text-gray-400">
                         Contact Us
                     </Link>
                 </li>

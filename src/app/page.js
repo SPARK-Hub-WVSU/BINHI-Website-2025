@@ -2,12 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import LinkButton from "@/components/LinkButton";
 import heroImage from '@/assets/hero.svg'
-
-import { Heart } from "@phosphor-icons/react/dist/ssr/Heart";
-import { GlobeHemisphereWest } from "@phosphor-icons/react/dist/ssr/GlobeHemisphereWest";
-import { Monitor } from "@phosphor-icons/react/dist/ssr/Monitor";
-import { Flask } from "@phosphor-icons/react/dist/ssr/Flask";
-
+import { BeakerIcon, ComputerDesktopIcon, GlobeAsiaAustraliaIcon, HeartIcon } from '@heroicons/react/24/solid'
 
 export default function Home() {
   return (
@@ -26,8 +21,8 @@ export default function Home() {
 
           <div className=" pt-[140px]  pl-[170px] w-fit hidden lg:block">
             <h1 className="w-[615px]  mb-5 
-            text-[#0D3B09] text-[50px] font-bold leading-[75px] ">
-              Nurturing Seeds of<br /> Ideas <span className="text-accent-2">One Step <br />at a Time.</span>
+            text-secondary text-[50px] font-bold leading-[75px] ">
+              Nurturing Seeds of<br /> Ideas <span className="text-primary-dark">One Step <br />at a Time.</span>
             </h1>
 
             <LinkButton href="/">Incubate your startup with us</LinkButton>
@@ -45,13 +40,13 @@ export default function Home() {
           >
 
             <div className="mt-[150px] max-w-[789px]">
-              <h2 className="text-accent-2 font-bold text-5xl text-center">
+              <h2 className="text-primary-dark font-bold text-5xl text-center">
                 Our Mission
               </h2>
               <p className="mt-[17px] text-justify text-2xl">
                 is to
-                <span className="text-accent-2 font-semibold">
-                  empower innovation and economic growth by inspiring and nurturing technology-based startups
+                <span className="text-primary-dark font-semibold">
+                  &nbsp;empower innovation and economic growth by inspiring and nurturing technology-based startups
                 </span>
                 , fostering collaboration between academia, industry, and government, and advancing the commercialization of local technologies in the region.
               </p>
@@ -60,13 +55,13 @@ export default function Home() {
 
 
             <div className="mt-[90px] max-w-[789px] ">
-              <h2 className="text-accent-2 font-bold text-5xl text-center">
+              <h2 className="text-primary-dark font-bold text-5xl text-center">
                 We Envision
               </h2>
               <p className="mt-[17px] text-justify text-2xl" >
                 an ecosystem where
-                <span className="text-accent-2 font-semibold">
-                  technology-based startups flourish, local innovations prosper, and collaboration propels regional economic growth
+                <span className="text-primary-dark font-semibold">
+                  &nbsp;technology-based startups flourish, local innovations prosper, and collaboration propels regional economic growth
                 </span>
                 , establishing BINHI as a respected leader in enterprising innovations.
               </p>
@@ -74,25 +69,25 @@ export default function Home() {
 
 
             <div className="max-w-[740px] mt-[150px]">
-              <h2 className="text-accent-2 font-bold text-5xl text-center">
+              <h2 className="text-primary-dark font-bold text-5xl text-center">
                 BINHI accepts and nurtures startups in four key sectors:
               </h2>
 
               <ul className="ml-[100px] mt-[50px]">
                 <li className="flex items-center text-[32px] mb-[30px]">
-                  <Heart size={40} weight="fill" className="text-accent-2 mr-[34px]" />
+                  <HeartIcon className="text-primary-dark mr-[34px] w-[40px] h-[40px]" />
                   Biomedical and Healthcare
                 </li>
                 <li className="flex items-center text-[32px] mb-[30px]">
-                  <GlobeHemisphereWest size={40} weight="fill" className="text-accent-2 mr-[34px]" />
+                  <GlobeAsiaAustraliaIcon weight="fill" className="text-primary-dark mr-[34px] w-[40px] h-[40px]" />
                   Agri-Aqua and Green Technologies
                 </li>
                 <li className="flex items-center text-[32px] mb-[30px]">
-                  <Monitor size={40} weight="fill" className="text-accent-2 mr-[34px]" />
+                  <ComputerDesktopIcon className="text-primary-dark mr-[34px] w-[40px] h-[40px]" />
                   Emerging Technologies / ICT
                 </li>
                 <li className="flex items-center text-[32px] ">
-                  <Flask size={40} weight="fill" className="text-accent-2 mr-[34px]" />
+                  <BeakerIcon className="text-primary-dark mr-[34px] w-[40px] h-[40px]" />
                   Herbal & Natural Products
                 </li>
               </ul>
@@ -101,7 +96,7 @@ export default function Home() {
         </section>
 
 
-        {/* <Footer /> */}
+        <Footer />
       </div >
 
     </>
