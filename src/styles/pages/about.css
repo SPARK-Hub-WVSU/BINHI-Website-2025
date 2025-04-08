@@ -1,0 +1,16 @@
+@import '../globals.css';
+
+.binhi-about-container {
+    grid-template-columns:
+        [screen-start]
+        minmax(96px, 1fr)
+        [content-start]
+        minmax(896px, 1fr)
+        [content-end]
+        minmax(96px, 1fr)
+        [screen-end];
+}
+
+.binhi-about-container > * {
+    grid-column: content;
+}

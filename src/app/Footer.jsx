@@ -1,9 +1,9 @@
-import Image from "next/image"
-import Link from 'next/link'
 import Logo from "@/components/Logo"
+import Link from 'next/link'
 import bgWave from '@/assets/bg-wave-footer.svg'
 import { EnvelopeIcon } from "@heroicons/react/24/solid"
 import FacebookIcon from '@/assets/facebook-icon.svg'
+import Image from "next/image"
 
 export default function Footer() {
     return (
@@ -14,8 +14,7 @@ export default function Footer() {
             <div className="bg-secondary w-full h-[300px] 
             flex px-35 items-center
             ">
-                <div className="w-fit h-fit" >
-
+                <div className="w-fit h-fit">
                     <Logo version={2}></Logo>
                 </div>
 

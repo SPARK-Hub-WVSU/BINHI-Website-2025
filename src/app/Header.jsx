@@ -2,7 +2,6 @@ import Image from "next/image"
 import Logo from "@/components/Logo"
 import Link from "next/link"
 
-
 export default function Header() {
     return (
 
@@ -14,8 +13,7 @@ export default function Header() {
             </div>
 
             <ul className="flex space-x-4 sm:space-x-10 mx-auto sm:mx-0 
-            text-base font-medium
-            ">
+            text-base font-medium">
                 <li>
                     <Link href={"/"} className="text-secondary-neutral hover:text-gray-400">
                         About BINHI

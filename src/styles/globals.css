@@ -6,6 +6,8 @@
   --foreground: #171717;
 
   --primary: #389731;
+  --accent: #8FC867;
+  --dark-accent: #0d3b09;
   --primary-light: #7ed957;
   --primary-lighter: #8FC867;
   --primary-dark: #298422;
@@ -18,17 +20,18 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
+  
   --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-dark-accent: var(--dark-accent);
+ 
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
 
   --color-secondary: var(--secondary);
   --color-secondary-neutral: var(--secondary-neutral);
-
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  --font-sans: var(--font-poppins);
 }
 
 /*
@@ -38,15 +41,26 @@
     --foreground: #ededed;
   }
 }
-
 */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Poppins, Arial, Helvetica, sans-serif;
+
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
 
+@layer base {
+  h1 {
+    @apply text-center text-4xl/normal font-bold text-primary text-pretty
+  }
+  
+  h2 {
+    @apply text-primary font-bold text-3xl;
+  }
+}
+
+/* * { outline: 1px solid red; } */
 
 .mission {
   background: linear-gradient(180deg, #8FC867 6%, rgba(143, 200, 103, 0.00) 30%);

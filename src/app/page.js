@@ -1,25 +1,16 @@
-import Header from "./Header";
-import Footer from "./Footer";
 import LinkButton from "@/components/LinkButton";
 import heroImage from '@/assets/hero.svg'
 import { BeakerIcon, ComputerDesktopIcon, GlobeAsiaAustraliaIcon, HeartIcon } from '@heroicons/react/24/solid'
 
 export default function Home() {
   return (
-    <>
       <div className="">
 
-        <Header />
-
         {/* ------------------- HERO -------------------*/}
-        <section className="mt-5 min-h-screen bg-no-repeat bg-cover bg-center
-        
-        "
-          style={{ backgroundImage: `url(${heroImage.src})`, backgroundSize: '105% auto' }}
-        >
+        <section className="mt-5 min-h-screen bg-no-repeat bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroImage.src})`, backgroundSize: '105% auto' }}>
 
-
-          <div className=" pt-[140px]  pl-[170px] w-fit hidden lg:block">
+          <div className="pt-[140px]  pl-[170px] w-fit hidden lg:block">
             <h1 className="w-[615px]  mb-5 
             text-secondary text-[50px] font-bold leading-[75px] ">
               Nurturing Seeds of<br /> Ideas <span className="text-primary-dark">One Step <br />at a Time.</span>
@@ -94,11 +85,6 @@ export default function Home() {
             </div>
           </section >
         </section>
-
-
-        <Footer />
-      </div >
-
-    </>
+      </div>
   );
 }
