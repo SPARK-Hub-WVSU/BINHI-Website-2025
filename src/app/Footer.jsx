@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Footer() {
     return (
         <footer className="text-white flex flex-col">
-            <Image src={bgWave} className="w-full" />
+            <Image src={bgWave} className="w-full" alt="" />
             <div className="bg-dark-accent flex px-36 py-8 items-center">
 
                 <div className="w-fit h-fit" >
