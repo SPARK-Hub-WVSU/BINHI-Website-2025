@@ -5,9 +5,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 const poppins = Poppins({
-  weight: ['200', '400', '700'],
-  variable: "--font-poppins",
-  subsets: ["latin"],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 });
 
 export const metadata = {
@@ -22,7 +23,7 @@ export default function RootLayout({ children }) {
         className={`${poppins.variable} antialiased`}
       >
         <Header />
-        {children}
+          {children}
         <Footer />
       </body>
     </html>
