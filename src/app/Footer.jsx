@@ -30,7 +30,7 @@ export default function Footer() {
                             </Link>
 
                             <Link href="" className="flex items-center text-base">
-                                <Image src={FacebookIcon} className="mr-2 w-[40px] h-[40px]" alt="Facebook Icon" />
+                                <Image src={FacebookIcon} className="mr-2 size-10" alt="Facebook Icon" />
                                 Follow us on Facebook
                             </Link>
                         </div>
@@ -43,7 +43,7 @@ export default function Footer() {
                     </div>
 
 
-                    <div className="grid grid-flow-col grid-rows-3 flex self-start gap-y-[23px] gap-x-[50px]">
+                    <div className="grid grid-flow-col grid-rows-3 self-start gap-y-[23px] gap-x-[50px]">
                         <Link href="/" className="text-base">About BINHI TBI</Link>
                         <Link href="/" className="text-base">Services of BINHI TBI</Link>
                         <Link href="/" className="text-base">Contact BINHI TBI</Link>
