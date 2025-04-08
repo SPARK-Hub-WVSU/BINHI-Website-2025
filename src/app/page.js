@@ -6,8 +6,6 @@ export default function Home() {
   return (
       <div className="">
 
-        <Header />
-
         {/* ------------------- HERO -------------------*/}
         <section className="mt-5 min-h-screen bg-no-repeat bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage.src})`, backgroundSize: '105% auto' }}>
@@ -87,7 +85,6 @@ export default function Home() {
             </div>
           </section >
         </section>
-        <Footer />
       </div>
   );
 }
