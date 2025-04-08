@@ -6,14 +6,24 @@
   --foreground: #171717;
 
   --accent: #389731;
-  --accent-2: #298422;
+  --green-800: #0D3B09;
+  --green-600: #298422;
+  --green-300: #8FC867;
+  --green-200: #7ed957;
+  --neutral-900: #1d1d1f;
+
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-2: var(--accent-2);
+
+  --color-primary: var(--accent);
+  --color-primary-dark: var(--green-600);
+  --color-primary-light: var(--green-200);
+
+  --color-secondary: var(--green-800);
+  --color-secondary-neutral: var(--neutral-900);
 
 
   --font-sans: var(--font-geist-sans);
