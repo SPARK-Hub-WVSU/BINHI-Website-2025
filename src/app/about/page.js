@@ -20,9 +20,8 @@ import Mission from './_data/mission.mdx';
 import Vision from './_data/vision.mdx';
 
 import timeline from './_data/timeline.json';
-import tbiOfficials from './_data/officials.json';
+import tbiOfficials from './_data/officials';
 import OfficerCard from './_components/OfficerCard';
-import LinkButton from '@/components/LinkButton';
 import Link from 'next/link';
 import Mascot from '@/assets/mascot/Wave.webp'
 
@@ -34,10 +33,10 @@ export default function AboutPage() {
 
             {/* Mission, Vision, and Target Sectors */}
             <section className="grid grid-cols-2 gap-16" id="mission-vision">
-                <div className="grid gap-y-6">
+                <div className="flex flex-col gap-y-6">
                     <Mission />
                 </div>
-                <div className="grid gap-y-6">
+                <div className="flex flex-col gap-y-6 ">
                     <Vision />
                 </div>
 
@@ -90,26 +89,24 @@ export default function AboutPage() {
             </section>
 
             {/* TBI Officials */}
-            <section id="officials">
-                <h2>TBI OFFICIALS</h2>
-                <div className="justify-items-center">
-                    {tbiOfficials.map((hierarchy) => (
-                        <div className="flex gap-6 items-center my-6">
-                            {hierarchy.map(({ image, name, title }, key) => (
-                                <OfficerCard
-                                    key={key}
-                                    image={image || Mascot}
-                                    name={name}
-                                    title={title}
-                                />
-                            ))}
-                        </div>
-                    ))}
-                </div>
+            <section id="officials" className='flex flex-col items-center'>
+                <h2 className='mb-4'>TBI OFFICIALS</h2>
+                {tbiOfficials.map((hierarchy) => (
+                    <div className="flex gap-6 items-center my-6">
+                        {hierarchy.map(({ image, name, title }, key) => (
+                            <OfficerCard
+                                key={key}
+                                image={image || Mascot}
+                                name={name}
+                                title={title}
+                            />
+                        ))}
+                    </div>
+                ))}
             </section>
 
             {/* CTA */}
-            <section className='justify-items-center'>
+            <section className='flex flex-col items-center'>
                 <h1>Ready to launch your next startup?</h1>
                 <Link className="bg-primary text-background rounded-full px-4 py-2 flex items-center w-fit gap-2 mt-4" href="/">
                     <strong>Start your journey with BINHI</strong>
