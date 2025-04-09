@@ -47,13 +47,11 @@ export default function Footer() {
                         <Link href="/" className="text-base">About BINHI TBI</Link>
                         <Link href="/" className="text-base">Services of BINHI TBI</Link>
                         <Link href="/" className="text-base">Contact BINHI TBI</Link>
-                        <Link href="/" className="text-base">Startup Portfolio</Link>
+                        <Link href="/startup_portfolio" className="text-base">Startup Portfolio</Link>
                         <Link href="/" className="text-base">News and Events</Link>
                     </div>
 
                 </section>
-
-
             </div>
         </footer>
     )
