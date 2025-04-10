@@ -1,8 +1,26 @@
+import Image from "next/image";
+
 import Header from "./Header";
 import Footer from "./Footer";
+
 import LinkButton from "@/components/LinkButton";
 import heroImage from '@/assets/hero.svg'
+
 import { BeakerIcon, ComputerDesktopIcon, GlobeAsiaAustraliaIcon, HeartIcon } from '@heroicons/react/24/solid'
+import { ScaleIcon, AcademicCapIcon } from '@heroicons/react/24/outline'
+
+import bgStartupStarters from '@/assets/startup-starters//bg-wave-startup-starters.svg'
+
+import buildingBg from '@/assets/startup-starters/startup-starters.png'
+import inHouse from '@/assets/startup-starters/in-house.svg'
+import businessAssistance from '@/assets/startup-starters/business-assistance.svg'
+import consultancySupport from '@/assets/startup-starters/consultancy-support.svg'
+import fundingAssistance from '@/assets/startup-starters/funding-assistance.svg'
+import monitoringCoaching from '@/assets/startup-starters/monitoring-coaching.svg'
+import technologyForecasting from '@/assets/startup-starters/technology-forecasting.svg'
+import laboratoryFacilities from '@/assets/startup-starters/laboratory-facilities.svg'
+import meetingFacilities from '@/assets/startup-starters/meeting-facilities.svg'
+
 
 export default function Home() {
   return (
@@ -19,7 +37,7 @@ export default function Home() {
         >
 
 
-          <div className=" pt-[140px]  pl-[170px] w-fit hidden lg:block">
+          <div className=" pt-[140px]  pl-[170px] w-fit ">
             <h1 className="w-[615px]  mb-5 
             text-secondary text-[50px] font-bold leading-[75px] ">
               Nurturing Seeds of<br /> Ideas <span className="text-primary-dark">One Step <br />at a Time.</span>
@@ -95,6 +113,110 @@ export default function Home() {
           </section >
         </section>
 
+
+        {/* -------------- STARTUP STARTERS  ---------------*/}
+        <section className="relative bg-blue-300">
+
+          <div
+            className="absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-center"
+            style={{ backgroundImage: `url(${buildingBg.src})` }}
+          />
+
+          {/* overlay with opacity */}
+          <div className="absolute inset-0 bg-white/60" />
+
+          {/* content - will be above the overlay */}
+          <div className="relative z-10 h-[1411px]">
+
+            <div className="h-[376px] absolute inset-0 bg-gradient-to-b from-white via-white to-transparent"
+              style={{
+                background: 'linear-gradient(180deg, #FFF 70.94%, rgba(255, 255, 255, 0.00) 100%)'
+              }}
+            />
+
+            <h2 className="relative pt-[220px] z-10 max-w-[749px] font-bold text-5xl text-primary mx-auto text-center
+            mb-12">
+              We also provide these starters for your startup:
+            </h2>
+
+            <section className="mx-auto max-w-[1149px] flex flex-wrap justify-center
+            ">
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <Image src={inHouse} className="mb-6" alt="In-house and Virtual Incubation Icon" />
+                <span >In-house and Virtual Incubation</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <Image src={businessAssistance} className="mb-6" alt="Business and Professional Assistance Icon" />
+                <span>Business and Professional Assistance</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <Image src={consultancySupport} className="mb-6" alt="Consultancy and Support Services Icon" />
+                <span>Consultancy and Support Services</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <Image src={fundingAssistance} className="mb-6" alt="Funding and Grants Proposal Assistance Icon" />
+                <span >Funding and Grants Proposal Assistance</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <Image src={monitoringCoaching} className="mb-6" alt="Monitoring and Coaching Icon" />
+                <span >Monitoring & Coaching</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <Image src={technologyForecasting} className="mb-6" alt="Technology Forecasting and Matching Icon" />
+                <span>Technology Forecasting and Matching</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <Image src={laboratoryFacilities} className="mb-6" alt="Laboratory and Production Facilities Icon" />
+                <span>Laboratory and Production Facilities</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <Image src={meetingFacilities} className="mb-6" alt="Meeting and Conference Facilities Icon" />
+                <span>Meeting and Conference Facilities</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <ScaleIcon className="text-primary w-[125px] h-[125px] mb-6" stroke="currentColor" />
+                <span>Branding and IP Protection</span>
+              </div>
+
+              <div className="bg-white starters-container text-xl font-medium w-full max-w-[247px] h-[291px] m-5 
+              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
+                <AcademicCapIcon className="text-primary w-[125px] h-[125px] mb-6" stroke="currentColor" />
+                <span>Trainings and Workshops</span>
+              </div>
+
+            </section>
+
+
+
+          </div>
+          <Image src={bgStartupStarters} alt="" className="w-full" />
+        </section>
+
+        {/* 
+            git stash and git stash pop are used to temporarily save and restore uncommitted changes:
+
+            git stash 
+            git stash pop
+            
+            */}
 
         <Footer />
       </div >
