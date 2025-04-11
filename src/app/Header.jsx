@@ -31,7 +31,7 @@ export default function Header() {
                     </Link>
                 </li>
                 <li>
-                    <Link href={"/"} className="text-secondary-neutral hover:text-gray-400">
+                    <Link href={"/contacts"} className="text-secondary-neutral hover:text-gray-400">
                         Contact Us
                     </Link>
                 </li>
