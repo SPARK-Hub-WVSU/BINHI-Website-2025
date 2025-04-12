@@ -1,6 +1,6 @@
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import contacts from './_data/contacts';
-import Image from 'next/image';
+import SendMessageBox from './_components/SendMessageBox';
 
 export default function Contacts() {
   return (
@@ -14,41 +14,36 @@ export default function Contacts() {
         </section>
 
         {/* Contacts */}
-        <section className="h-96 flex flex-wrap sm:flex-nowrap mt-[6rem] w-full max-w-[60rem] px-8 sm:px-4 justify-end">
-          
+        <section className="h-[100rem] flex flex-wrap sm:flex-nowrap mt-[6rem] w-full max-w-[60rem] px-8 sm:px-4 justify-end">
+        
           {/* RIGHT on DESKTOP, TOP on MOBILE */}
             <div className="w-full sm:w-1/2 p-2 order-1 sm:order-2">
               {/* ADDRESS AND MAP */}
-
               {/* ADDRESS */}
               <div className="flex flex-col  gap-y-3 p-2">
                 <div className="flex flex-row items-center gap-x-3">
                   <MapPinIcon className="text-primary w-[40px] h-[40px]" />
                   <p className="font-bold text-primary">Address</p>
                 </div>
-
-                <p>
-                  BINHI Facility, West Visayas State University, La Paz, Iloilo City, Philippines, Iloilo City, Philippines
-                </p>
-
+                <p>BINHI Facility, West Visayas State University, La Paz, Iloilo City, Philippines, Iloilo City, Philippines</p>
               </div>
-
-
             </div>
 
             {/* LEFT on DESKTOP, BOTTOM on MOBILE */}
-            <div className="w-full sm:w-1/2 p-2 order-2 sm:order-1">
-            {/* CONTACTS AND MESSAGE */}      
+            <div className="flex flex-col gap-y-[5rem] w-full sm:w-1/2 p-2 order-2 sm:order-1">
+            {/* CONTACTS AND MESSAGE */}  
               {/* CONTACTS */}      
-              <div className="flex flex-col  gap-y-3 p-2">
+              <div className="flex flex-col gap-y-5 p-2">
                 {contacts.map((contact, index) => (
                 <div key={index} className="flex flex-row items-center gap-x-3">
                   {contact.icon}
                   <p>{contact.details}</p>
                 </div>
-                ))
-                }
+                ))}
               </div>
+
+                {/* SEND A MESSAGE */}
+                <SendMessageBox />
 
             </div>
 
