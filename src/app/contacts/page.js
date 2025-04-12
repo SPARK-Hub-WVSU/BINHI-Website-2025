@@ -1,7 +1,5 @@
-import { EnvelopeIcon } from "@heroicons/react/24/solid";
-import { PhoneIcon } from '@heroicons/react/24/solid';
 import { MapPinIcon } from '@heroicons/react/24/solid';
-import FacebookIcon from '@/assets/facebook-icon.svg';
+import contacts from './_data/contacts';
 import Image from 'next/image';
 
 export default function Contacts() {
@@ -41,23 +39,15 @@ export default function Contacts() {
             {/* LEFT on DESKTOP, BOTTOM on MOBILE */}
             <div className="w-full sm:w-1/2 p-2 order-2 sm:order-1">
             {/* CONTACTS AND MESSAGE */}      
-
               {/* CONTACTS */}      
               <div className="flex flex-col  gap-y-3 p-2">
-                <div className="flex flex-row items-center gap-x-3">
-                  <EnvelopeIcon className="text-primary w-[40px] h-[40px]" />
-                  <p>binhi@wvsu.edu.ph</p>
+                {contacts.map((contact, index) => (
+                <div key={index} className="flex flex-row items-center gap-x-3">
+                  {contact.icon}
+                  <p>{contact.details}</p>
                 </div>
-
-                <div className="flex flex-row items-center gap-x-3">
-                  <PhoneIcon className="text-primary w-[40px] h-[40px]" />
-                  <p>(033) 321-0358</p>
-                </div>
-
-                <div className="flex flex-row items-center gap-x-3">
-                  <Image src={FacebookIcon} className="text-primary w-[40px] h-[40px]" />
-                  <p>WVSU BINHI TBI</p>
-                </div>
+                ))
+                }
               </div>
 
             </div>
