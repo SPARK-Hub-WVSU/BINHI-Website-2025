@@ -56,21 +56,20 @@ export default function StartupPortfolio() {
                 Collaborate, and Empower-turning ideas into impactful solutions!
             </p>
 
-            <div className="gap-5 flex flex-row justify-center">
-                <button className="bg-primary rounded-full p-2 gap-x-2 flex flex-row items-center">
+            <div className="w-full flex flex-col md:flex-row md:justify-center md:items-center gap-6 md:gap-[8rem]">
+                <button type="button" className="bg-primary rounded-full p-2 gap-x-2 flex flex-row items-center self-start md:self-auto">
                     <Image alt="FB Logo" src={fb} />
                     <p className="text-base text-white">
                         spark.hub@wvsu.edu.ph
                     </p>
                 </button>
 
-                <button className="bg-primary rounded-full p-2 gap-x-2 flex flex-row items-center">
+                <button type="button" className="bg-primary rounded-full p-2 gap-x-2 flex flex-row items-center self-start md:self-auto">
                     <EnvelopeIcon className="text-background w-[40px] h-[40px]" />
                     <p className="text-base text-white">
                         WVSU - SPARK Hub
                     </p>
                 </button>
-
             </div>
         </section>
 
