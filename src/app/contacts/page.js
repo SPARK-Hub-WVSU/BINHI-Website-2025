@@ -1,6 +1,7 @@
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import contacts from './_data/contacts';
 import SendMessageBox from './_components/SendMessageBox';
+import MapWrapper from './_components/MapWrapper';
 
 export default function Contacts() {
   return (
@@ -17,7 +18,7 @@ export default function Contacts() {
         <section className="h-[100rem] flex flex-wrap sm:flex-nowrap mt-[6rem] w-full max-w-[60rem] px-8 sm:px-4 justify-end">
         
           {/* RIGHT on DESKTOP, TOP on MOBILE */}
-            <div className="w-full sm:w-1/2 p-2 order-1 sm:order-2">
+            <div className="gap-y-[5rem] flex flex-col w-full sm:w-1/2 p-2 order-1 sm:order-2">
               {/* ADDRESS AND MAP */}
               {/* ADDRESS */}
               <div className="flex flex-col  gap-y-3 p-2">
@@ -26,6 +27,11 @@ export default function Contacts() {
                   <p className="font-bold text-primary">Address</p>
                 </div>
                 <p>BINHI Facility, West Visayas State University, La Paz, Iloilo City, Philippines, Iloilo City, Philippines</p>
+              </div>
+
+              {/* GOOGLE MAP */}
+              <div className=''>
+                <MapWrapper/>
               </div>
             </div>
 
