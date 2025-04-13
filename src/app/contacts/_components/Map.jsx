@@ -20,7 +20,7 @@ export default function Map() {
   ];
 
   return (
-    <MapContainer center={markers[0].coords} zoom={18} className="leaflet-container">
+    <MapContainer center={markers[0].coords} zoom={18} className="leaflet-container rounded-3xl shadow-2xl w-[27rem] h-[36rem]">
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

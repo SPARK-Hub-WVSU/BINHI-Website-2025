@@ -2,7 +2,7 @@
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 export default function SendMessageBox() {
     return (
-    <div className="bg-[#E5F0DC] h-[36rem] rounded-4xl shadow-black">
+    <div className="bg-[#E5F0DC] w-[27rem] h-[36rem] rounded-4xl shadow-2xl">
         <div className="p-8">
         <p className="font-bold text-primary pl-5">Send us a message</p>
             {/* INPUT */}
