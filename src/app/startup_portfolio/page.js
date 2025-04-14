@@ -38,7 +38,7 @@ export default function StartupPortfolio() {
                 { 
                     graduates.map((graduate, index) => (
                         <div className="max-h-48 max-w-[15rem] flex items-center justify-center gap-4">
-                            <Image src={graduate.logoPath} key={index} className="h-full w-auto" />
+                            <Image  src={graduate.logoPath} key={index} alt={graduate.name} className="h-full w-auto" />
                         </div>
                         
                     ))
@@ -49,33 +49,28 @@ export default function StartupPortfolio() {
         {/* SPARKHUB */}
         <section className="flex flex-col items-center gap-y-[5rem] mt-[5rem] w-full max-w-[60rem] px-8 sm:px-4">
             <h1 className="text-center">Student Start-up Organization</h1>
-            <Image src={spark} />
+            <Image alt="SPARK Hub Logo" src={spark} />
             <p className="mt-6 text-justify">
                 SPARK Hub is an aspiring student-led technopreneurship center at WVSU,
                 where innovators, entrepreneurs, and creatives come together to Create,
                 Collaborate, and Empower-turning ideas into impactful solutions!
             </p>
 
-            <div className="gap-5 flex flex-row justify-center">
-                <button className="bg-primary rounded-full p-2 gap-x-2 flex flex-row items-center">
-                    <Image src={fb} />
+            <div className="w-full flex flex-col md:flex-row md:justify-center md:items-center gap-6 md:gap-[8rem]">
+                <button type="button" className="bg-primary rounded-full p-2 gap-x-2 flex flex-row items-center self-start md:self-auto">
+                    <Image alt="FB Logo" src={fb} />
                     <p className="text-base text-white">
                         spark.hub@wvsu.edu.ph
                     </p>
                 </button>
-
-                <button className="bg-primary rounded-full p-2 gap-x-2 flex flex-row items-center">
+                <button type="button" className="bg-primary rounded-full p-2 gap-x-2 flex flex-row items-center self-start md:self-auto">
                     <EnvelopeIcon className="text-background w-[40px] h-[40px]" />
                     <p className="text-base text-white">
                         WVSU - SPARK Hub
                     </p>
                 </button>
-
             </div>
         </section>
-
-
-
     </div>
   );
 }
