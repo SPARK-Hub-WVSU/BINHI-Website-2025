@@ -24,6 +24,7 @@ import tbiOfficials from './_data/officials';
 import OfficerCard from './_components/OfficerCard';
 import Link from 'next/link';
 import Mascot from '@/assets/mascot/Wave.webp'
+import LinkButton from '@/components/LinkButton';
 
 export default function AboutPage() {
     return (
@@ -60,6 +61,15 @@ export default function AboutPage() {
                             Emerging Technologies / ICT
                         </li>
                     </ul>
+                </div>
+
+                <div className="grid gap-6">
+                    <h2>BINHI STARTUPS</h2>
+                    <p>Since its 2015 inauguration, BINHI has fostered the development of more than 20 startups within Iloilo.</p>
+                    <LinkButton href="/">
+                        View Startup Portfolio
+                        <ArrowRightIcon />
+                    </LinkButton>
                 </div>
             </section>
 
