@@ -1,36 +1,34 @@
 @import "tailwindcss";
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
 
   --primary: #389731;
-  --accent: #8FC867;
+  --accent: #8fc867;
   --dark-accent: #0d3b09;
   --primary-light: #7ed957;
-  --primary-lighter: #8FC867;
+  --primary-lighter: #8fc867;
   --primary-dark: #298422;
 
-  --secondary: #0D3B09;
+  --secondary: #0d3b09;
   --secondary-neutral: #1d1d1f;
-
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --color-primary: var(--primary);
   --color-accent: var(--accent);
   --color-dark-accent: var(--dark-accent);
- 
+
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
 
   --color-secondary: var(--secondary);
   --color-secondary-neutral: var(--secondary-neutral);
-  
+
   --font-sans: var(--font-poppins);
 }
 
@@ -52,16 +50,20 @@ body {
 
 @layer base {
   h1 {
-    @apply text-center text-4xl/normal font-bold text-primary text-pretty
+    @apply text-center text-4xl/normal font-bold text-primary text-pretty;
   }
-  
+
   h2 {
     @apply text-primary font-bold text-3xl;
+  }
+
+  p {
+    @apply text-2xl;
   }
 }
 
 /* * { outline: 1px solid red; } */
 
 .mission {
-  background: linear-gradient(180deg, #8FC867 6%, rgba(143, 200, 103, 0.00) 30%);
+  background: linear-gradient(180deg, #8fc867 6%, rgba(143, 200, 103, 0) 30%);
 }
