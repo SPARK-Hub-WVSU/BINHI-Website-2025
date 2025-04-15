@@ -4,5 +4,6 @@
     },
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
-    }
+    },
+    "prettier.tabWidth": 2
 }
