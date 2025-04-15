@@ -62,6 +62,21 @@ body {
   }
 }
 
+@utility grid-container {
+  grid-template-columns:
+    [screen-start]
+    minmax(96px, 1fr)
+    [content-start]
+    minmax(896px, 1fr)
+    [content-end]
+    minmax(96px, 1fr)
+    [screen-end];
+
+  & > * {
+    grid-column: content;
+  }
+}
+
 /* * { outline: 1px solid red; } */
 
 .mission {
