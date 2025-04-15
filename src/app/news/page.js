@@ -1,7 +1,10 @@
-import GridArticle from "./GridArticle";
-import InsetArticle from "./InsetArticle";
+import articles from '@/actions/fetch-articles';
+import GridArticle from './GridArticle';
+import InsetArticle from './InsetArticle';
 
-export default function News() {
+export default async function News() {
+  const allArticles = await articles.getAll();
+
   return (
     <div className="grid grid-container justify-items-center gap-12">
       <div className="">
@@ -10,19 +13,19 @@ export default function News() {
       </div>
 
       <div className="grid grid-cols-[3fr_2fr] gap-4">
-        <InsetArticle id={0} />
+        <InsetArticle data={allArticles.shift()} />
 
         <div className="flex flex-col gap-4">
-          <InsetArticle id={0} />
-          <InsetArticle id={0} />
+          <InsetArticle data={allArticles.shift()} />
+          <InsetArticle data={allArticles.shift()} />
         </div>
       </div>
 
       {/* Latest News */}
       <div className="grid gap-4">
-        <GridArticle id={0} />
-        <GridArticle id={0} />
-        <GridArticle id={0} />
+        {allArticles.map((data) => (
+          <GridArticle data={data} />
+        ))}
       </div>
     </div>
   );
