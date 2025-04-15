@@ -5,17 +5,9 @@ import placeholderPhoto from '@/assets/placeholder-photo.png';
 import Link from "next/link";
 
 export default function GridArticle({ data }) {
-    data = data ?? {
-        id: -1,
-        image: placeholderPhoto,
-        headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
-        content: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
-        date: new Date(2024, 3, 14),
-    };
-
     return (
         <Link className="group grid grid-cols-[1fr_3fr] gap-4 p-4 max-w-[860px] shadow-lg" href={`/article/${data.id}`} >
-            <Image src={data.image || null} alt={data.headline} className="aspect-[4/3] object-cover object-center" />
+            <Image src={data.image || placeholderPhoto} alt={data.headline} className="aspect-[4/3] object-cover object-center" />
             <div className="flex flex-col">
                 <h3 className="font-semibold text-xl group-hover:text-primary transition-colors">{data.headline}</h3>
                 <p className="text-base">{data.content.split('\n')?.[0] ?? ""}</p>
