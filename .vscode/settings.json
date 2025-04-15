@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "*.css": "tailwindcss"
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
     }
 }
