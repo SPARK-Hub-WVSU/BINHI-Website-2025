@@ -2,7 +2,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "../../../styles/pages/contacts.css";
 
 const customIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
@@ -20,7 +19,7 @@ export default function Map() {
   ];
 
   return (
-    <MapContainer center={markers[0].coords} zoom={18} className="leaflet-container rounded-3xl shadow-2xl w-[27rem] h-[36rem]">
+    <MapContainer center={markers[0].coords} zoom={18} className="rounded-3xl shadow-2xl w-[27rem] h-[36rem]">
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

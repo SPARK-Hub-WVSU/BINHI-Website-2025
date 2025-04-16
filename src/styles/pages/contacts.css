@@ -1,4 +1,4 @@
 @import "../globals.css";
-.leaflet-container {
-  height: 36rem;
+.message-box-color {
+  background-color: #e5f0dc;
 }

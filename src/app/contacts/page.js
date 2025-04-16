@@ -24,7 +24,7 @@ export default function Contacts() {
               {/* ADDRESS */}
               <div className="h-[13rem] flex flex-col gap-y-3 p-2">
                 <div className="flex flex-row items-center gap-x-3">
-                  <MapPinIcon className="text-primary w-[40px] h-[40px]" />
+                  <MapPinIcon className="text-primary size-[40px]" />
                   <p className="font-bold text-primary">Address</p>
                 </div>
                 <p>BINHI Facility, West Visayas State University, La Paz, Iloilo City, Philippines, Iloilo City, Philippines</p>
