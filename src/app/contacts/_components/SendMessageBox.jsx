@@ -1,9 +1,8 @@
 "use client";
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
-import '@/styles/pages/contacts.css'
 export default function SendMessageBox() {
     return (
-    <div className="message-box-color w-[27rem] h-[36rem] rounded-4xl shadow-2xl">
+    <div className="message-box-bg w-[27rem] h-[36rem] rounded-4xl shadow-2xl">
         <div className="p-8">
         <p className="font-bold text-primary pl-5">Send us a message</p>
             {/* INPUT */}
