@@ -23,28 +23,32 @@ export default function StartupPortfolio() {
         <section className="flex flex-col gap-12 mt-[5rem] sm:pt-6 px-5 sm:p-2 w-full max-w-[75rem]">
             <h2 className="text-center">Current Incubatees</h2>
             <div className="flex flex-wrap items-center justify-center gap-y-10 gap-x-20">
-                { 
-                    incubatees.map((incubatee, index) => (
-                        <Image src={incubatee.logoPath} key={index} alt={incubatee.name} className="max-h-48 max-w-[15rem]" />
-                    ))
-                }
+                {Object.entries(incubatees).map(([name, logo], index) => (
+                <Image
+                    key={index}
+                    src={logo}
+                    alt={name}
+                    className="max-h-48 max-w-[15rem]"
+                />
+                ))}
             </div>
         </section>
+
 
         {/* GRADUATED STARTUPS */}
         <section className="flex flex-col gap-12 mt-[5rem] sm:pt-6 px-5 sm:p-2 w-full max-w-[75rem]">
             <h2 className="text-center">Graduated Startups</h2>
-            <div className="px-5 sm:px-2 flex flex-wrap  items-center justify-center gap-4">
-                { 
-                    graduates.map((graduate, index) => (
-                        <div className="max-h-48 max-w-[15rem] flex items-center justify-center gap-4">
-                            <Image  src={graduate.logoPath} key={index} alt={graduate.name} className="h-full w-auto" />
-                        </div>
-                        
-                    ))
+            <div className="px-5 sm:px-2 flex flex-wrap items-center justify-center gap-4">
+                {
+                Object.entries(graduates).map(([name, logo], index) => (
+                    <div key={index} className="max-h-48 max-w-[15rem] flex items-center justify-center gap-4">
+                    <Image src={logo} alt={name} className="h-full w-auto" />
+                    </div>
+                ))
                 }
             </div>
         </section>
+
 
         {/* SPARKHUB */}
         <section className="flex flex-col items-center gap-y-[5rem] mt-[5rem] w-full max-w-[60rem] px-8 sm:px-4">
