@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5F5F7;
+  --foreground: #1D1D1F;
 
   --primary: #389731;
   --accent: #8fc867;
@@ -59,6 +59,21 @@ body {
 
   p {
     @apply text-2xl;
+  }
+}
+
+@utility grid-container {
+  grid-template-columns:
+    [screen-start]
+    minmax(96px, 1fr)
+    [content-start]
+    minmax(896px, 1fr)
+    [content-end]
+    minmax(96px, 1fr)
+    [screen-end];
+
+  & > * {
+    grid-column: content;
   }
 }
 
