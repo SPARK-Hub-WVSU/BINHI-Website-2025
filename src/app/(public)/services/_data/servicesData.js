@@ -15,54 +15,54 @@ export default [
         {
             "icon": inhouse,
             "name": "In-house & Virtual Incubation",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "BINHI will provide a dedicated space for your startup. If there’s no room, we can work together virtually. "
         },
         {
             "icon": assistance,
             "name": "Business & Professional Assistance",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "BINHI’s network of academic and industry professionals and organizations are at full disposal for the growth of your startup."
         },
         {
             "icon": consultancy,
             "name": "Consultancy & Support Services",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "Our manager and team is open to consultation anytime within the course of your startup’s incubation."
         },
         {
             "icon": funding,
             "name": "Funding & Grant Proposal Assistance",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "BINHI will assist you in gathering funds for your startup’s operations."
         },
         {
             "icon": mentoring,
             "name": "Mentoring & Coaching",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "Throughout the course of incubation, you will be mentored on the daily operation, management, and long-term presentation of your startup."
         }
     ],
     [
         {
             "icon": forecast,
             "name": "Technology Forecasting & Matching",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "If your startup’s technology based, our team will help you measure its feasibility and whether it matches your ideal target market."
         },
         {
             "icon": laboratory,
             "name": "Laboratory & Production Facility",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "BINHI has the space for your startup to conduct laboratory research and manufacture components for your first product."
         },
         {
             "icon": meeting,
             "name": "Meeting & Conference Facilities",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "Utilizing our conference rooms will project formality and confidence in the conduct of high-level meetings for your startup."
         },
         {
             "icon": ip,
             "name": "Branding & IP Protection",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "BINHI takes intellectual property seriously and is always available to assist your startup in protecting its branding and product innovations. "
         },
         {
             "icon": training,
             "name": "Trainings & Workshops",
-            "desc": "Lorem ipsum deloreum Lorem ipsum deloreum"
+            "desc": "BINHI conducts seminars and workshops tailored to the needs of your startup during incubation."
         }
     ]
     
