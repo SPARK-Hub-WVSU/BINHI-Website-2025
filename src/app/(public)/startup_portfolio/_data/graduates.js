@@ -12,19 +12,18 @@ import logo11 from '@/assets/portfolio/graduated/11.png';
 import logo12 from '@/assets/portfolio/graduated/12.png';
 import logo13 from '@/assets/portfolio/graduated/13.png';
 
-export default 
-[
-    {"logoPath": logo1},
-    {"logoPath": logo2},
-    {"logoPath": logo3},
-    {"logoPath": logo4},
-    {"logoPath": logo5},
-    {"logoPath": logo6},
-    {"logoPath": logo7},
-    {"logoPath": logo8},
-    {"logoPath": logo9},
-    {"logoPath": logo10},
-    {"logoPath": logo11},
-    {"logoPath": logo12},
-    {"logoPath": logo13},
-]
+export default {
+  "Startup 01": logo1,
+  "Startup 02": logo2,
+  "Startup 03": logo3,
+  "Startup 04": logo4,
+  "Startup 05": logo5,
+  "Startup 06": logo6,
+  "Startup 07": logo7,
+  "Startup 08": logo8,
+  "Startup 09": logo9,
+  "Startup 10": logo10,
+  "Startup 11": logo11,
+  "Startup 12": logo12,
+  "Startup 13": logo13,
+};
