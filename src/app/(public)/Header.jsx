@@ -20,7 +20,7 @@ export default function Header() {
                     </Link>
                 </li>
                 <li>
-                    <Link href={"/"} className="text-secondary-neutral hover:text-gray-400">
+                    <Link href={"/services"} className="text-secondary-neutral hover:text-gray-400">
                         Services
 
                     </Link>
