@@ -1,6 +1,6 @@
 "use client";
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
-import "../../../../styles/pages/contacts.css"; // <-- No `styles` object here
+import "@/styles/pages/contacts.css";
 
 export default function SendMessageBox() {
   return (
