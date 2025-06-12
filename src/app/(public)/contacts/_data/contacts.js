@@ -7,15 +7,15 @@ export default
 [
     {
         "details": "binhi@wvsu.edu.ph",
-        "icon": <EnvelopeIcon className="text-primary size-[40px]" />
+        "icon": <EnvelopeIcon className="text-primary size-[27px] md:size-[40px]" />
     },
     {
         "details": "(033) 321-0358",
-        "icon": <PhoneIcon className="text-primary size-[40px]" />
+        "icon": <PhoneIcon className="text-primary size-[27px] md:size-[40px]" />
     },
     {
         "details": "WVSU BINHI TBI",
-        "icon": <Image src={FacebookIcon} alt="FB Icon" className="text-primary size-[40px]"/>
+        "icon": <Image src={FacebookIcon} alt="FB Icon" className="text-primary size-[27px] md:size-[40px]"/>
     }
 
 ]
