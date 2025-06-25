@@ -1,8 +1,5 @@
 import Image from "next/image";
 
-import Header from "./Header";
-import Footer from "./Footer";
-
 import LinkButton from "@/components/LinkButton";
 import heroImage from '@/assets/hero.svg'
 
