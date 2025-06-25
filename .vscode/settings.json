@@ -1,5 +1,9 @@
 {
     "files.associations": {
         "*.css": "tailwindcss"
-    }
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "prettier.tabWidth": 2
 }
