@@ -7,13 +7,16 @@
 
   --primary: #389731;
   --accent: #8fc867;
+
+  --light-accent: #ecf3eb;
   --dark-accent: #0d3b09;
-  --primary-light: #7ed957;
-  --primary-lighter: #8fc867;
+  
   --primary-dark: #298422;
+  --primary-light: #7ed957;
 
   --secondary: #0d3b09;
   --secondary-neutral: #1d1d1f;
+  --secondary-neutral-light: #cecece;
 }
 
 @theme inline {
@@ -22,13 +25,16 @@
 
   --color-primary: var(--primary);
   --color-accent: var(--accent);
+  
   --color-dark-accent: var(--dark-accent);
+  --color-light-accent: var(--light-accent);
 
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
 
   --color-secondary: var(--secondary);
   --color-secondary-neutral: var(--secondary-neutral);
+  --color-secondary-neutral-light: var(--secondary-neutral-light);
 
   --font-sans: var(--font-poppins);
 }

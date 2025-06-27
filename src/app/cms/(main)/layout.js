@@ -11,15 +11,17 @@ export default async function Layout({ children }) {
 
   return (
     <div className="fixed inset-0 flex">
-      <aside className="w-xs border-r border-secondary-neutral">
+      <aside className="w-xs border-r border-accent flex flex-col items-center">
         <div className="m-6">
-          <Logo />
+          <Logo scale={0.8} />
         </div>
         <Navigation />
       </aside>
       <main className="grow flex flex-col p-8">
         <Login session={session} />
-        {children}
+        <div className="grow">
+          {children}
+        </div>
       </main>
     </div>
   );

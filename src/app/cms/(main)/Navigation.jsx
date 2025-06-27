@@ -1,24 +1,14 @@
 'use client';
 
-import { ChartBarIcon, HomeIcon, InformationCircleIcon, NewspaperIcon } from '@heroicons/react/16/solid';
+import { NewspaperIcon } from '@heroicons/react/24/outline';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const routes = [
   {
-    icon: <InformationCircleIcon className="size-4" />,
-    label: 'Dashboard',
-    url: 'dashboard',
-  },
-  {
     icon: <NewspaperIcon className="size-4" />,
     label: 'News Articles',
     url: 'news',
-  },
-  {
-    icon: <HomeIcon className='size-4' />,
-    label: 'Hero Section',
-    url: 'hero'
   },
 ];
 
@@ -26,12 +16,13 @@ export default function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav>
+    <nav className="px-6 w-full">
       {routes.map(({ icon, label, url }, idx) => (
         <Link
           href={url}
-          className={`px-6 py-3 flex items-center gap-4 hover:bg-accent ${
-            pathname.endsWith(url) && 'text-primary'
+          className={`px-6 py-2 rounded-lg flex items-center gap-4 hover:bg-accent ${
+            pathname.endsWith(url) &&
+            'bg-light-accent text-primary font-semibold'
           }`}
           key={`cms-nav${idx}`}>
           {icon}

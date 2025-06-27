@@ -7,7 +7,7 @@ export default function SignIn() {
       <form
         action={async () => {
           'use server';
-          await signIn('google', { redirectTo: '/cms/dashboard' });
+          await signIn('google', { redirectTo: '/cms/news' });
         }}
         className="border border-primary-light p-6 rounded-xl flex flex-col items-center">
         <Logo />
