@@ -2,7 +2,7 @@ import Image from 'next/image'
 import logoHorizontal from '@/assets/logo-horizontal.svg'
 import logoVertical from '@/assets/logo-vertical.svg'
 
-export default function Logo({ version = 1 }) {
+export default function Logo({ version = 1, scale = 1 }) {
     const logoSrc = version === 1
         ? logoHorizontal  // horizontal logo path
         : logoVertical  // vertical logo path
@@ -16,8 +16,8 @@ export default function Logo({ version = 1 }) {
             <Image
                 src={logoSrc}
                 alt={`BINHI Logo Version ${version}`}
-                width={dimensions.width}
-                height={dimensions.height}
+                width={dimensions.width * scale}
+                height={dimensions.height * scale}
                 priority
             />
         </div>

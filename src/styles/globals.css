@@ -2,17 +2,18 @@
 
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f5f7;
+  --foreground: #1d1d1f;
 
   --primary: #389731;
+  --accent: #8fc867;
+  --dark-accent: #0d3b09;
   --primary-light: #7ed957;
-  --primary-lighter: #8FC867;
+  --primary-lighter: #8fc867;
   --primary-dark: #298422;
 
-  --secondary: #0D3B09;
+  --secondary: #0d3b09;
   --secondary-neutral: #1d1d1f;
-
 }
 
 @theme inline {
@@ -20,15 +21,16 @@
   --color-foreground: var(--foreground);
 
   --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-dark-accent: var(--dark-accent);
+
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
 
   --color-secondary: var(--secondary);
   --color-secondary-neutral: var(--secondary-neutral);
 
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
 }
 
 /*
@@ -38,18 +40,48 @@
     --foreground: #ededed;
   }
 }
-
 */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Poppins, Arial, Helvetica, sans-serif;
+
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
 
+@layer base {
+  h1 {
+    @apply text-center text-4xl/normal font-bold text-primary text-pretty;
+  }
+
+  h2 {
+    @apply text-primary font-bold text-3xl;
+  }
+
+  p {
+    @apply text-2xl;
+  }
+}
+
+@utility grid-container {
+  grid-template-columns:
+    [screen-start]
+    minmax(96px, 1fr)
+    [content-start]
+    minmax(896px, 1fr)
+    [content-end]
+    minmax(96px, 1fr)
+    [screen-end];
+
+  & > * {
+    grid-column: content;
+  }
+}
+
+/* * { outline: 1px solid red; } */
 
 .mission {
-  background: linear-gradient(180deg, #8FC867 6%, rgba(143, 200, 103, 0.00) 30%);
+  background: linear-gradient(180deg, #8fc867 6%, rgba(143, 200, 103, 0) 30%);
 }
 
 .starters-container {
