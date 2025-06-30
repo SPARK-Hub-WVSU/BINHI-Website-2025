@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Logo from "@/components/Logo"
 import Link from "next/link"
 
@@ -14,7 +13,7 @@ export default function Header() {
                     <Logo version={1}></Logo>
                 </div>
 
-                <ul className="flex space-x-4 mt-4 md:mt-0
+                <ul className="flex flex-wrap justify-center space-x-4 mt-4 md:mt-0
             sm:space-x-10 mx-auto text-base font-medium 
             ">
                     <li>
