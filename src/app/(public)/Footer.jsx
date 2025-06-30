@@ -1,9 +1,9 @@
-import Logo from "@/components/Logo"
+import Image from "next/image"
 import Link from 'next/link'
+import Logo from "@/components/Logo"
 import bgWave from '@/assets/bg-wave-footer.svg'
 import { EnvelopeIcon } from "@heroicons/react/24/solid"
 import FacebookIcon from '@/assets/facebook-icon.svg'
-import Image from "next/image"
 
 export default function Footer() {
     return (
@@ -14,7 +14,8 @@ export default function Footer() {
             <div className="bg-secondary w-full h-[300px] 
             flex px-35 items-center
             ">
-                <div className="w-fit h-fit">
+                <div className="w-fit h-fit" >
+
                     <Logo version={2}></Logo>
                 </div>
 
@@ -46,11 +47,13 @@ export default function Footer() {
                         <Link href="/" className="text-base">About BINHI TBI</Link>
                         <Link href="/" className="text-base">Services of BINHI TBI</Link>
                         <Link href="/" className="text-base">Contact BINHI TBI</Link>
-                        <Link href="/startup_portfolio" className="text-base">Startup Portfolio</Link>
+                        <Link href="/" className="text-base">Startup Portfolio</Link>
                         <Link href="/" className="text-base">News and Events</Link>
                     </div>
 
                 </section>
+
+
             </div>
         </footer>
     )
