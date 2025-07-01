@@ -186,74 +186,92 @@ export default function Home() {
 
 
       {/* -------------- IMPACT SECTION ---------------*/}
-
       <section className="-mt-15 sm:-mt-20 md:-mt-30">
+
         <div className="relative z-20 -mb-1">
           <Image src={bgImpactWave} alt="" className="w-full block" />
         </div>
+
         <div className="relative py-16 md:py-24 flex justify-center items-center">
 
           {/* Gradient overlay that sits on top */}
           <div className="absolute inset-0 bg-gradient-to-b from-secondary-light to-secondary-light/0 z-0"></div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-5 md:px-10">
+          <div className="relative z-10 max-w-7xl w-full mx-auto px-5 md:px-10">
             <div className="flex flex-col lg:flex-row items-center justify-between">
 
               {/* Left side - Text */}
-              <div className="lg:w-1/2 mb-12 lg:mb-0 text-center h-fit">
+              <div className="lg:w-1/3 mb-10 lg:mb-0 text-center lg:text-left w-full">
                 <h2 className="text-primary font-bold text-2xl md:text-3xl lg:text-4xl leading-tight lg:leading-15 ">
                   To help you generate
                   <br />
-                  <span className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary ">IMPACT</span>
+                  <span className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-primary ">IMPACT</span>
                   <br />
                   for your business
                 </h2>
               </div>
 
-              {/* Right side - Stats Grid */}
-              <div className="lg:w-2/3 lg:pl-12">
-                <p className="text-sm text-gray-600 mb-8 text-center lg:text-right">
-                  Key Performance Metrics of BINHI as of March 2025
-                </p>
+              {/* Right side - Stats */}
+              <div className="lg:w-2/3 flex lg:pr-12 flex-col items-end">
 
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <div className="space-y-4 md:space-y-6">
 
-                  {/* Startups Graduated */}
-                  <div className="bg-white/40 backdrop-blur-md rounded-2xl p-4 md:p-6 text-center border border-white/20 shadow-lg">
-                    <AcademicCapIcon className="w-10 h-10 md:w-12 md:h-12 text-primary mx-auto mb-3 md:mb-4" />
-                    <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-dark mb-1 md:mb-2">25</div>
-                    <div className="text-xs md:text-sm text-primary font-medium leading-tight">Startups Graduated</div>
+                  {/* Top row - 2 centered cards */}
+                  <div className="flex justify-center gap-3 sm:gap-4 md:gap-6 ">
+                    {/* Startups Graduated */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+      flex flex-col items-center justify-center">
+                      <AcademicCapIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">25</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Startups Graduated</div>
+                    </div>
+
+                    {/* Jobs Generated */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+      flex flex-col items-center justify-center">
+                      <BriefcaseIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">81</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Jobs Generated with Startups</div>
+                    </div>
                   </div>
 
-                  {/* Jobs Generated */}
-                  <div className="bg-white/40 backdrop-blur-md rounded-2xl p-4 md:p-6 text-center border border-white/20 shadow-lg">
-                    <BriefcaseIcon className="w-10 h-10 md:w-12 md:h-12 text-primary mx-auto mb-3 md:mb-4" />
-                    <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-dark mb-1 md:mb-2">81</div>
-                    <div className="text-xs md:text-sm text-primary font-medium leading-tight">Jobs Generated with Startups</div>
-                  </div>
+                  {/* Bottom row - 3 cards in grid */}
+                  <div className="flex flex-wrap md:flex-nowrap justify-center gap-3 sm:gap-4 md:gap-6">
+                    {/* Current Startup Incubatees */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+      flex flex-col items-center justify-center">
+                      <NewspaperIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">13</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Current Startup Incubatees</div>
+                    </div>
 
-                  {/* Current Startup Incubatees */}
-                  <div className="bg-white/40 backdrop-blur-md rounded-2xl p-4 md:p-6 text-center border border-white/20 shadow-lg">
-                    <NewspaperIcon className="w-10 h-10 md:w-12 md:h-12 text-primary mx-auto mb-3 md:mb-4" />
-                    <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-dark mb-1 md:mb-2">13</div>
-                    <div className="text-xs md:text-sm text-primary font-medium leading-tight">Current Startup Incubatees</div>
-                  </div>
+                    {/* Investments Received */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+      flex flex-col items-center justify-center">
+                      <RocketLaunchIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">3M+</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Investments Received by Startups</div>
+                    </div>
 
-                  {/* Investments Received */}
-                  <div className="bg-white/40 backdrop-blur-md rounded-2xl p-4 md:p-6 text-center border border-white/20 shadow-lg">
-                    <RocketLaunchIcon className="w-10 h-10 md:w-12 md:h-12 text-primary mx-auto mb-3 md:mb-4" />
-                    <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-dark mb-1 md:mb-2">3M+</div>
-                    <div className="text-xs md:text-sm text-primary font-medium leading-tight">Investments Received by Startups</div>
-                  </div>
-
-                  {/* Accumulated Revenue */}
-                  <div className="bg-white/40 backdrop-blur-md rounded-2xl p-4 md:p-6 text-center border border-white/20 shadow-lg col-span-2 lg:col-span-1">
-                    <ChartBarIcon className="w-10 h-10 md:w-12 md:h-12 text-primary mx-auto mb-3 md:mb-4" />
-                    <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-dark mb-1 md:mb-2">5M+</div>
-                    <div className="text-xs md:text-sm text-primary font-medium leading-tight">Accumulated Startup Revenues</div>
+                    {/* Accumulated Revenue */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+      flex flex-col items-center justify-center">
+                      <ChartBarIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">5M+</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Accumulated Startup Revenues</div>
+                    </div>
                   </div>
 
                 </div>
+
+                <p className="text-sm text-gray-600 mt-6 text-center lg:text-right italic">
+                  *Key Performance Metrics of BINHI as of March 2025
+                </p>
               </div>
             </div>
           </div>
@@ -262,6 +280,7 @@ export default function Home() {
       </section>
 
 
+      
 
 
     </main>
