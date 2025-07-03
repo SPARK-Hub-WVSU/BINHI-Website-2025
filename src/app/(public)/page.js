@@ -338,7 +338,7 @@ export default function Home() {
             {/* Row 3 - 5 logos */}
             <div className="flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-7 lg:gap-9 items-center mb-4 md:mb-8">
               {innovationPartners.slice(10, 15).map((partner, index) => (
-                <div key={index + 9} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 
+                <div key={index + 10} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 
                 flex items-center justify-center">
                   <Image
                     src={partner.src}

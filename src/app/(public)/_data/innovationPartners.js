@@ -11,7 +11,7 @@ import wadhwani from '@/assets/innovation-partners/wadhwani.png';
 import dost from '@/assets/innovation-partners/dost.png';
 import gsc from '@/assets/innovation-partners/gsc.png';
 import ledipCenterIloilo from '@/assets/innovation-partners/ledip-center-iloilo.png';
-import bussinessClubIloilo from '@/assets/innovation-partners/bus-club-iloilo.png';
+import businessClubIloilo from '@/assets/innovation-partners/bus-club-iloilo.png';
 import startupFounders from '@/assets/innovation-partners/sfc.png';
 import pcci from '@/assets/innovation-partners/pcci.png';
 import leaveANest from '@/assets/innovation-partners/leavenest.png';
@@ -37,7 +37,7 @@ const innovationPartners = [
   // Row 3 - 5 logos
   { src: gsc, alt: "Global Shapers Community", name: "GSC" },
   { src: ledipCenterIloilo, alt: "LEDIP Center Iloilo", name: "LEDIP Center Iloilo" },
-  { src: bussinessClubIloilo, alt: "Iloilo Business Club Inc", name: "Iloilo Business Club" },
+  { src: businessClubIloilo, alt: "Iloilo Business Club Inc", name: "Iloilo Business Club" },
   { src: startupFounders, alt: "Startup Founders Circle", name: "Startup Founders" },
   { src: pcci, alt: "Philippine Chamber of Commerce and Industry", name: "PCCI" },
 
