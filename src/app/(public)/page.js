@@ -26,6 +26,9 @@ import technologyForecasting from '@/assets/startup-starters/technology-forecast
 import laboratoryFacilities from '@/assets/startup-starters/laboratory-facilities.svg'
 import meetingFacilities from '@/assets/startup-starters/meeting-facilities.svg'
 
+import innovationPartners from './_data/innovationPartners';
+
+
 const starterServices = [
   { icon: inHouse, text: "In-house and Virtual Incubation", alt: "In-house and Virtual Incubation Icon" },
   { icon: businessAssistance, text: "Business and Professional Assistance", alt: "Business and Professional Assistance Icon" },
@@ -38,6 +41,8 @@ const starterServices = [
   { icon: ScaleIcon, text: "Branding and IP Protection", alt: "Branding and IP Protection Icon", isHeroIcon: true },
   { icon: AcademicCapIcon, text: "Trainings and Workshops", alt: "Trainings and Workshops Icon", isHeroIcon: true }
 ];
+
+
 
 
 export default function Home() {
@@ -186,7 +191,7 @@ export default function Home() {
 
 
       {/* -------------- IMPACT SECTION ---------------*/}
-      <section className="-mt-15 sm:-mt-20 md:-mt-30">
+      <section className="-mt-15 sm:-mt-20 md:-mt-30 bg-white">
 
         <div className="relative z-20 -mb-1">
           <Image src={bgImpactWave} alt="" className="w-full block" />
@@ -280,7 +285,90 @@ export default function Home() {
       </section>
 
 
-      
+      {/* -------------- INNOVATION PARTNERS SECTION ---------------*/}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+
+          {/* Title and Subtitle */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-primary font-bold text-3xl md:text-4xl lg:text-5xl mb-2">
+              Our innovation partners
+            </h2>
+            <p className="text-primary text-xl md:text-2xl lg:text-3xl font-semibold">
+              will support you on your journey
+            </p>
+          </div>
+
+
+          {/* Partners Grid */}
+          <div className="max-w-6xl mx-auto flex flex-col flex-wrap justify-center items-center ">
+
+            {/* Row 1 - 5 logos */}
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 items-center mb-4 md:mb-8">
+              {innovationPartners.slice(0, 5).map((partner, index) => (
+                <div key={index} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 
+                flex items-center justify-center">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-200"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2 - 5 logos */}
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-14 items-center mb-4 md:mb-8">
+              {innovationPartners.slice(5, 10).map((partner, index) => (
+                <div key={index + 5} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 
+                flex items-center justify-center">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-200"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 3 - 5 logos */}
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-7 lg:gap-9 items-center mb-4 md:mb-8">
+              {innovationPartners.slice(10, 15).map((partner, index) => (
+                <div key={index + 9} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 
+                flex items-center justify-center">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-200"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 4 - 3 logos */}
+            <div className="flex flex-wrap justify-center gap-4 sm-gap:6 md:gap-8 lg:gap-10 items-center ">
+              {innovationPartners.slice(15, 18).map((partner, index) => (
+                <div key={index + 15} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28
+                flex items-center justify-center">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-200"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
 
     </main>
