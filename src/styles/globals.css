@@ -1,22 +1,19 @@
 @import "tailwindcss";
 
-
 :root {
   --background: #f5f5f7;
   --foreground: #1d1d1f;
 
   --primary: #389731;
   --accent: #8fc867;
-
-  --light-accent: #ecf3eb;
   --dark-accent: #0d3b09;
-  
+  --primary-light: #7ed957;
+  --primary-lighter: #8fc867;
   --primary-dark: #298422;
   --primary-light: #7ed957;
 
   --secondary: #0d3b09;
   --secondary-neutral: #1d1d1f;
-  --secondary-neutral-light: #cecece;
 }
 
 @theme inline {
@@ -25,16 +22,14 @@
 
   --color-primary: var(--primary);
   --color-accent: var(--accent);
-  
+
   --color-dark-accent: var(--dark-accent);
-  --color-light-accent: var(--light-accent);
 
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
 
   --color-secondary: var(--secondary);
   --color-secondary-neutral: var(--secondary-neutral);
-  --color-secondary-neutral-light: var(--secondary-neutral-light);
 
   --font-sans: var(--font-poppins);
 }
@@ -69,27 +64,8 @@ body {
   }
 }
 
-@utility grid-container {
-  grid-template-columns:
-    [screen-start]
-    minmax(96px, 1fr)
-    [content-start]
-    minmax(896px, 1fr)
-    [content-end]
-    minmax(96px, 1fr)
-    [screen-end];
-
-  & > * {
-    grid-column: content;
-  }
-}
-
 /* * { outline: 1px solid red; } */
 
 .mission {
   background: linear-gradient(180deg, #8fc867 6%, rgba(143, 200, 103, 0) 30%);
-}
-
-.starters-container {
-  box-shadow: 0px 136px 38px 0px rgba(0, 0, 0, 0.00), 0px 87px 35px 0px rgba(0, 0, 0, 0.01), 0px 49px 29px 0px rgba(0, 0, 0, 0.05), 0px 22px 22px 0px rgba(0, 0, 0, 0.09), 0px 5px 12px 0px rgba(0, 0, 0, 0.10);
 }
