@@ -1,13 +1,18 @@
-// import articles from '@/actions/fetch-articles';
+// News page for BINHI Website
+// Shows top stories as a responsive carousel on mobile and a grid on desktop
+// Shows latest news in a grid below
+// Uses dummyArticles for demonstration
+
+// --- Imports ---
 import GridArticle from './GridArticle';
 import InsetArticle from './InsetArticle';
-import InsetCarousel from './InsetCarousel';
+import InsetCarousel from './InsetCarousel'; // Mobile carousel for top stories
 import Header from '../(public)/Header';
 import Footer from '../(public)/Footer';
 import LabelSection from './LabelSection';
 import placeholderPhoto from '@/assets/placeholder-photo.png';
 
-// Dummy articles data
+// --- Dummy articles data (replace with real data or API call as needed) ---
 const dummyArticles = [
   {
     id: 1,
@@ -54,43 +59,56 @@ const dummyArticles = [
   // Add more dummy articles as needed
 ];
 
+// --- Main News Page Component ---
 export default async function News() {
+  // If using real data, fetch here:
   // const allArticles = await articles.getAll();
   const allArticles = [...dummyArticles];
 
+  // Helper: Page intro section with title and subtitle
   const intro = (children) => (
     <>
-    <div className="flex flex-col items-center gap-12 p-6 md:px-8 sm:px-10 lg:px-12">
-      <div className="flex flex-col items-center gap-4 text-center">
-        <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl">News</h1>
-        <p className='text-base sm:text-lg md:text-xl lg:text-2xl'>Discover the latest news on BINHI's activities.</p>
+      <div className="flex flex-col items-center gap-12 p-6 md:px-8 sm:px-10 lg:px-12">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl">News</h1>
+          <p className='text-base sm:text-lg md:text-xl lg:text-2xl'>
+            Discover the latest news on BINHI's activities.
+          </p>
+        </div>
+        {children}
       </div>
-      {children}
-    </div>
     </>
   );
 
+  // Helper: Responsive Top Stories section
+  // - Shows a carousel on mobile (InsetCarousel)
+  // - Shows a grid on desktop (InsetArticle)
   const insets = () => {
     if (allArticles.length === 0) return <></>;
 
     return (
       <>
+        {/* Mobile: Carousel for top stories */}
         <div className="block sm:hidden">
+          {/* Only show first 3 articles in the carousel */}
           <InsetCarousel articles={allArticles.slice(0, 3)} />
         </div>
-        {/* Desktop grid */}
+        {/* Desktop: Grid for top stories */}
         <div className="hidden sm:block">
+          {/* 1 article: full width */}
           {allArticles.length === 1 && (
             <div className='w-full aspect-video md:aspect-2/1 grid'>
               <InsetArticle data={allArticles.shift()} />
             </div>
           )}
+          {/* 2 articles: two columns */}
           {allArticles.length === 2 && (
             <div className="grid grid-cols-2 gap-4">
               <InsetArticle data={allArticles.shift()} />
               <InsetArticle data={allArticles.shift()} />
             </div>
           )}
+          {/* 3+ articles: main + two stacked */}
           {allArticles.length > 2 && (
             <div className="grid grid-cols-[3fr_2fr] gap-4">
               <InsetArticle data={allArticles.shift()} />
@@ -105,16 +123,20 @@ export default async function News() {
     );
   };
 
+  // --- Render the page ---
   return intro(
     <>
+      {/* Top Stories Section */}
       <div className='w-full max-w-6xl mx-auto'>
         <LabelSection title="Top Stories" />
         {insets()}
       </div>
 
+      {/* Latest News Section */}
       <div className="w-full max-w-4xl mx-auto">
         <LabelSection title="Latest News" />
         <div className="grid gap-4 sm:gap-8">
+          {/* Render all articles as grid items */}
           {allArticles.map((data) => (
             <GridArticle key={data.id} data={data} />
           ))}
