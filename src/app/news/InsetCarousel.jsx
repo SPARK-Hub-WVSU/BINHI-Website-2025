@@ -26,7 +26,7 @@ export default function InsetCarousel({ articles }) {
           {/* Render each article as a slide */}
           {articles.map((article, idx) => (
             <SwiperSlide key={idx}>
-              <InsetArticle data={article} />
+              <InsetArticle data={article} className='min-h-50 [min-width:480px]:min-h-75'/>
             </SwiperSlide>
           ))}
         </Swiper>

@@ -29,34 +29,34 @@ const dummyArticles = [
     image: placeholderPhoto,
     date: "2025-06-20",
   },
-  {
-    id: 3,
-    headline: "BINHI Receives Environmental Award",
-    summary: "Recognized for outstanding contributions to sustainability.",
-    image: placeholderPhoto,
-    date: "2025-06-10",
-  },
-  {
-    id: 4,
-    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
-    summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
-    image: placeholderPhoto,
-    date: "2025-06-05", 
-  },
-  {
-    id: 5,
-    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
-    summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
-    image: placeholderPhoto,
-    date: "2025-06-05", 
-  },
-  {
-    id: 6,
-    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
-    summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
-    image: placeholderPhoto,
-    date: "2025-06-05", 
-  },
+  // {
+  //   id: 3,
+  //   headline: "BINHI Receives Environmental Award",
+  //   summary: "Recognized for outstanding contributions to sustainability.",
+  //   image: placeholderPhoto,
+  //   date: "2025-06-10",
+  // },
+  // {
+  //   id: 4,
+  //   headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+  //   summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
+  //   image: placeholderPhoto,
+  //   date: "2025-06-05", 
+  // },
+  // {
+  //   id: 5,
+  //   headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+  //   summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
+  //   image: placeholderPhoto,
+  //   date: "2025-06-05", 
+  // },
+  // {
+  //   id: 6,
+  //   headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+  //   summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
+  //   image: placeholderPhoto,
+  //   date: "2025-06-05", 
+  // },
   // Add more dummy articles as needed
 ];
 
@@ -105,8 +105,8 @@ export default async function News() {
           {/* 2 articles: two columns */}
           {allArticles.length === 2 && (
             <div className="grid grid-cols-2 gap-4">
-              <InsetArticle data={allArticles.shift()} />
-              <InsetArticle data={allArticles.shift()} />
+              <InsetArticle data={allArticles.shift()} className="sm:min-h-75 lg:min-h-100" />
+              <InsetArticle data={allArticles.shift()} className="sm:min-h-75 lg:min-h-100" />
             </div>
           )}
           {/* 3+ articles: main + two stacked */}
@@ -141,6 +141,23 @@ export default async function News() {
           {allArticles.map((data) => (
             <GridArticle key={data.id} data={data} />
           ))}
+          {/* Render empty grid articles if needed */}
+          {(() => {
+            // Calculate how many empty slots to show (max 3)
+            let emptyCount = 0;
+            if (allArticles.length === 0) emptyCount = 3;
+            else if (allArticles.length === 1) emptyCount = 2;
+            else if (allArticles.length === 2) emptyCount = 1;
+            // Only render if less than 3 articles remaining
+            return Array.from({ length: emptyCount }).map((_, idx) => (
+              <div
+                key={`empty-${idx}`}
+                className="flex items-center justify-center min-h-[120px] max-w-[860px] max-h-[270px] p-3 sm:p-5 bg-gray-100 border-2 border-dashed border-gray-300 rounded shadow-inner text-gray-500 text-center text-base sm:text-lg"
+              >
+                Latest news coming soon
+              </div>
+            ));
+          })()}
         </div>
       </div>
     </>
