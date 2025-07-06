@@ -59,10 +59,10 @@ export default async function News() {
 
   const intro = (children) => (
     <>
-    <div className="grid grid-container gap-12 p-4 md:p-8">
-      <div className="flex flex-col items-center">
-        <h1 className="text-primary">News</h1>
-        <p>Discover the latest news on BINHI's activities.</p>
+    <div className="flex flex-col items-center gap-12 p-6 md:px-6 sm:px-8 lg:px-12">
+      <div className="flex flex-col items-center gap-4 text-center">
+        <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl">News</h1>
+        <p className='text-base sm:text-lg md:text-xl lg:text-2xl'>Discover the latest news on BINHI's activities.</p>
       </div>
       {children}
     </div>
@@ -101,14 +101,14 @@ export default async function News() {
 
   return intro(
     <>
-      <div>
+      <div className='w-full max-w-6xl mx-auto'>
         <LabelSection title="Top Stories" />
         {insets()}
       </div>
 
-      <div className="justify-self-center max-w-3xl">
+      <div className="w-full max-w-4xl mx-auto">
         <LabelSection title="Latest News" />
-        <div className="grid gap-4">
+        <div className="grid gap-4 sm:gap-8">
           {allArticles.map((data) => (
             <GridArticle key={data.id} data={data} />
           ))}
