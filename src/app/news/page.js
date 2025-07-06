@@ -29,34 +29,34 @@ const dummyArticles = [
     image: placeholderPhoto,
     date: "2025-06-20",
   },
-  // {
-  //   id: 3,
-  //   headline: "BINHI Receives Environmental Award",
-  //   summary: "Recognized for outstanding contributions to sustainability.",
-  //   image: placeholderPhoto,
-  //   date: "2025-06-10",
-  // },
-  // {
-  //   id: 4,
-  //   headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
-  //   summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
-  //   image: placeholderPhoto,
-  //   date: "2025-06-05", 
-  // },
-  // {
-  //   id: 5,
-  //   headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
-  //   summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
-  //   image: placeholderPhoto,
-  //   date: "2025-06-05", 
-  // },
-  // {
-  //   id: 6,
-  //   headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
-  //   summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
-  //   image: placeholderPhoto,
-  //   date: "2025-06-05", 
-  // },
+  {
+    id: 3,
+    headline: "BINHI Receives Environmental Award",
+    summary: "Recognized for outstanding contributions to sustainability.",
+    image: placeholderPhoto,
+    date: "2025-06-10",
+  },
+  {
+    id: 4,
+    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+    summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
+    image: placeholderPhoto,
+    date: "2025-06-05", 
+  },
+  {
+    id: 5,
+    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+    summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
+    image: placeholderPhoto,
+    date: "2025-06-05", 
+  },
+  {
+    id: 6,
+    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+    summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
+    image: placeholderPhoto,
+    date: "2025-06-05", 
+  },
   // Add more dummy articles as needed
 ];
 

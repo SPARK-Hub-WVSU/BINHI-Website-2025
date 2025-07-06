@@ -15,7 +15,7 @@ export default function InsetArticle({ data, className = '' }) {
     return (
         // Article card as a clickable link, with overlay and text
         <Link
-            className={`group ${className} relative isolate overflow-hidden flex flex-col justify-end p-4 gap-2
+            className={`group min-h-50 ${className} relative isolate overflow-hidden flex flex-col justify-end p-4 gap-2
                         after:content-[''] after:absolute after:inset-0 after:-z-[1] after:bg-linear-to-t after:from-black after:from-[-20%] after:to-transparent`}
             href={`/article/${data.id}`}
         >
