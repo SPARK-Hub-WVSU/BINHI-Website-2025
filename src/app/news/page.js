@@ -11,6 +11,7 @@ import Header from '../(public)/Header';
 import Footer from '../(public)/Footer';
 import LabelSection from './LabelSection';
 import placeholderPhoto from '@/assets/placeholder-photo.png';
+// import articles from '@/actions/fetch-articles';
 
 // --- Dummy articles data (replace with real data or API call as needed) ---
 const dummyArticles = [
