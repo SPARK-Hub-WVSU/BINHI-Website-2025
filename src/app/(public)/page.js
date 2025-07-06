@@ -149,7 +149,7 @@ export default function Home() {
 
 
       {/* -------------- STARTUP STARTERS  ---------------*/}
-      <section className="relative">
+      <section className="relative bg-white">
 
         <Image
           alt="Building Background Image"
@@ -169,20 +169,20 @@ export default function Home() {
             We also provide these starters for your startup:
           </h2>
 
-          <section className="h-fit pb-30 mx-5 sm:mx-10 md:mx-auto max-w-288 flex flex-wrap justify-center gap-3 sm:gap-5">
+          <section className="h-fit pb-30 flex flex-wrap mx-10 md:mx-auto max-w-250 justify-center gap-3 sm:gap-5">
+
             {starterServices.map((service, index) => (
               <div key={index} className="bg-white starters-container 
-                text-base md:text-lg lg:text-xl font-medium 
-                w-36 sm:w-48 md:w-auto md:max-w-62 
-                h-32 sm:h-48 md:h-73 
-                rounded-xl sm:rounded-2xl md:rounded-3xl 
-                p-2 sm:p-4 md:p-6 
-                text-center flex flex-col items-center justify-center">
+                  text-base md:text-lg  font-medium 
+                  size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                  rounded-xl sm:rounded-2xl md:rounded-3xl 
+                  p-2 sm:p-4 md:p-6 
+                  text-center flex flex-col items-center justify-center">
 
                 {service.isHeroIcon ? (
-                  <service.icon className="text-primary size-6 sm:size-8 md:size-12 lg:size-31 mb-2 sm:mb-4 md:mb-6" stroke="currentColor" />
+                  <service.icon className="text-primary size-6 sm:size-8 md:size-12 lg:size-22 mb-2 sm:mb-4 md:mb-6" stroke="currentColor" />
                 ) : (
-                  <Image src={service.icon} className="mb-2 sm:mb-4 md:mb-6 w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 lg:w-31 lg:h-31" alt={service.alt} />
+                  <Image src={service.icon} className="mb-2 sm:mb-4 md:mb-6 size-6 sm:size-8 md:size-12 lg:size-22" alt={service.alt} />
                 )}
 
                 <span className="leading-tight">{service.text}</span>
@@ -230,18 +230,18 @@ export default function Home() {
                   <div className="flex justify-center gap-3 sm:gap-4 md:gap-6 ">
                     {/* Startups Graduated */}
                     <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
-      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
-      flex flex-col items-center justify-center">
-                      <AcademicCapIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <AcademicCapIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16  text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
                       <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">25</div>
                       <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Startups Graduated</div>
                     </div>
 
                     {/* Jobs Generated */}
                     <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
-      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
-      flex flex-col items-center justify-center">
-                      <BriefcaseIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <BriefcaseIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
                       <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">81</div>
                       <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Jobs Generated with Startups</div>
                     </div>
@@ -251,27 +251,27 @@ export default function Home() {
                   <div className="flex flex-wrap md:flex-nowrap justify-center gap-3 sm:gap-4 md:gap-6">
                     {/* Current Startup Incubatees */}
                     <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
-      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
-      flex flex-col items-center justify-center">
-                      <NewspaperIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <NewspaperIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
                       <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">13</div>
                       <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Current Startup Incubatees</div>
                     </div>
 
                     {/* Investments Received */}
                     <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
-      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
-      flex flex-col items-center justify-center">
-                      <RocketLaunchIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <RocketLaunchIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
                       <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">3M+</div>
                       <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Investments Received by Startups</div>
                     </div>
 
                     {/* Accumulated Revenue */}
                     <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
-      w-32 h-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
-      flex flex-col items-center justify-center">
-                      <ChartBarIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <ChartBarIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
                       <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">5M+</div>
                       <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Accumulated Startup Revenues</div>
                     </div>
