@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import LinkButton from "@/components/LinkButton";
-import heroImage from '@/assets/hero.svg'
+import HeroBackground from "@/components/HeroBackground";
 
 import { BeakerIcon, ComputerDesktopIcon, GlobeAsiaAustraliaIcon, HeartIcon } from '@heroicons/react/24/solid'
 import {
@@ -53,29 +53,34 @@ export default function Home() {
 
     <main>
       {/* ------------------- HERO -------------------*/}
-      <section className="mt-10 md:mt-5 h-125 sm:h-150 md:h-175
-        lg:h-screen xl:min-h-screen 
-        bg-no-repeat bg-cover bg-center
-        
-        "
-        style={{
-          backgroundImage: `url(${heroImage.src})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-        }}
-      >
+      <HeroBackground>
+        <div className="md:pt-20 lg:pt-35 md:pl-25 lg:pl-42 h-full flex flex-col justify-center md:justify-start">
+          <div className="max-w-153 ">
+            <h1 className="mb-5 text-secondary font-bold
+              text-3xl md:text-4xl lg:text-5xl
+              md:leading-14 lg:leading-18 text-center md:text-left">
 
+              {/* Mobile version - each line in separate blocks */}
+              <span className="block md:hidden">
+                Nurturing Seeds of Ideas
+                <br />
+                <span className="text-primary-dark">One Step at a Time.</span>
+              </span>
 
-        <div className=" pt-10 md:pt-20 lg:pt-35 pl-5 md:pl-25 lg:pl-42 w-fit ">
-          <h1 className="max-w-153 mb-5 text-secondary font-bold
-            text-3xl md:text-4xl lg:text-5xl
-            md:leading-14 lg:leading-18 text-left">
-            Nurturing Seeds of<br /> Ideas <span className="text-primary-dark">One Step <br />at a Time.</span>
-          </h1>
+              {/* Desktop version - original layout */}
+              <span className="hidden md:block">
+                Nurturing Seeds of<br /> Ideas <span className="text-primary-dark">One Step <br />at a Time.</span>
+              </span>
+            </h1>
 
-          <LinkButton href="/">Incubate your startup with us</LinkButton>
+            <div className="flex justify-center md:justify-start">
+              <LinkButton href="/" fullWidthOnMobile={true}>
+                Incubate your startup with us
+              </LinkButton>
+            </div>
+          </div>
         </div>
-      </section>
+      </HeroBackground>
 
 
       {/* ------------------- MISSION  -------------------*/}
