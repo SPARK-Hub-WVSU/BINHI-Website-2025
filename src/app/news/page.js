@@ -1,6 +1,7 @@
 // import articles from '@/actions/fetch-articles';
 import GridArticle from './GridArticle';
 import InsetArticle from './InsetArticle';
+import InsetCarousel from './InsetCarousel';
 import Header from '../(public)/Header';
 import Footer from '../(public)/Footer';
 import LabelSection from './LabelSection';
@@ -38,15 +39,15 @@ const dummyArticles = [
   },
   {
     id: 5,
-    headline: "Upcoming Events in July",
-    summary: "Join us for a series of educational events this July.",
+    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+    summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
     image: placeholderPhoto,
     date: "2025-06-05", 
   },
   {
     id: 6,
-    headline: "Upcoming Events in July",
-    summary: "Join us for a series of educational events this July.",
+    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+    summary: "Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum Lorem ipsum deloreum (headline).",
     image: placeholderPhoto,
     date: "2025-06-05", 
   },
@@ -59,7 +60,7 @@ export default async function News() {
 
   const intro = (children) => (
     <>
-    <div className="flex flex-col items-center gap-12 p-6 md:px-6 sm:px-8 lg:px-12">
+    <div className="flex flex-col items-center gap-12 p-6 md:px-8 sm:px-10 lg:px-12">
       <div className="flex flex-col items-center gap-4 text-center">
         <h1 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl">News</h1>
         <p className='text-base sm:text-lg md:text-xl lg:text-2xl'>Discover the latest news on BINHI's activities.</p>
@@ -70,33 +71,38 @@ export default async function News() {
   );
 
   const insets = () => {
-    switch (allArticles.length) {
-      case 0:
-        return <></>;
+    if (allArticles.length === 0) return <></>;
 
-      case 1:
-        return <div className='w-full aspect-video md:aspect-2/1 grid'><InsetArticle data={allArticles.shift()} /></div>;
-
-      case 2:
-        return (
-          <div className="grid grid-cols-2 gap-4">
-            <InsetArticle data={allArticles.shift()} />
-            <InsetArticle data={allArticles.shift()} />
-          </div>
-        );
-
-      default:
-        return (
-          <div className="grid grid-cols-[3fr_2fr] gap-4">
-            <InsetArticle data={allArticles.shift()} />
-
-            <div className="flex flex-col gap-4">
+    return (
+      <>
+        <div className="block sm:hidden">
+          <InsetCarousel articles={allArticles.slice(0, 3)} />
+        </div>
+        {/* Desktop grid */}
+        <div className="hidden sm:block">
+          {allArticles.length === 1 && (
+            <div className='w-full aspect-video md:aspect-2/1 grid'>
+              <InsetArticle data={allArticles.shift()} />
+            </div>
+          )}
+          {allArticles.length === 2 && (
+            <div className="grid grid-cols-2 gap-4">
               <InsetArticle data={allArticles.shift()} />
               <InsetArticle data={allArticles.shift()} />
             </div>
-          </div>
-        );
-    }
+          )}
+          {allArticles.length > 2 && (
+            <div className="grid grid-cols-[3fr_2fr] gap-4">
+              <InsetArticle data={allArticles.shift()} />
+              <div className="flex flex-col gap-4">
+                <InsetArticle data={allArticles.shift()} />
+                <InsetArticle data={allArticles.shift()} />
+              </div>
+            </div>
+          )}
+        </div>
+      </>
+    );
   };
 
   return intro(
