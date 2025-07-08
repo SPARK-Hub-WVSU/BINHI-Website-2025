@@ -33,8 +33,8 @@ export default function News() {
       <div className="flex gap-4 flex-col my-8">
         <h3 className="font-semibold text-xl text-secondary border-b border-accent">Top Stories</h3>
         <ul>
-          {topStories.map(({ id, title, date }) => 
-            <div className="flex gap-8">
+          {topStories.map(({ id, title, date }, index) => 
+            <div className="flex gap-8" key={`topstory-${index}`}>
               <p className="text-base grow">{title}</p>
               <p className="text-base opacity-60">{date.toLocaleDateString('en-US', { dateStyle: 'medium' })}</p>
               <div className="flex gap-8 px-8">
@@ -49,8 +49,8 @@ export default function News() {
       <div className="flex gap-4 flex-col my-8">
         <h3 className="font-semibold text-xl text-secondary border-b border-accent">Latest News</h3>
         <ul>
-          {latestNews.map(({ id, title, date }) => 
-            <div className="flex gap-8">
+          {latestNews.map(({ id, title, date }, index) => 
+            <div className="flex gap-8" key={`latestnews-${index}`}>
               <p className="text-base grow">{title}</p>
               <p className="text-base opacity-60">{date.toLocaleDateString('en-US', { dateStyle: 'medium' })}</p>
               <div className="flex gap-8 px-8">
