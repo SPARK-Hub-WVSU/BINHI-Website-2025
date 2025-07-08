@@ -14,7 +14,12 @@
 
   --secondary: #0d3b09;
   --secondary-neutral: #1d1d1f;
+  --secondary-neutral-light: #cecece;
+  --secondary-light: #C7E3B3;
+  --secondary-lighter: #E6F1DD;
 }
+
+
 
 @theme inline {
   --color-background: var(--background);
@@ -30,6 +35,9 @@
 
   --color-secondary: var(--secondary);
   --color-secondary-neutral: var(--secondary-neutral);
+  --color-secondary-neutral-light: var(--secondary-neutral-light);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-lighter: var(--secondary-lighter);
 
   --font-sans: var(--font-poppins);
 }
