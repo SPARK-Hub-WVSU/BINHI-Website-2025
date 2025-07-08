@@ -17,6 +17,13 @@ const articles = {
 
         return db.update(articlesTable).set(_data).where(eq(articlesTable.id, id)).returning({ updatedID: articlesTable.id });
     },
+
+    insert(data) {
+        db.insert(articlesTable).values(data).then(
+            f => console.log(`success: ${f}`),
+            e => console.error(`error: ${e}`)
+        );
+    }
 }
 
 export default articles;
