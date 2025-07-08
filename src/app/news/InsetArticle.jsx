@@ -26,11 +26,21 @@ export default function InsetArticle({ data, className = '' }) {
                 className="absolute inset-0 object-center object-cover w-full h-full -z-[2]"
             />
             {/* Headline, responsive font size, color transition on hover */}
-            <h2 className="text-white font-semibold text-base sm:text-lg md:text-xl lg:text-2xl group-hover:text-primary transition-colors">
+            <span
+                className="absolute left-0 right-0 bottom-0 z-0 rounded-b
+                    h-auto
+                    bg-gradient-to-t from-black/90 via-black/70 to-transparent
+                    opacity-0 group-hover:opacity-50 transition-opacity duration-200"
+                style={{
+                    top: 0,
+                }}
+                aria-hidden="true"
+            />
+            <h2 className="relative z-10 text-white font-semibold text-base sm:text-lg md:text-xl lg:text-2xl group-hover:text-primary transition-colors">
                 {data.headline}
             </h2>
             {/* Date, responsive font size */}
-            <p className="text-white text-[14px] sm:text-base pb-4">
+            <p className="text-white text-[14px] sm:text-base pb-4 z-10">
                 {new Date(data.date).toLocaleDateString('en-us', { dateStyle: 'long' })}
             </p>
         </Link>
