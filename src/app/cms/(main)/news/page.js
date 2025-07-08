@@ -35,6 +35,7 @@ export default function News() {
         <ul>
           {topStories.map(({ id, title, date }, index) => 
             <div className="flex gap-8" key={`topstory-${index}`}>
+
               <p className="text-base grow">{title}</p>
               <p className="text-base opacity-60">{date.toLocaleDateString('en-US', { dateStyle: 'medium' })}</p>
               <div className="flex gap-8 px-8">
