@@ -56,17 +56,37 @@ body {
 }
 
 @layer base {
-  h1 {
+  :not(.ql-editor) > h1 {
     @apply text-center text-4xl/normal font-bold text-primary text-pretty;
   }
 
-  h2 {
+  :not(.ql-editor) > h2 {
     @apply text-primary font-bold text-3xl;
   }
 
-  p {
+  :not(.ql-editor) > p {
     @apply text-2xl;
   }
+
+  .ql-editor {
+    @apply font-sans;
+  }
+
+  /* For quill text editor */
+
+  .ql-toolbar svg .ql-stroke {
+    @apply stroke-secondary fill-transparent;
+  }
+
+  .ql-toolbar .ql-active svg .ql-stroke {
+    @apply stroke-primary;
+  }
+
+  .ql-hidden {
+    @apply hidden;
+  }
+
+  /* ----------------------------------- */
 }
 
 @utility grid-container {
