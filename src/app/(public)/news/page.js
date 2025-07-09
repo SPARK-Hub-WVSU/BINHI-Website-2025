@@ -7,8 +7,6 @@
 import GridArticle from './GridArticle';
 import InsetArticle from './InsetArticle';
 import InsetCarousel from './InsetCarousel'; // Mobile carousel for top stories
-import Header from '../(public)/Header';
-import Footer from '../(public)/Footer';
 import LabelSection from './LabelSection';
 import placeholderPhoto from '@/assets/placeholder-photo.png';
 // import articles from '@/actions/fetch-articles';
