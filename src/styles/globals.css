@@ -6,9 +6,10 @@
 
   --primary: #389731;
   --accent: #8fc867;
+
+  --light-accent: #ecf3eb;
   --dark-accent: #0d3b09;
-  --primary-light: #7ed957;
-  --primary-lighter: #8fc867;
+  
   --primary-dark: #298422;
   --primary-light: #7ed957;
 
@@ -27,8 +28,8 @@
 
   --color-primary: var(--primary);
   --color-accent: var(--accent);
-
   --color-dark-accent: var(--dark-accent);
+  --color-light-accent: var(--light-accent);
 
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
@@ -59,17 +60,37 @@ body {
 }
 
 @layer base {
-  h1 {
+  :not(.ql-editor) > h1 {
     @apply text-center text-4xl/normal font-bold text-primary text-pretty;
   }
 
-  h2 {
+  :not(.ql-editor) > h2 {
     @apply text-primary font-bold text-3xl;
   }
 
-  p {
+  :not(.ql-editor) > p {
     @apply text-2xl;
   }
+
+  .ql-editor {
+    @apply font-sans;
+  }
+
+  /* For quill text editor */
+
+  .ql-toolbar svg .ql-stroke {
+    @apply stroke-secondary fill-transparent;
+  }
+
+  .ql-toolbar .ql-active svg .ql-stroke {
+    @apply stroke-primary;
+  }
+
+  .ql-hidden {
+    @apply hidden;
+  }
+
+  /* ----------------------------------- */
 }
 
 /* * { outline: 1px solid red; } */

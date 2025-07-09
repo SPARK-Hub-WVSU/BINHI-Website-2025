@@ -1,7 +1,6 @@
 import { auth } from '@/auth';
 import Logo from '@/components/Logo';
 import Navigation from './Navigation';
-import Image from 'next/image';
 import Login from './Login';
 
 export default async function Layout({ children }) {
@@ -17,8 +16,10 @@ export default async function Layout({ children }) {
         </div>
         <Navigation />
       </aside>
-      <main className="grow flex flex-col p-8">
-        <Login session={session} />
+      <main className="grow flex flex-col p-8 overflow-y-auto">
+        <div className='sticky top-0 self-end'>
+          <Login session={session} />
+        </div>
         <div className="grow">
           {children}
         </div>

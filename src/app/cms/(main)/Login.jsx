@@ -11,7 +11,7 @@ export default function Login({ session }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative self-end">
+    <div>
       <button
         className="flex items-center gap-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}>

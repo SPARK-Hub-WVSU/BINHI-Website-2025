@@ -8,13 +8,16 @@ export default function CheckButton(props) {
   const [state, setState] = useState(props.checked ?? false);
 
   return (
-    <>
-      <button
-        className="rounded-md border border-secondary-neutral-light aspect-square flex h-6 bg-light-accent cursor-pointer"
-        onClick={() => setState(!state)}>
-        {state && <CheckIcon className="size-4 text-primary m-auto" />}
-      </button>
-      <input type="hidden" {...props} value={state} />
-    </>
+    <label className="rounded-md border border-secondary-neutral-light aspect-square flex h-6 cursor-pointer select-none focus-within:outline" tabIndex={-1}>
+      {state && <CheckIcon className="size-4 text-primary m-auto" />}
+      <input
+        type="checkbox"
+        className="opacity-0 fixed translate-[9999px]"
+        {...props}
+        value={state}
+        onChange={(e) => setState(e.target.checked)}
+        tabIndex={0}
+      />
+    </label>
   );
 }
