@@ -8,7 +8,7 @@ const routes = [
   {
     icon: <NewspaperIcon className="size-4" />,
     label: 'News Articles',
-    url: 'news',
+    url: '/cms/news',
   },
 ];
 

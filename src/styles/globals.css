@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 :root {
   --background: #f5f5f7;
   --foreground: #1d1d1f;
@@ -17,7 +16,11 @@
   --secondary: #0d3b09;
   --secondary-neutral: #1d1d1f;
   --secondary-neutral-light: #cecece;
+  --secondary-light: #C7E3B3;
+  --secondary-lighter: #E6F1DD;
 }
+
+
 
 @theme inline {
   --color-background: var(--background);
@@ -25,7 +28,6 @@
 
   --color-primary: var(--primary);
   --color-accent: var(--accent);
-  
   --color-dark-accent: var(--dark-accent);
   --color-light-accent: var(--light-accent);
 
@@ -35,6 +37,8 @@
   --color-secondary: var(--secondary);
   --color-secondary-neutral: var(--secondary-neutral);
   --color-secondary-neutral-light: var(--secondary-neutral-light);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-lighter: var(--secondary-lighter);
 
   --font-sans: var(--font-poppins);
 }
@@ -56,40 +60,41 @@ body {
 }
 
 @layer base {
-  h1 {
+  :not(.ql-editor) > h1 {
     @apply text-center text-4xl/normal font-bold text-primary text-pretty;
   }
 
-  h2 {
+  :not(.ql-editor) > h2 {
     @apply text-primary font-bold text-3xl;
   }
 
-  p {
+  :not(.ql-editor) > p {
     @apply text-2xl;
   }
-}
 
-@utility grid-container {
-  grid-template-columns:
-    [screen-start]
-    minmax(96px, 1fr)
-    [content-start]
-    minmax(896px, 1fr)
-    [content-end]
-    minmax(96px, 1fr)
-    [screen-end];
-
-  & > * {
-    grid-column: content;
+  .ql-editor {
+    @apply font-sans;
   }
+
+  /* For quill text editor */
+
+  .ql-toolbar svg .ql-stroke {
+    @apply stroke-secondary fill-transparent;
+  }
+
+  .ql-toolbar .ql-active svg .ql-stroke {
+    @apply stroke-primary;
+  }
+
+  .ql-hidden {
+    @apply hidden;
+  }
+
+  /* ----------------------------------- */
 }
 
 /* * { outline: 1px solid red; } */
 
 .mission {
   background: linear-gradient(180deg, #8fc867 6%, rgba(143, 200, 103, 0) 30%);
-}
-
-.starters-container {
-  box-shadow: 0px 136px 38px 0px rgba(0, 0, 0, 0.00), 0px 87px 35px 0px rgba(0, 0, 0, 0.01), 0px 49px 29px 0px rgba(0, 0, 0, 0.05), 0px 22px 22px 0px rgba(0, 0, 0, 0.09), 0px 5px 12px 0px rgba(0, 0, 0, 0.10);
 }

@@ -11,6 +11,7 @@ import logo10 from '@/assets/portfolio/graduated/10.png';
 import logo11 from '@/assets/portfolio/graduated/11.png';
 import logo12 from '@/assets/portfolio/graduated/12.png';
 import logo13 from '@/assets/portfolio/graduated/13.png';
+import logo14 from '@/assets/portfolio/graduated/14.png';
 
 export default {
   "Startup 01": logo1,
@@ -26,4 +27,5 @@ export default {
   "Startup 11": logo11,
   "Startup 12": logo12,
   "Startup 13": logo13,
+  "Startup 14": logo14
 };

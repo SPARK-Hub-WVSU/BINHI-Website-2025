@@ -1,12 +1,20 @@
 import Image from "next/image";
 
 import LinkButton from "@/components/LinkButton";
-import heroImage from '@/assets/hero.svg'
+import HeroBackground from "@/components/HeroBackground";
 
 import { BeakerIcon, ComputerDesktopIcon, GlobeAsiaAustraliaIcon, HeartIcon } from '@heroicons/react/24/solid'
-import { ScaleIcon, AcademicCapIcon } from '@heroicons/react/24/outline'
+import {
+  ScaleIcon,
+  AcademicCapIcon,
+  BriefcaseIcon,
+  CurrencyDollarIcon,
+  RocketLaunchIcon,
+  NewspaperIcon,
+  ChartBarIcon
+} from '@heroicons/react/24/outline'
 
-import bgStartupStarters from '@/assets/startup-starters//bg-wave-startup-starters.svg'
+import bgImpactWave from '@/assets/startup-starters/bg-impact-wave.svg'
 
 import buildingBg from '@/assets/startup-starters/startup-starters.png'
 import inHouse from '@/assets/startup-starters/in-house.svg'
@@ -18,41 +26,66 @@ import technologyForecasting from '@/assets/startup-starters/technology-forecast
 import laboratoryFacilities from '@/assets/startup-starters/laboratory-facilities.svg'
 import meetingFacilities from '@/assets/startup-starters/meeting-facilities.svg'
 
+import innovationPartners from './_data/innovationPartners';
+
+
+const starterServices = [
+  { icon: inHouse, text: "In-house and Virtual Incubation", alt: "In-house and Virtual Incubation Icon" },
+  { icon: businessAssistance, text: "Business and Professional Assistance", alt: "Business and Professional Assistance Icon" },
+  { icon: consultancySupport, text: "Consultancy and Support Services", alt: "Consultancy and Support Services Icon" },
+  { icon: fundingAssistance, text: "Funding and Grants Proposal Assistance", alt: "Funding and Grants Proposal Assistance Icon" },
+  { icon: monitoringCoaching, text: "Monitoring & Coaching", alt: "Monitoring and Coaching Icon" },
+  { icon: technologyForecasting, text: "Technology Forecasting and Matching", alt: "Technology Forecasting and Matching Icon" },
+  { icon: laboratoryFacilities, text: "Laboratory and Production Facilities", alt: "Laboratory and Production Facilities Icon" },
+  { icon: meetingFacilities, text: "Meeting and Conference Facilities", alt: "Meeting and Conference Facilities Icon" },
+  { icon: ScaleIcon, text: "Branding and IP Protection", alt: "Branding and IP Protection Icon", isHeroIcon: true },
+  { icon: AcademicCapIcon, text: "Trainings and Workshops", alt: "Trainings and Workshops Icon", isHeroIcon: true }
+];
+
+
+
 
 export default function Home() {
+
+
   return (
 
 
     <main>
       {/* ------------------- HERO -------------------*/}
-      <section className="mt-10 md:mt-5 h-125 sm:h-150 md:h-175
-        lg:h-screen xl:min-h-screen 
-        bg-no-repeat bg-cover bg-center
-        
-        "
-        style={{
-          backgroundImage: `url(${heroImage.src})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-        }}
-      >
+      <HeroBackground>
+        <div className="md:pt-20 lg:pt-35 md:pl-25 lg:pl-42 h-full flex flex-col justify-center md:justify-start">
+          <div className="max-w-153 ">
+            <h1 className="mb-5 text-secondary font-bold
+              text-3xl md:text-4xl lg:text-5xl
+              md:leading-14 lg:leading-18 text-center md:text-left">
 
+              {/* Mobile version - each line in separate blocks */}
+              <span className="block md:hidden">
+                Nurturing Seeds of Ideas
+                <br />
+                <span className="text-primary-dark">One Step at a Time.</span>
+              </span>
 
-        <div className=" pt-10 md:pt-20 lg:pt-35 pl-5 md:pl-25 lg:pl-42 w-fit ">
-          <h1 className="max-w-153 mb-5 text-secondary font-bold
-            text-3xl md:text-4xl lg:text-5xl
-            md:leading-14 lg:leading-18 ">
-            Nurturing Seeds of<br /> Ideas <span className="text-primary-dark">One Step <br />at a Time.</span>
-          </h1>
+              {/* Desktop version - original layout */}
+              <span className="hidden md:block">
+                Nurturing Seeds of<br /> Ideas <span className="text-primary-dark">One Step <br />at a Time.</span>
+              </span>
+            </h1>
 
-          <LinkButton href="/">Incubate your startup with us</LinkButton>
+            <div className="flex justify-center md:justify-start">
+              <LinkButton href="/" fullWidthOnMobile={true}>
+                Incubate your startup with us
+              </LinkButton>
+            </div>
+          </div>
         </div>
-      </section>
+      </HeroBackground>
 
 
       {/* ------------------- MISSION  -------------------*/}
-      <section className="relative ">
-        <div className="w-full h-110 md:h-185 mission absolute -top-2 md:-top-5 z-0"></div>
+      <section className="relative bg-white">
+        <div className="w-full h-100 md:h-185 mission absolute -top-2 md:-top-5 z-0"></div>
 
 
         <section className="relative z-10 h-fit mx-10
@@ -88,7 +121,7 @@ export default function Home() {
 
 
           <div className="max-w-200 mt-20 md:mt-30 lg:mt-40 flex flex-col justify-between items-center">
-            <h2 className="text-primary-dark font-bold text-3xl md:text-4xl text-center">
+            <h2 className="text-primary-dark font-bold text-2xl md:text-3xl lg:text-4xl text-center">
               BINHI accepts and nurtures startups in four key sectors:
             </h2>
 
@@ -116,99 +149,233 @@ export default function Home() {
 
 
       {/* -------------- STARTUP STARTERS  ---------------*/}
-      <section className="relative bg-blue-300">
+      <section className="relative bg-white">
 
         <Image
           alt="Building Background Image"
-          className="absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-center"
+          className="absolute inset-0 w-full h-full object-cover"
           src={buildingBg.src}
           fill
         />
 
-        {/* overlay with opacity */}
-        <div className="absolute inset-0 bg-white/60" />
-
         {/* content - will be above the overlay */}
-        <div className="relative z-10 h-353">
+        <div className="relative z-10 min-h-screen">
 
-          <div className="h-94 absolute inset-0 bg-gradient-to-b from-white via-white to-transparent"
+          <div className="h-50 md:h-70 lg:h-94 absolute inset-0 bg-gradient-to-b from-white via-white to-transparent"
           />
 
-          <h2 className="relative pt-55 z-10 max-w-187 font-bold text-2xl md:text-3xl lg:text-4xl 
-            text-primary mx-auto text-center mb-12">
+          <h2 className="relative pt-20 md:pt-30 lg:pt-55 z-10 max-w-187 font-bold text-2xl md:text-3xl lg:text-4xl 
+            text-primary mx-10 md:mx-auto text-center mb-12">
             We also provide these starters for your startup:
           </h2>
 
-          <section className="mx-auto max-w-288 flex flex-wrap justify-center
-            ">
+          <section className="h-fit pb-30 flex flex-wrap mx-10 md:mx-auto max-w-250 justify-center gap-3 sm:gap-5">
 
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <Image src={inHouse} className="mb-6" alt="In-house and Virtual Incubation Icon" />
-              <span >In-house and Virtual Incubation</span>
-            </div>
+            {starterServices.map((service, index) => (
+              <div key={index} className="bg-white starters-container 
+                  text-base md:text-lg  font-medium 
+                  size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                  rounded-xl sm:rounded-2xl md:rounded-3xl 
+                  p-2 sm:p-4 md:p-6 
+                  text-center flex flex-col items-center justify-center">
 
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <Image src={businessAssistance} className="mb-6" alt="Business and Professional Assistance Icon" />
-              <span>Business and Professional Assistance</span>
-            </div>
+                {service.isHeroIcon ? (
+                  <service.icon className="text-primary size-6 sm:size-8 md:size-12 lg:size-22 mb-2 sm:mb-4 md:mb-6" stroke="currentColor" />
+                ) : (
+                  <Image src={service.icon} className="mb-2 sm:mb-4 md:mb-6 size-6 sm:size-8 md:size-12 lg:size-22" alt={service.alt} />
+                )}
 
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <Image src={consultancySupport} className="mb-6" alt="Consultancy and Support Services Icon" />
-              <span>Consultancy and Support Services</span>
-            </div>
-
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <Image src={fundingAssistance} className="mb-6" alt="Funding and Grants Proposal Assistance Icon" />
-              <span >Funding and Grants Proposal Assistance</span>
-            </div>
-
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <Image src={monitoringCoaching} className="mb-6" alt="Monitoring and Coaching Icon" />
-              <span >Monitoring & Coaching</span>
-            </div>
-
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <Image src={technologyForecasting} className="mb-6" alt="Technology Forecasting and Matching Icon" />
-              <span>Technology Forecasting and Matching</span>
-            </div>
-
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <Image src={laboratoryFacilities} className="mb-6" alt="Laboratory and Production Facilities Icon" />
-              <span>Laboratory and Production Facilities</span>
-            </div>
-
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <Image src={meetingFacilities} className="mb-6" alt="Meeting and Conference Facilities Icon" />
-              <span>Meeting and Conference Facilities</span>
-            </div>
-
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <ScaleIcon className="text-primary size-31 mb-6" stroke="currentColor" />
-              <span>Branding and IP Protection</span>
-            </div>
-
-            <div className="bg-white starters-container text-xl font-medium w-full max-w-62 h-73 m-5 
-              rounded-3xl py-8 px-4 text-center flex flex-col items-center">
-              <AcademicCapIcon className="text-primary size-31 mb-6" stroke="currentColor" />
-              <span>Trainings and Workshops</span>
-            </div>
-
+                <span className="leading-tight">{service.text}</span>
+              </div>
+            ))}
           </section>
 
+        </div>
 
+      </section>
+
+
+      {/* -------------- IMPACT SECTION ---------------*/}
+      <section className="-mt-15 sm:-mt-20 md:-mt-30 bg-white">
+
+        <div className="relative z-20 -mb-1">
+          <Image src={bgImpactWave} alt="" className="w-full block" />
+        </div>
+
+        <div className="relative py-16 md:py-24 flex justify-center items-center">
+
+          {/* Gradient overlay that sits on top */}
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary-light to-secondary-light/0 z-0"></div>
+
+          <div className="relative z-10 max-w-7xl w-full mx-auto px-5 md:px-10">
+            <div className="flex flex-col lg:flex-row items-center justify-between">
+
+              {/* Left side - Text */}
+              <div className="lg:w-1/3 mb-10 lg:mb-0 text-center lg:text-left w-full">
+                <h2 className="text-primary font-bold text-2xl md:text-3xl lg:text-4xl leading-tight lg:leading-15 ">
+                  To help you generate
+                  <br />
+                  <span className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-primary ">IMPACT</span>
+                  <br />
+                  for your business
+                </h2>
+              </div>
+
+              {/* Right side - Stats */}
+              <div className="lg:w-2/3 flex lg:pr-12 flex-col items-end">
+
+                <div className="space-y-4 md:space-y-6">
+
+                  {/* Top row - 2 centered cards */}
+                  <div className="flex justify-center gap-3 sm:gap-4 md:gap-6 ">
+                    {/* Startups Graduated */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <AcademicCapIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16  text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">25</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Startups Graduated</div>
+                    </div>
+
+                    {/* Jobs Generated */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <BriefcaseIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">81</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Jobs Generated with Startups</div>
+                    </div>
+                  </div>
+
+                  {/* Bottom row - 3 cards in grid */}
+                  <div className="flex flex-wrap md:flex-nowrap justify-center gap-3 sm:gap-4 md:gap-6">
+                    {/* Current Startup Incubatees */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <NewspaperIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">13</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Current Startup Incubatees</div>
+                    </div>
+
+                    {/* Investments Received */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <RocketLaunchIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">3M+</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Investments Received by Startups</div>
+                    </div>
+
+                    {/* Accumulated Revenue */}
+                    <div className="bg-secondary-lighter backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center border-5 border-white shadow-md 
+                      size-32 sm:w-36 sm:h-40 md:w-44 md:h-48 lg:w-48 lg:h-52 xl:w-52 xl:h-60
+                      flex flex-col items-center justify-center">
+                      <ChartBarIcon className="size-6 sm:size-7 md:size-8 lg:size-12 xl:size-16 text-primary mx-auto mb-1 sm:mb-2 md:mb-3" />
+                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold text-primary-dark mb-1">5M+</div>
+                      <div className="text-xs sm:text-xs md:text-sm text-black font-medium leading-tight text-center">Accumulated Startup Revenues</div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <p className="text-sm text-gray-600 mt-6 text-center lg:text-right italic">
+                  *Key Performance Metrics of BINHI as of March 2025
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div>
-        <Image src={bgStartupStarters} alt="" className="w-full" />
       </section>
+
+
+      {/* -------------- INNOVATION PARTNERS SECTION ---------------*/}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+
+          {/* Title and Subtitle */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-primary font-bold text-3xl md:text-4xl lg:text-5xl mb-2">
+              Our innovation partners
+            </h2>
+            <p className="text-primary text-xl md:text-2xl lg:text-3xl font-semibold">
+              will support you on your journey
+            </p>
+          </div>
+
+
+          {/* Partners Grid */}
+          <div className="max-w-6xl mx-auto flex flex-col flex-wrap justify-center items-center ">
+
+            {/* Row 1 - 5 logos */}
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 items-center mb-4 md:mb-8">
+              {innovationPartners.slice(0, 5).map((partner, index) => (
+                <div key={index} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 
+                flex items-center justify-center">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-200"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2 - 5 logos */}
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-14 items-center mb-4 md:mb-8">
+              {innovationPartners.slice(5, 10).map((partner, index) => (
+                <div key={index + 5} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 
+                flex items-center justify-center">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-200"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 3 - 5 logos */}
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-7 lg:gap-9 items-center mb-4 md:mb-8">
+              {innovationPartners.slice(10, 15).map((partner, index) => (
+                <div key={index + 10} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 
+                flex items-center justify-center">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-200"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 4 - 3 logos */}
+            <div className="flex flex-wrap justify-center gap-4 sm-gap:6 md:gap-8 lg:gap-10 items-center ">
+              {innovationPartners.slice(15, 18).map((partner, index) => (
+                <div key={index + 15} className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28
+                flex items-center justify-center">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-200"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
     </main>
 
   );
