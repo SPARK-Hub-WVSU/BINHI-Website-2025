@@ -15,9 +15,9 @@ import bgWave from '@/assets/bg-wave-about-page.svg';
 import Logo from '@/components/Logo';
 import TimelineCard from './_components/TimelineCard';
 
-import Introduction from './_data/intro.mdx';
-import Mission from './_data/mission.mdx';
-import Vision from './_data/vision.mdx';
+import Introduction from './_data/Intro';
+import Mission from './_data/Mission';
+import Vision from './_data/Vision';
 
 import timeline from './_data/timeline.json';
 import tbiOfficials from './_data/officials';
@@ -91,11 +91,11 @@ export default function AboutPage() {
             {/* TBI Officials */}
             <section id="officials" className='flex flex-col items-center'>
                 <h2 className='mb-4'>TBI OFFICIALS</h2>
-                {tbiOfficials.map((hierarchy) => (
-                    <div className="flex gap-6 items-center my-6">
+                {tbiOfficials.map((hierarchy, key) => (
+                    <div className="flex gap-6 items-center my-6" key={`hierarchy-${key}`}>
                         {hierarchy.map(({ image, name, title }, key) => (
                             <OfficerCard
-                                key={key}
+                                key={`officer-${key}`}
                                 image={image || Mascot}
                                 name={name}
                                 title={title}
