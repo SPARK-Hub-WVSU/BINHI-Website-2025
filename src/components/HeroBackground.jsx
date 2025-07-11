@@ -4,7 +4,7 @@ import heroMobile from '@/assets/mobile-hero.svg'
 
 export default function HeroBackground({ children }) {
   return (
-    <section className="mt-10 md:mt-5">
+    <section className="mt-10 md:mt-5 overflow-hidden">
       {/* Mobile Layout - Image above content */}
       <div className="block md:hidden">
         {/* Mobile content with padding */}
@@ -30,7 +30,7 @@ export default function HeroBackground({ children }) {
           src={heroDesktop}
           alt="BINHI Hero Background Desktop"
           fill
-          className="object-cover"
+          className="object-cover scale-105"
           priority
         />
 
