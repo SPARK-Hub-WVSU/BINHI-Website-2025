@@ -390,7 +390,7 @@ export default function Home() {
           {/* Title */}
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-primary font-bold text-2xl md:text-3xl lg:text-4xl">
-              Hear the testimonies from our
+              Hear the testimonials from our
               <br />
               university officials
             </h2>
