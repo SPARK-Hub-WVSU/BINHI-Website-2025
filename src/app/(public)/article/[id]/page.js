@@ -13,6 +13,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 // HeroIcons imports
 import { EnvelopeIcon, LinkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 // --- Dummy Data for Demonstration ---
 // In production, replace these with real data fetching logic.
@@ -86,10 +87,9 @@ export default async function Article({ params }) {
                         <div className="flex items-center gap-3">
                             {socialIcons.map((icon, index) => {
                                 const IconComponent = icon.icon;
-                                // HeroIcons need explicit width/height and className for styling
                                 const isHeroIcon = [EnvelopeIcon, LinkIcon].includes(IconComponent);
                                 return (
-                                    <a
+                                    <Link
                                         key={index}
                                         href={icon.href}
                                         target="_blank"
@@ -102,7 +102,7 @@ export default async function Article({ params }) {
                                         ) : (
                                             <IconComponent className="w-6 h-6" />
                                         )}
-                                    </a>
+                                    </Link>
                                 );
                             })}
                         </div>
