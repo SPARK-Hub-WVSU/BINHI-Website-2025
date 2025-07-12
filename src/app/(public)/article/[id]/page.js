@@ -7,11 +7,12 @@ import placeholderPhoto from '@/assets/placeholder-photo.png';
 // import articles from "@/actions/fetch-articles";
 // import users from "@/actions/fetch-users";
 
-// Social icon imports
+// Social media icon imports (keep from react-icons)
 import { FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
-import { MdOutlineMail } from "react-icons/md";
-import { PiLinkSimpleBold } from "react-icons/pi";
 import { FaArrowRight } from "react-icons/fa";
+
+// HeroIcons imports
+import { EnvelopeIcon, LinkIcon } from "@heroicons/react/24/outline";
 
 // --- Dummy Data for Demonstration ---
 // In production, replace these with real data fetching logic.
@@ -37,8 +38,8 @@ const socialIcons = [
     { icon: FaFacebook, alt: "Facebook", href: "#" },
     { icon: FaInstagram, alt: "Instagram", href: "#" },
     { icon: FaXTwitter, alt: "X", href: "#" },
-    { icon: MdOutlineMail, alt: "Email", href: "#" },
-    { icon: PiLinkSimpleBold, alt: "Link", href: "#" },
+    { icon: EnvelopeIcon, alt: "Email", href: "#" }, // HeroIcon
+    { icon: LinkIcon, alt: "Link", href: "#" },      // HeroIcon
 ];
 
 /**
@@ -85,6 +86,8 @@ export default async function Article({ params }) {
                         <div className="flex items-center gap-3">
                             {socialIcons.map((icon, index) => {
                                 const IconComponent = icon.icon;
+                                // HeroIcons need explicit width/height and className for styling
+                                const isHeroIcon = [EnvelopeIcon, LinkIcon].includes(IconComponent);
                                 return (
                                     <a
                                         key={index}
@@ -94,7 +97,11 @@ export default async function Article({ params }) {
                                         aria-label={icon.alt}
                                         className="text-muted hover:text-primary transition-colors"
                                     >
-                                        <IconComponent className="w-6 h-6" />
+                                        {isHeroIcon ? (
+                                            <IconComponent className="w-6 h-6" />
+                                        ) : (
+                                            <IconComponent className="w-6 h-6" />
+                                        )}
                                     </a>
                                 );
                             })}
