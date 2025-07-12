@@ -18,20 +18,18 @@ import Link from "next/link";
 // --- Dummy Data for Demonstration ---
 // In production, replace these with real data fetching logic.
 const dummyArticle = {
-    id: "1",
-    headline: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
-    date: "2024-04-14T12:00:00Z",
-    writer: "neil_diaz",
-    image: placeholderPhoto,
-    content: [
-        "WVSU-BINHI in collaboration with WVSU SPARK Hub conducted the second BuzzEx titled, “BuzzEx: Sparking Innovation with Industry Breakthroughs”, last April 12, 2024 at Function Room 4th Floor R&E Building, WVSU.",
-        "This event aimed at igniting the innovative and entrepreneurial potential of faculty, students, and researchers through awareness of industry trends and platforms.",
-        "Rooted in the belief that the academic community possesses the creativity and drive to shape the future, this BuzzEx offers a platform for participants to engage with industry leaders, explore emerging trends, and develop solutions for success in various sectors. BuzzEx brought everyone in for an insightful discussion, featuring individuals at the forefront of innovation who talked about the hottest trends and challenges facing the industry."
-    ]
+    id: 1,
+    images: [placeholderPhoto], // array of image URLs
+    title: "BuzzEx: Sparking Innovation with Industry Breakthroughs",
+    date: "2024-04-14",
+    description: `<p>WVSU-BINHI in collaboration with WVSU SPARK Hub conducted the second BuzzEx titled, “BuzzEx: Sparking Innovation with Industry Breakthroughs”, last April 12, 2024 at Function Room 4th Floor R&E Building, WVSU.</p>
+    <p>This event aimed at igniting the innovative and entrepreneurial potential of faculty, students, and researchers through awareness of industry trends and platforms.</p>
+    <p>Rooted in the belief that the academic community possesses the creativity and drive to shape the future, this BuzzEx offers a platform for participants to engage with industry leaders, explore emerging trends, and develop solutions for success in various sectors. BuzzEx brought everyone in for an insightful discussion, featuring individuals at the forefront of innovation who talked about the hottest trends and challenges facing the industry.</p>`,
+    author: 2
 };
 
 const dummyUsers = [
-    { id: "neil_diaz", name: "Neil Clarence C. Diaz" }
+    { id: 2, name: "Neil Clarence C. Diaz" }
 ];
 
 // Social sharing icons configuration
@@ -55,7 +53,7 @@ export default async function Article({ params }) {
 
     // Using dummy data for demonstration
     const data = dummyArticle;
-    const writerName = dummyUsers.find(u => u.id === data.writer)?.name || "Unknown Author";
+    const writerName = dummyUsers.find(u => u.id === data.author)?.name || "Unknown Author";
 
     return (
         <div className="flex flex-col items-center gap-6 p-7 md:px-8 sm:px-10 lg:px-12 mt-5">
@@ -67,7 +65,7 @@ export default async function Article({ params }) {
 
                 {/* Article Headline */}
                 <h1 className="font-semibold text-left leading-normal text-2xl sm:text-3xl md:text-4xl lg:text-[54px] text-foreground">
-                    {data.headline}
+                    {data.title}
                 </h1>
 
                 {/* Article Meta: Date, Author, Social Icons */}
@@ -113,21 +111,16 @@ export default async function Article({ params }) {
                 <div className="max-w-[750px] w-full">
                     {/* Article Image */}
                     <Image
-                        src={data.image || placeholderPhoto}
-                        alt={data.headline}
+                        src={data.images[0] || placeholderPhoto}
+                        alt={data.title}
                         className="relative aspect-video object-center object-cover w-full h-full rounded-lg my-8 sm:my-10 md:my-12 lg:my-15"
                     />
                     {/* Article Content */}
-                    <div className="flex flex-col gap-7 sm:gap-8 md:gap-9 lg:gap-10 mb-10">
-                        {Array.isArray(data.content) ? (
-                            data.content.map((paragraph, idx) => (
-                                <p className="text-sm sm:text-base md:text-lg lg:text-xl" key={idx}>
-                                    {paragraph}
-                                </p>
-                            ))
-                        ) : (
-                            <p>{data.content}</p>
-                        )}
+                    <div className="flex flex-col">
+                        <div
+                            className="[&>p]:text-sm [&>p]:sm:text-base [&>p]:md:text-lg [&>p]:lg:text-xl [&>p]:mb-7 [&>p]:sm:mb-8 [&>p]:md:mb-9 [&>p]:lg:mb-10"
+                            dangerouslySetInnerHTML={{ __html: data.description }}
+                        />
                     </div>
                 </div>
 
