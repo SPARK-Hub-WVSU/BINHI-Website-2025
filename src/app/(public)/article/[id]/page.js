@@ -12,7 +12,7 @@ import { FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 
 // HeroIcons imports
-import { EnvelopeIcon, LinkIcon } from "@heroicons/react/24/outline";
+import { LinkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 // --- Dummy Data for Demonstration ---
@@ -83,7 +83,7 @@ export default async function Article({ params }) {
                         <div className="flex items-center gap-3">
                             {socialIcons.map((icon, index) => {
                                 const IconComponent = icon.icon;
-                                const isHeroIcon = [EnvelopeIcon, LinkIcon].includes(IconComponent);
+                                const isHeroIcon = [LinkIcon].includes(IconComponent);
                                 return (
                                     <Link
                                         key={index}
