@@ -35,9 +35,7 @@ const dummyUsers = [
 // Social sharing icons configuration
 const socialIcons = [
     { icon: FaFacebook, alt: "Facebook", href: "#" },
-    { icon: FaInstagram, alt: "Instagram", href: "#" },
     { icon: FaXTwitter, alt: "X", href: "#" },
-    { icon: EnvelopeIcon, alt: "Email", href: "#" }, // HeroIcon
     { icon: LinkIcon, alt: "Link", href: "#" },      // HeroIcon
 ];
 
