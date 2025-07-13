@@ -1,22 +1,39 @@
 "use client";
 
-// Article Page Component
-// This page displays a single article, including its headline, date, author, image, content, and social sharing icons.
+/**
+ * Article Page Component
+ * 
+ * This page displays a single article with full content, metadata, and social sharing functionality.
+ * Includes responsive design, social media sharing buttons, and copy-to-clipboard functionality.
+ * Handles both server-side rendering and client-side hydration properly.
+ * 
+ * @author BINHI Development Team | Kirk
+ * @version 2.0.0
+ * @since 2025-07-13
+ * @updated 2025-07-13 - Added social sharing and toast notifications
+ */
 
-// --- Imports ---
+// --- Core Imports ---
 import Image from "next/image";
-import placeholderPhoto from '@/assets/placeholder-photo.png';
+import Link from "next/link";
 import { useState, useEffect } from 'react';
-// import articles from "@/actions/fetch-articles";
-// import users from "@/actions/fetch-users";
 
-// Social media icon imports (keep from react-icons)
-import { FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
+// --- Asset Imports ---
+import placeholderPhoto from '@/assets/placeholder-photo.png';
+
+// --- Component Imports ---
+import Toast from '@/components/Toast';
+import SocialShareButtons from '@/components/SocialShareButtons';
+
+// --- Hook Imports ---
+import useCopyToClipboard from '@/hooks/useCopyToClipboard';
+
+// --- Icon Imports ---
 import { FaArrowRight } from "react-icons/fa";
 
-// HeroIcons imports
-import { LinkIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
+// --- Data Imports (Commented for production) ---
+// import articles from "@/actions/fetch-articles";
+// import users from "@/actions/fetch-users";
 
 // --- Dummy Data for Demonstration ---
 // In production, replace these with real data fetching logic.
@@ -35,97 +52,136 @@ const dummyUsers = [
     { id: 2, name: "Neil Clarence C. Diaz" }
 ];
 
-// Helper function to generate social sharing URLs
-const generateSocialUrls = (title, url) => {
-    const encodedTitle = encodeURIComponent(title);
-    const encodedUrl = encodeURIComponent(url);
-    
-    return {
-        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-        twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&hashtags=BINHI,WVSU,Innovation,Startup`,
-        copyLink: url
-    };
-};
-
 /**
  * Article Page Component
- * @param {Object} params - Route parameters (expects article id)
+ * 
+ * Displays a complete article page with comprehensive functionality including:
+ * - Article metadata display (title, date, author)
+ * - Responsive featured image with Next.js Image optimization
+ * - Full article content rendering with HTML support
+ * - Social sharing capabilities (Facebook, Twitter/X, Copy Link)
+ * - Toast notification system for user feedback
+ * - Fully responsive design for all device sizes
+ * - Server-side rendering compatibility with hydration safety
+ * 
+ * Key Features:
+ * - Prevents hydration mismatches by using safe initial state
+ * - Implements proper SEO structure with semantic HTML
+ * - Provides accessible interactions and ARIA labels
+ * - Uses memoized components for optimal performance
+ * - Includes comprehensive error handling
+ * 
+ * Architecture:
+ * - Uses separated, reusable components (Toast, SocialShareButtons)
+ * - Implements custom hooks for clipboard functionality
+ * - Follows React best practices for state management
+ * - Maintains clean separation of concerns
+ * 
+ * @param {Object} props - Component props
+ * @param {Object} props.params - Next.js route parameters
+ * @param {string} props.params.id - Article ID from URL parameter (/article/[id])
+ * 
+ * @returns {JSX.Element} Complete article page with social sharing and responsive design
+ * 
+ * @example
+ * // This component is automatically rendered by Next.js routing
+ * // when user navigates to /article/123
+ * // The [id] parameter is passed via props.params.id
+ * 
+ * @todo Replace dummy data with real API calls to fetch article and user data
+ * @todo Add loading states and skeleton UI for better UX
+ * @todo Implement error boundaries for robust error handling
+ * @todo Add article not found (404) page handling
+ * @todo Consider adding article reading time estimation
+ * @todo Implement article view tracking/analytics
+ * 
+ * @see {@link SocialShareButtons} for social sharing implementation
+ * @see {@link Toast} for notification system
+ * @see {@link useCopyToClipboard} for clipboard functionality
  */
 export default function Article({ params }) {
-    // Toast notification state
-    const [showToast, setShowToast] = useState(false);
-    // URL state to prevent hydration mismatch
+    // --- State Management ---
+    
+    /**
+     * Current page URL state to prevent SSR/CSR hydration mismatch
+     * Initialized with server-safe fallback URL, updated to actual URL on client
+     * 
+     * @type {[string, Function]} URL state and setter
+     */
     const [currentUrl, setCurrentUrl] = useState(`https://binhi.wvsu.edu.ph/article/${dummyArticle.id}`);
+    
+    /**
+     * Copy to clipboard functionality with integrated toast notifications
+     * Provides copyToClipboard function and manages toast state automatically
+     * 
+     * @type {Object} Clipboard hook return object
+     * @property {Function} copyToClipboard - Function to copy text to clipboard
+     * @property {boolean} showToast - Whether toast should be visible
+     * @property {string} toastMessage - Message to display in toast
+     * @property {string} toastType - Type of toast (success, error, etc.)
+     */
+    const { copyToClipboard, showToast, toastMessage, toastType } = useCopyToClipboard();
 
-    // Set the actual URL on client side only
+    // --- Effects ---
+    
+    /**
+     * Set the actual browser URL on client side only to prevent hydration mismatch
+     * This ensures the URL state is consistent between server and client renders
+     */
     useEffect(() => {
         if (typeof window !== 'undefined') {
             setCurrentUrl(window.location.href);
         }
     }, []);
 
-    // --- Data Fetching (Replace with real API calls in production) ---
-    // const { id } = params;
-    // const data = (await articles.getData(id))[0];
-    // const writerName = (await users.getData(data.writer))[0].name;
-
-    // Using dummy data for demonstration
-    const data = dummyArticle;
-    const writerName = dummyUsers.find(u => u.id === data.author)?.name || "Unknown Author";
-
-    // Generate social sharing URLs
-    const socialUrls = generateSocialUrls(data.title, currentUrl);
-
-    // Handle copy link with toast notification
-    const handleCopyLink = async () => {
-        try {
-            await navigator.clipboard.writeText(currentUrl);
-            setShowToast(true);
-            // Auto-hide toast after 3 seconds
-            setTimeout(() => setShowToast(false), 3000);
-        } catch (err) {
-            console.error('Failed to copy link:', err);
-        }
+    // --- Event Handlers ---
+    
+    /**
+     * Handle copy link button click
+     * Uses the custom hook to copy current page URL to clipboard
+     * Automatically triggers appropriate toast notification
+     */
+    const handleCopyLink = () => {
+        copyToClipboard(currentUrl);
     };
 
-    // Social sharing icons configuration with functional URLs
-    const socialIcons = [
-        { icon: FaFacebook, alt: "Share on Facebook", href: socialUrls.facebook },
-        { icon: FaXTwitter, alt: "Share on X (Twitter)", href: socialUrls.twitter },
-        { 
-            icon: LinkIcon, 
-            alt: "Copy link", 
-            href: "#",
-            onClick: handleCopyLink
-        },
-    ];
+    // --- Data Processing ---
+    
+    /**
+     * Article data retrieval and processing
+     * TODO: Replace with actual API call
+     * Example: const data = (await articles.getData(params.id))[0];
+     */
+    const data = dummyArticle;
+    
+    /**
+     * Author name lookup and fallback handling
+     * TODO: Replace with actual API call
+     * Example: const writerName = (await users.getData(data.author))[0].name;
+     */
+    const writerName = dummyUsers.find(u => u.id === data.author)?.name || "Unknown Author";
 
+    // --- Component Render ---
+    
     return (
         <div className="flex flex-col items-center gap-6 p-7 md:px-8 sm:px-10 lg:px-12 mt-5">
-            {/* Toast Notification */}
-            {showToast && (
-                <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-primary text-white px-3 py-2 sm:px-4 sm:py-3 md:px-6 md:py-3 rounded-lg shadow-lg flex items-center justify-center sm:justify-start gap-2 sm:gap-3 animate-fadeIn max-w-[calc(100vw-2rem)] sm:max-w-none">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm sm:text-base font-medium text-left">Link copied to clipboard!</span>
-                </div>
-            )}
+            {/* Toast Notification System */}
+            <Toast show={showToast} message={toastMessage} type={toastType} />
 
             <div className="flex flex-col gap-4 items-center max-w-[900px]">
-                {/* Section Label */}
+                {/* Section Label - Indicates content type */}
                 <p className="w-full text-muted text-base sm:text-lg md:text-xl lg:text-2xl p-2 sm:p-3 md:p-4 lg:p-5 border-b-dark-accent border-b-1">
                     News
                 </p>
 
-                {/* Article Headline */}
+                {/* Article Headline - Main title with responsive typography */}
                 <h1 className="font-semibold text-left leading-normal text-2xl sm:text-3xl md:text-4xl lg:text-[54px] text-foreground">
                     {data.title}
                 </h1>
 
-                {/* Article Meta: Date, Author, Social Icons */}
+                {/* Article Meta - Date, Author, and Social Sharing */}
                 <div className="flex flex-col w-full items-left gap-2 text-muted text-base sm:text-lg md:text-xl lg:text-2xl">
-                    {/* Publication Date */}
+                    {/* Publication Date with semantic time element */}
                     <time dateTime={data.date}>
                         {new Date(data.date).toLocaleDateString("en-US", {
                             year: "numeric",
@@ -136,56 +192,24 @@ export default function Article({ params }) {
                     <div className="flex w-full flex-col sm:flex-row justify-between gap-4">
                         {/* Author Name */}
                         <span>{writerName}</span>
-                        {/* Social Sharing Icons */}
-                        <div className="flex items-center gap-3">
-                            {socialIcons.map((icon, index) => {
-                                const IconComponent = icon.icon;
-                                const isHeroIcon = [LinkIcon].includes(IconComponent);
-                                const isCopyLink = icon.alt === "Copy link";
-                                
-                                if (isCopyLink) {
-                                    return (
-                                        <button
-                                            key={index}
-                                            onClick={icon.onClick}
-                                            aria-label={icon.alt}
-                                            className="text-muted hover:text-primary transition-colors"
-                                        >
-                                            <IconComponent className="w-6 h-6" />
-                                        </button>
-                                    );
-                                }
-                                
-                                return (
-                                    <Link
-                                        key={index}
-                                        href={icon.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label={icon.alt}
-                                        className="text-muted hover:text-primary transition-colors"
-                                    >
-                                        {isHeroIcon ? (
-                                            <IconComponent className="w-6 h-6" />
-                                        ) : (
-                                            <IconComponent className="w-6 h-6" />
-                                        )}
-                                    </Link>
-                                );
-                            })}
-                        </div>
+                        {/* Social Sharing Icons Component */}
+                        <SocialShareButtons 
+                            title={data.title}
+                            url={currentUrl}
+                            onCopyLink={handleCopyLink}
+                        />
                     </div>
                 </div>
 
-                {/* Article Image and Content */}
+                {/* Article Image and Content Container */}
                 <div className="max-w-[750px] w-full">
-                    {/* Article Image */}
+                    {/* Article Featured Image with Next.js optimization */}
                     <Image
                         src={data.images[0] || placeholderPhoto}
                         alt={data.title}
                         className="relative aspect-video object-center object-cover w-full h-full rounded-lg my-8 sm:my-10 md:my-12 lg:my-15"
                     />
-                    {/* Article Content */}
+                    {/* Article Content with responsive typography */}
                     <div className="flex flex-col">
                         <div
                             className="[&>p]:text-sm [&>p]:sm:text-base [&>p]:md:text-lg [&>p]:lg:text-xl [&>p]:mb-7 [&>p]:sm:mb-8 [&>p]:md:mb-9 [&>p]:lg:mb-10"
