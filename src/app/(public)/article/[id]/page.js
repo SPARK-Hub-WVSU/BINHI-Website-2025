@@ -1,9 +1,12 @@
+"use client";
+
 // Article Page Component
 // This page displays a single article, including its headline, date, author, image, content, and social sharing icons.
 
 // --- Imports ---
 import Image from "next/image";
 import placeholderPhoto from '@/assets/placeholder-photo.png';
+import { useState, useEffect } from 'react';
 // import articles from "@/actions/fetch-articles";
 // import users from "@/actions/fetch-users";
 
@@ -32,18 +35,35 @@ const dummyUsers = [
     { id: 2, name: "Neil Clarence C. Diaz" }
 ];
 
-// Social sharing icons configuration
-const socialIcons = [
-    { icon: FaFacebook, alt: "Facebook", href: "#" },
-    { icon: FaXTwitter, alt: "X", href: "#" },
-    { icon: LinkIcon, alt: "Link", href: "#" },      // HeroIcon
-];
+// Helper function to generate social sharing URLs
+const generateSocialUrls = (title, url) => {
+    const encodedTitle = encodeURIComponent(title);
+    const encodedUrl = encodeURIComponent(url);
+    
+    return {
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+        twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&hashtags=BINHI,WVSU,Innovation,Startup`,
+        copyLink: url
+    };
+};
 
 /**
  * Article Page Component
  * @param {Object} params - Route parameters (expects article id)
  */
-export default async function Article({ params }) {
+export default function Article({ params }) {
+    // Toast notification state
+    const [showToast, setShowToast] = useState(false);
+    // URL state to prevent hydration mismatch
+    const [currentUrl, setCurrentUrl] = useState(`https://binhi.wvsu.edu.ph/article/${dummyArticle.id}`);
+
+    // Set the actual URL on client side only
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setCurrentUrl(window.location.href);
+        }
+    }, []);
+
     // --- Data Fetching (Replace with real API calls in production) ---
     // const { id } = params;
     // const data = (await articles.getData(id))[0];
@@ -53,8 +73,45 @@ export default async function Article({ params }) {
     const data = dummyArticle;
     const writerName = dummyUsers.find(u => u.id === data.author)?.name || "Unknown Author";
 
+    // Generate social sharing URLs
+    const socialUrls = generateSocialUrls(data.title, currentUrl);
+
+    // Handle copy link with toast notification
+    const handleCopyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(currentUrl);
+            setShowToast(true);
+            // Auto-hide toast after 3 seconds
+            setTimeout(() => setShowToast(false), 3000);
+        } catch (err) {
+            console.error('Failed to copy link:', err);
+        }
+    };
+
+    // Social sharing icons configuration with functional URLs
+    const socialIcons = [
+        { icon: FaFacebook, alt: "Share on Facebook", href: socialUrls.facebook },
+        { icon: FaXTwitter, alt: "Share on X (Twitter)", href: socialUrls.twitter },
+        { 
+            icon: LinkIcon, 
+            alt: "Copy link", 
+            href: "#",
+            onClick: handleCopyLink
+        },
+    ];
+
     return (
         <div className="flex flex-col items-center gap-6 p-7 md:px-8 sm:px-10 lg:px-12 mt-5">
+            {/* Toast Notification */}
+            {showToast && (
+                <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-primary text-white px-3 py-2 sm:px-4 sm:py-3 md:px-6 md:py-3 rounded-lg shadow-lg flex items-center justify-center sm:justify-start gap-2 sm:gap-3 animate-fadeIn max-w-[calc(100vw-2rem)] sm:max-w-none">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-sm sm:text-base font-medium text-left">Link copied to clipboard!</span>
+                </div>
+            )}
+
             <div className="flex flex-col gap-4 items-center max-w-[900px]">
                 {/* Section Label */}
                 <p className="w-full text-muted text-base sm:text-lg md:text-xl lg:text-2xl p-2 sm:p-3 md:p-4 lg:p-5 border-b-dark-accent border-b-1">
@@ -84,6 +141,21 @@ export default async function Article({ params }) {
                             {socialIcons.map((icon, index) => {
                                 const IconComponent = icon.icon;
                                 const isHeroIcon = [LinkIcon].includes(IconComponent);
+                                const isCopyLink = icon.alt === "Copy link";
+                                
+                                if (isCopyLink) {
+                                    return (
+                                        <button
+                                            key={index}
+                                            onClick={icon.onClick}
+                                            aria-label={icon.alt}
+                                            className="text-muted hover:text-primary transition-colors"
+                                        >
+                                            <IconComponent className="w-6 h-6" />
+                                        </button>
+                                    );
+                                }
+                                
                                 return (
                                     <Link
                                         key={index}
