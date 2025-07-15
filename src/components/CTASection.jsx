@@ -41,7 +41,7 @@ export default function CtaSection({
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center bg-primary hover:bg-primary-dark 
             text-white font-bold rounded-full 
-            px-8 md:px-10 lg:px-12 py-4 md:py-5 lg:py-6
+            px-6 py-4 md:px-8 md:py-5
             text-base md:text-xl lg:text-2xl
             transition-all duration-200 hover:scale-105 hover:shadow-lg
             group"
