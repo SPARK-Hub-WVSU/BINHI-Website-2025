@@ -13,6 +13,9 @@
   --primary-dark: #298422;
   --primary-light: #7ed957;
 
+  --muted: #595961;
+  --muted-light: #b8b8b8;
+
   --secondary: #0d3b09;
   --secondary-neutral: #1d1d1f;
   --secondary-neutral-light: #cecece;
@@ -33,6 +36,9 @@
 
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
+
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
 
   --color-secondary: var(--secondary);
   --color-secondary-neutral: var(--secondary-neutral);
@@ -91,6 +97,22 @@ body {
   }
 
   /* ----------------------------------- */
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 /* * { outline: 1px solid red; } */
