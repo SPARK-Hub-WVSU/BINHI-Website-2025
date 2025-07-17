@@ -5,10 +5,62 @@
     [screen-start]
     minmax(96px, 1fr)
     [content-start]
-    minmax(896px, 1fr)
+    minmax(796px, 1fr)
     [content-end]
     minmax(96px, 1fr)
     [screen-end];
+}
+
+@media screen and (max-width: 1022px) {
+  .binhi-about-container {
+    grid-template-columns:
+      [screen-start]
+      minmax(96px, 1fr)
+      [content-start]
+      minmax(596px, 1fr)
+      [content-end]
+      minmax(96px, 1fr)
+      [screen-end];
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .binhi-about-container {
+    grid-template-columns:
+      [screen-start]
+      minmax(26px, 1fr)
+      [content-start]
+      minmax(500px, 1fr)
+      [content-end]
+      minmax(26px, 1fr)
+      [screen-end];
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .binhi-about-container {
+    grid-template-columns:
+      [screen-start]
+      minmax(0px, 1fr)
+      [content-start]
+      minmax(400px, 1fr)
+      [content-end]
+      minmax(0px, 1fr)
+      [screen-end];
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .binhi-about-container {
+    grid-template-columns:
+      [screen-start]
+      minmax(0px, 1fr)
+      [content-start]
+      minmax(300px, 1fr)
+      [content-end]
+      minmax(0px, 1fr)
+      [screen-end];
+  }
 }
 
 .binhi-about-container > * {

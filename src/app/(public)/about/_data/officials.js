@@ -14,17 +14,17 @@ export default [
     [
         {
             "image": aspera,
-            "name": "TED HYACINTH ASPERA",
+            "name": "TED HYACINTH T. ASPERA",
             "title": "General Manager"
         },
         {
             "image": borda,
-            "name": "ALEXA MAE BORDA",
+            "name": "ALEXA MAE M. BORDA",
             "title": "Admin Staff"
         },
         {
             "image": gison,
-            "name": "MA. JOEANNE GISON",
+            "name": "MA. JOEANNE A. GISON",
             "title": "UMWAD-WVSU Project Staff"
         }
     ]
