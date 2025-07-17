@@ -5,7 +5,6 @@ import {
     GlobeAsiaAustraliaIcon,
     BeakerIcon,
     ComputerDesktopIcon,
-    ArrowRightIcon,
 } from '@heroicons/react/16/solid';
 import Image from 'next/image';
 
@@ -14,15 +13,16 @@ import '@/styles/pages/about.css';
 import bgWave from '@/assets/bg-wave-about-page.svg';
 import Logo from '@/components/Logo';
 import TimelineCard from './_components/TimelineCard';
+import CTASection from '@/components/CTASection';
+import LinkButton from '@/components/LinkButton';
 
 import Introduction from './_data/Intro';
 import Mission from './_data/Mission';
 import Vision from './_data/Vision';
 
-import timeline from './_data/timeline.json';
+import timeline from './_data/timeline.js';
 import tbiOfficials from './_data/officials';
 import OfficerCard from './_components/OfficerCard';
-import Link from 'next/link';
 import Mascot from '@/assets/mascot/Wave.webp'
 
 export default function AboutPage() {
@@ -32,7 +32,7 @@ export default function AboutPage() {
             <Introduction />
 
             {/* Mission, Vision, and Target Sectors */}
-            <section className="grid grid-cols-2 gap-16" id="mission-vision">
+            <section className="mt-[1.5rem] md:mt-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16" id="mission-vision">
                 <div className="flex flex-col gap-y-6">
                     <Mission />
                 </div>
@@ -40,26 +40,38 @@ export default function AboutPage() {
                     <Vision />
                 </div>
 
-                <div className="col-span-2 grid justify-center gap-6">
-                    <h2>TARGET SECTORS</h2>
-                    <ul className="gap-4 grid">
-                        <li className="flex gap-2">
-                            <HeartIcon className="size-6 fill-primary" />
+                <div className="flex flex-col gap-y-6">
+                    <h2 className="text-2xl md:text-3xl">TARGET SECTORS</h2>
+                    <ul className="gap-4 grid text-lg md:text-xl">
+                        <li className="flex gap-3">
+                            <HeartIcon className="size-8 fill-primary" />
                             Biomedical and Healthcare
                         </li>
-                        <li className="flex gap-2">
-                            <GlobeAsiaAustraliaIcon className="size-6 fill-primary" />
+                        <li className="flex gap-3">
+                            <GlobeAsiaAustraliaIcon className="size-8 fill-primary" />
                             Agri-Aqua and Green Technologies
                         </li>
-                        <li className="flex gap-2">
-                            <BeakerIcon className="size-6 fill-primary" />
+                        <li className="flex gap-3">
+                            <BeakerIcon className="size-8 fill-primary" />
                             Herbal & Natural Products
                         </li>
-                        <li className="flex gap-2">
-                            <ComputerDesktopIcon className="size-6 fill-primary" />
+                        <li className="flex gap-3">
+                            <ComputerDesktopIcon className="size-8 fill-primary" />
                             Emerging Technologies / ICT
                         </li>
                     </ul>
+                </div>
+
+                <div className="flex flex-col gap-y-6 ">
+                    <h2 className="text-2xl md:text-3xl">BINHI STARTUPS</h2>
+                    <p className="text-lg md:text-xl lg:text-2xl">
+                        Since its 2015 inauguration, BINHI has fostered the development of more than 20 startups within Iloilo.
+                    </p>
+                    <LinkButton 
+                        href="/startup_portfolio" 
+                        children={"View Startup Portfolio"}
+                        fullWidthOnMobile={true}>
+                    </LinkButton>
                 </div>
             </section>
 
@@ -74,7 +86,7 @@ export default function AboutPage() {
                     aria-hidden
                 />
                 <div className="!col-[content] py-32 flex flex-col items-center gap-16">
-                    <h1>TIMELINE</h1>
+                    <h2 className="text-2xl md:text-4xl">TIMELINE</h2>
                     <div className="flex gap-8 binhi-timeline max-w-full overflow-x-auto">
                         {timeline.map(({ image, year, content }, key) => (
                             <TimelineCard
@@ -90,9 +102,9 @@ export default function AboutPage() {
 
             {/* TBI Officials */}
             <section id="officials" className='flex flex-col items-center'>
-                <h2 className='mb-4'>TBI OFFICIALS</h2>
+                <h2 className='text-2xl md:text-4xl mb-[2rem]'>TBI OFFICIALS</h2>
                 {tbiOfficials.map((hierarchy, key) => (
-                    <div className="flex gap-6 items-center my-6" key={`hierarchy-${key}`}>
+                    <div className="flex flex-col md:flex-row gap-10 md:gap-30 items-center my-6" key={`hierarchy-${key}`}>
                         {hierarchy.map(({ image, name, title }, key) => (
                             <OfficerCard
                                 key={`officer-${key}`}
@@ -105,14 +117,7 @@ export default function AboutPage() {
                 ))}
             </section>
 
-            {/* CTA */}
-            <section className='flex flex-col items-center'>
-                <h1>Ready to launch your next startup?</h1>
-                <Link className="bg-primary text-background rounded-full px-4 py-2 flex items-center w-fit gap-2 mt-4" href="/">
-                    <strong>Start your journey with BINHI</strong>
-                    <ArrowRightIcon className="size-4 inline" />
-                </Link>
-            </section>
+            <CTASection></CTASection>
         </div>
     );
 }
