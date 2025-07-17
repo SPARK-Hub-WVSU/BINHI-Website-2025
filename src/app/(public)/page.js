@@ -68,15 +68,15 @@ export default function Home() {
               md:leading-14 lg:leading-18 text-center md:text-left">
 
               {/* Mobile version - each line in separate blocks */}
-              <span className="block md:hidden">
-                Nurturing Seeds of Ideas
-                <br />
-                <span className="text-primary-dark">One Step at a Time.</span>
+              <span className="block md:hidden text-primary-dark">
+                Nurturing Startups <br /> from Seed to Sprout
+                <p className="mt-3 mb-10 text-base text-primary font-normal">helping founders carve their path to success</p>
               </span>
 
               {/* Desktop version - original layout */}
-              <span className="hidden md:block">
-                Nurturing Seeds of<br /> Ideas <span className="text-primary-dark">One Step <br />at a Time.</span>
+              <span className="hidden md:block text-primary-dark">
+                Nurturing Startups <br /> from Seed to Sprout
+                <p className="mb-10 text-primary text-xl font-normal">helping founders carve their path to success</p>
               </span>
             </h1>
 
@@ -103,7 +103,7 @@ export default function Home() {
             <h2 className="text-primary-dark font-bold text-2xl md:text-3xl lg:text-4xl text-center">
               Our Mission
             </h2>
-            <p className="mt-4 text-center md:text-justify text-xl md:text-2xl">
+            <p className="mt-6 text-left text-xl md:text-2xl">
               is to
               <span className="text-primary-dark font-semibold">
                 &nbsp;empower innovation and economic growth by inspiring and nurturing technology-based startups
@@ -117,7 +117,7 @@ export default function Home() {
             <h2 className="text-primary-dark font-bold text-2xl md:text-3xl lg:text-4xl text-center">
               We Envision
             </h2>
-            <p className="mt-4 text-center md:text-justify text-xl md:text-2xl" >
+            <p className="mt-6 text-left text-xl md:text-2xl" >
               an ecosystem where
               <span className="text-primary-dark font-semibold">
                 &nbsp;technology-based startups flourish, local innovations prosper, and collaboration propels regional economic growth
