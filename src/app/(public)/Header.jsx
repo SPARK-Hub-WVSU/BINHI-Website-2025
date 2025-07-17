@@ -29,13 +29,13 @@ export default function Header() {
 
                         </Link>
                     </li>
-                    <li className="mt-1.5 sm:mt-0 mx-auto px-2">
+                    {/* <li className="mt-1.5 sm:mt-0 mx-auto px-2">
                         <Link href={"/news"} className="text-secondary-neutral hover:text-gray-400">
                             News
                         </Link>
-                    </li>
+                    </li> */}
                     <li className="mt-1.5 sm:mt-0 mx-auto px-2">
-                        <Link href={"/contacts"} className="text-secondary-neutral hover:text-gray-400">
+                        <Link href={"/contact-us"} className="text-secondary-neutral hover:text-gray-400">
                             Contact Us
                         </Link>
                     </li>
