@@ -8,7 +8,7 @@ import FacebookIcon from '@/assets/facebook-icon.svg'
 
 export default function Footer() {
     return (
-        <footer className="text-white ">
+        <footer className="text-white bg-white ">
 
             {/* Mobile Wave - Hidden on lg+ */}
             <Image src={mobileBgWave} className="w-full block -mb-1 lg:hidden" alt="Mobile Wave Footer Background" />

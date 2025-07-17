@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import LinkButton from "@/components/LinkButton";
 import HeroBackground from "@/components/HeroBackground";
+import CTASection from "@/components/CTASection";
 
 import { BeakerIcon, ComputerDesktopIcon, GlobeAsiaAustraliaIcon, HeartIcon } from '@heroicons/react/24/solid'
 import {
@@ -15,8 +16,8 @@ import {
 } from '@heroicons/react/24/outline'
 
 import bgImpactWave from '@/assets/startup-starters/bg-impact-wave.svg'
-
 import buildingBg from '@/assets/startup-starters/startup-starters.png'
+
 import inHouse from '@/assets/startup-starters/in-house.svg'
 import businessAssistance from '@/assets/startup-starters/business-assistance.svg'
 import consultancySupport from '@/assets/startup-starters/consultancy-support.svg'
@@ -43,6 +44,12 @@ const starterServices = [
 ];
 
 
+import Villaruz from '@/assets/testimonials/president-wvsu.svg';
+import Gabinete from '@/assets/testimonials/vp-wvsu.png';
+import Aspera from '@/assets/testimonials/gm-binhi.png';
+import Secondes from '@/assets/testimonials/director-kttbdc.png';
+
+
 
 
 export default function Home() {
@@ -54,7 +61,7 @@ export default function Home() {
     <main>
       {/* ------------------- HERO -------------------*/}
       <HeroBackground>
-        <div className="md:pt-20 lg:pt-35 md:pl-25 lg:pl-42 h-full flex flex-col justify-center md:justify-start">
+        <div className="md:pt-20 lg:pt-25 md:pl-25 lg:pl-42 h-full flex flex-col justify-center md:justify-start">
           <div className="max-w-153 ">
             <h1 className="mb-5 text-secondary font-bold
               text-3xl md:text-4xl lg:text-5xl
@@ -74,7 +81,7 @@ export default function Home() {
             </h1>
 
             <div className="flex justify-center md:justify-start">
-              <LinkButton href="/" fullWidthOnMobile={true}>
+              <LinkButton href="https://docs.google.com/forms/d/e/1FAIpQLSdyuhC-r5rs5-lSEb7nc5Jv_ffg6j2VyOnaV__I8UnpL4S54w/viewform" fullWidthOnMobile={true}>
                 Incubate your startup with us
               </LinkButton>
             </div>
@@ -196,7 +203,7 @@ export default function Home() {
 
 
       {/* -------------- IMPACT SECTION ---------------*/}
-      <section className="-mt-15 sm:-mt-20 md:-mt-30 bg-white">
+      <section className="-mt-15 sm:-mt-20 md:-mt-30 lg:-mt-35 bg-white">
 
         <div className="relative z-20 -mb-1">
           <Image src={bgImpactWave} alt="" className="w-full block" />
@@ -375,6 +382,142 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* -------------- TESTIMONIALS SECTION ---------------*/}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+
+          {/* Title */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-primary font-bold text-2xl md:text-3xl lg:text-4xl">
+              Hear the testimonials from our
+              <br />
+              university officials
+            </h2>
+          </div>
+
+          {/* Testimonials */}
+          <div className="space-y-12 md:space-y-16">
+
+            {/* First Testimonial - President */}
+            <div className="flex flex-col md:flex-row items-center text-center md:text-left md:items-start gap-8 md:gap-12">
+              {/* Quote */}
+              <div className="flex-1 md:w-7/10 order-2 md:order-1">
+                <blockquote className="text-lg md:text-xl lg:text-3xl text-gray-900 mb-4 font-semibold leading-relaxed">
+                  &ldquo;As President, I take pride in the collaborative community within BINHI, where visionaries, experts, and mentors converge to create an inspiring environment.&rdquo;
+                </blockquote>
+                <p className="text-sm md:text-base text-gray-600 italic mb-4">
+                  &ldquo;BINHI&apos;s dedication to bridging academia and industry ensures that WVSU&apos;s technological advancements have a tangible impact not only within our academic community but also on a global scale.&rdquo;
+                </p>
+                <div className="text-sm md:text-base font-semibold text-gray-800">
+                  JOSELITO F. VILLARUZ, M.D., Ph.D., FPPS
+                </div>
+                <div className="text-sm text-gray-600">
+                  President, WVSU
+                </div>
+              </div>
+
+              {/* Profile Image */}
+              <div className="order-1 md:order-2 md:w-3/10 flex justify-center">
+                <div className="size-48 md:size-56 lg:size-72 xl:size-80 rounded-full border-4 border-primary overflow-hidden">
+                  <Image
+                    src={Villaruz}
+                    alt="JOSELITO F. VILLARUZ, M.D., Ph.D., FPPS - President, WVSU"
+                    width={320}
+                    height={320}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Second Row - Two Testimonials */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+              {/* Left Testimonial - VP Research */}
+              <div className="flex flex-col items-center text-center">
+                <div className="size-32 md:side-40 lg:size-48 rounded-full border-4 border-primary mb-6 overflow-hidden">
+                  <Image
+                    src={Gabinete}
+                    alt="GRETA G. GABINETE, Ph.D. - Vice President for Research, Innovation, and Extension, WVSU"
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <blockquote className="text-base font-semibold md:text-lg text-gray-800 mb-4 leading-relaxed">
+                  &ldquo;As the Vice President of Research, Innovation, and Extension, I am thrilled to witness the positive impact BINHI has had on our university&apos;s ecosystem and the broader community.&rdquo;
+                </blockquote>
+                <p className="text-sm md:text-base text-gray-600 italic mb-4">
+                  &ldquo;Our commitment to research, innovation, and extension remains unwavering, and BINHI will continue to be a driving force behind the next wave of technological advancements and entrepreneurial success stories.&rdquo;
+                </p>
+                <div className="text-sm md:text-base font-semibold text-gray-800">
+                  GRETA G. GABINETE, Ph.D.
+                </div>
+                <div className="text-sm text-gray-600">
+                  Vice President for Research,
+                  <br />
+                  Innovation, and Extension, WVSU
+                </div>
+              </div>
+
+              {/* Right Testimonial - General Manager */}
+              <div className="flex flex-col items-center text-center">
+                <div className="size-32 md:side-40 lg:size-48 rounded-full border-4 border-primary mb-6 overflow-hidden">
+                  <Image
+                    src={Aspera}
+                    alt="TED HYACINTH ASPERA - BINHI General Manager, WVSU"
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <blockquote className="text-base font-semibold md:text-lg text-gray-800 mb-4 leading-relaxed">
+                  &ldquo;As Iloilo rises as the 5th emerging startup innovation hub in the Philippines, our mission is to search and nurture quality startups that generate jobs, address social challenges, and contribute meaningfully to the economy.&rdquo;
+                </blockquote>
+                <p className="text-sm md:text-base text-gray-600 italic mb-4">
+                  &ldquo;BINHI aims to be one of the leading world-class innovation hubs. Through our program, we are planting the seeds of innovation today—transforming local ideas into global solutions and turning dreamers into founders.&rdquo;
+                </p>
+                <div className="text-sm md:text-base font-semibold text-gray-800">
+                  TED HYACINTH ASPERA
+                </div>
+                <div className="text-sm text-gray-600">
+                  BINHI General Manager, WVSU
+                </div>
+              </div>
+            </div>
+
+            {/* Last Testimonial - Director */}
+            <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+              <div className="size-32 md:side-40 lg:size-48 rounded-full border-4 border-primary mb-6 overflow-hidden">
+                <Image
+                  src={Secondes}
+                  alt="ARNEL N. SECONDES, Ph.D. - KTTBDC Director, WVSU"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <blockquote className="text-base font-semibold md:text-lg text-gray-800 mb-4 leading-relaxed">
+                &ldquo;At BINHI TBI, we nurture innovation by providing essential incubation services to entrepreneurs, startups, researchers, and innovators.&rdquo;
+              </blockquote>
+              <p className="text-sm md:text-base text-gray-600 italic mb-4">
+                &ldquo;By leveraging the university&apos;s resources and strategic partnerships, we offer mentoring, networking, and practical support to help transform ideas into successful businesses. Explore how BINHI TBI can support your entrepreneurial journey. Together, let&apos;s cultivate innovation and create lasting impact.&rdquo;
+              </p>
+              <div className="text-sm md:text-base font-semibold text-gray-800">
+                ARNEL N. SECONDES, Ph.D.
+              </div>
+              <div className="text-sm text-gray-600">
+                KTTBDC Director, WVSU
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <CTASection />
 
     </main>
 
