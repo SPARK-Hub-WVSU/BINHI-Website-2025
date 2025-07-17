@@ -4,7 +4,7 @@ import "@/styles/pages/contacts.css";
 
 export default function SendMessageBox() {
   return (
-    <div className="w-[27rem] h-[28rem] md:w-[27rem] md:h-[40rem] rounded-[2rem] shadow-2xl message-box">
+    <form action="mailto:binhi@wvsu.edu.ph" method="post" encType="text/plain" className="w-[27rem] h-[28rem] md:w-[27rem] md:h-[40rem] rounded-[2rem] shadow-2xl message-box">
       <div className="p-3 md:p-8">
         <p className="font-bold text-primary pl-5 text-xl md:text-2xl">Send us a message</p>
         {/* INPUT */}
@@ -51,12 +51,14 @@ export default function SendMessageBox() {
       </div>
 
       <button
-        type="button"
-        className="bg-primary ml-auto p-2 md:p-3 flex flex-row gap-x-5 w-[13.5rem] md:w-[17rem] rounded-l-3xl items-center"
+        type="submit"
+        className="bg-primary hover:bg-primary-dark focus:outline-3 focus:outline-blue-800 text-white ml-auto p-2 md:p-3 flex flex-row gap-x-5 w-[13.5rem] md:w-[17rem] rounded-l-3xl items-center justify-end
+        transition-all duration-200 hover:scale-105 hover:shadow-lg group"
       >
-        <p className="text-white text-lg md:text-2xl">Send Message</p>
-        <ArrowRightIcon className="text-white size-[25px] md:size-[40px]" />
+        <p className="text-lg md:text-xl font-semibold">Send Message</p>
+        <ArrowRightIcon className="ml-3 size-5 md:size-6 lg:size-7 stroke-2 text-white
+            transition-transform duration-200 group-hover:translate-x-1" stroke="currentColor" />
       </button>
-    </div>
+    </form>
   );
 }
