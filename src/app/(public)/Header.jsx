@@ -10,7 +10,9 @@ export default function Header() {
                 flex flex-col justify-center md:flex-row mt-6 md:justify-between items-center ">
 
                 <div className="flex w-screen sm:w-fit justify-center  mx-auto">
-                    <Logo version={1}></Logo>
+                    <Link href="/">
+                        <Logo version={1}></Logo>
+                    </Link>
                 </div>
 
                 <ul className="flex flex-wrap justify-center text-center mt-2 md:mt-0
