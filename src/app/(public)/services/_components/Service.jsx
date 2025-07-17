@@ -7,7 +7,7 @@ export default function Service({ icon, name, desc }) {
                 <Image src={icon} className="size-[2rem]" alt={`${name} icon`} />
                 <h2 className="text-lg lg:text-xl font-semibold">{name}</h2>
             </div>
-            <p className="text-lg lg:text-xl text-justify">{desc}</p>
+            <p className="text-lg lg:text-xl text-left">{desc}</p>
         </div>
     );
 }
