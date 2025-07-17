@@ -27,9 +27,9 @@ export default function Footer() {
                     <div className="flex w-full text-left flex-col space-y-6">
                         <Link href="/about" className="text-base hover:text-primary-light transition-colors">About BINHI TBI</Link>
                         <Link href="/services" className="text-base hover:text-primary-light transition-colors">Services of BINHI TBI</Link>
-                        <Link href="/contacts" className="text-base hover:text-primary-light transition-colors">Contact BINHI TBI</Link>
-                        <Link href="/startup_portfolio" className="text-base hover:text-primary-light transition-colors">Startup Portfolio</Link>
-                        <Link href="/news" className="text-base hover:text-primary-light transition-colors">News and Events</Link>
+                        <Link href="/contact-us" className="text-base hover:text-primary-light transition-colors">Contact BINHI TBI</Link>
+                        <Link href="/startup-portfolio" className="text-base hover:text-primary-light transition-colors">Startup Portfolio</Link>
+                        {/* <Link href="/news" className="text-base hover:text-primary-light transition-colors">News and Events</Link> */}
                     </div>
 
                     {/* Logo */}
@@ -90,9 +90,9 @@ export default function Footer() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-flow-col lg:grid-rows-3 gap-y-3 sm:gap-y-4 lg:gap-y-6 gap-x-6 sm:gap-x-8 lg:gap-x-12 lg:self-start mb-6 lg:mb-0">
                             <Link href="/about" className="text-sm sm:text-base hover:text-primary-light transition-colors">About BINHI TBI</Link>
                             <Link href="/services" className="text-sm sm:text-base hover:text-primary-light transition-colors">Services of BINHI TBI</Link>
-                            <Link href="/contacts" className="text-sm sm:text-base hover:text-primary-light transition-colors">Contact BINHI TBI</Link>
-                            <Link href="/startup_portfolio" className="text-sm sm:text-base hover:text-primary-light transition-colors">Startup Portfolio</Link>
-                            <Link href="/news" className="text-sm sm:text-base hover:text-primary-light transition-colors">News and Events</Link>
+                            <Link href="/contact-us" className="text-sm sm:text-base hover:text-primary-light transition-colors">Contact BINHI TBI</Link>
+                            <Link href="/startup-portfolio" className="text-sm sm:text-base hover:text-primary-light transition-colors">Startup Portfolio</Link>
+                            {/* <Link href="/news" className="text-sm sm:text-base hover:text-primary-light transition-colors">News and Events</Link> */}
                         </div>
 
                     </section>
