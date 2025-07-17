@@ -1,16 +1,17 @@
 import Service from "./_components/Service";
 import servicesData from "./_data/servicesData";
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
+import CtaSection from "@/components/CTASection";
 
 export default function Services() {
   return (
-    <div className="flex flex-col items-center justify-center gap-12 sm:gap-6 py-10 sm:py-5">
+    <div className="flex flex-col items-center justify-center gap-12 sm:gap-6 py-10 sm:py-5 w-full max-w-screen">
 
         {/* TITLE */}
-        <section id="services-list" className="w-[80rem] flex flex-col items-center">
-            <div className="max-w-[60rem] px-8 sm:px-4">
-                <h1 className="text-center">Services</h1>
-                <p className="mt-6 text-center">Startup incubatees at BINHI are entitled to the following services:</p>
+        <section id="services-list" className="flex flex-col items-center">
+            <div className="mt-[3rem] w-full max-w-[65rem] md:px-8 px-4">
+                <h1 className="text-center text-3xl md:text-4xl lg:text-5xl">Services</h1>
+                <p className="mt-6 text-center text-lg md:text-lg lg:text-2xl">Startup incubatees at BINHI are entitled to the following services:</p>
             </div>
 
             <div className="max-w-[78rem] p-[2.5rem] flex flex-col lg:flex-row gap-y-5 lg:gap-x-20 justify-center">
@@ -45,16 +46,8 @@ export default function Services() {
                 </ul>
             </div>
         </section>
-
-
-        <section className="p-[2.5rem] flex flex-col items-center gap-y-5">
-            <h1>Ready to launch your next startup?</h1>
-            <button className="bg-primary w-[26rem] p-2.5 px-[1.5rem] rounded-full items-center flex flex-row justify-between gap-x-3">
-                <p className="text-white font-bold">Start your journey with us!</p>
-                <ArrowRightIcon className="size-[1.5rem] text-white" />
-            </button>
-
-        </section>
+        
+        <CtaSection></CtaSection>
     </div>
   );
 }
