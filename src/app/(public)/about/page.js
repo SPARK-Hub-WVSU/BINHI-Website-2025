@@ -68,9 +68,10 @@ export default function AboutPage() {
                         Since its 2015 inauguration, BINHI has fostered the development of more than 20 startups within Iloilo.
                     </p>
                     <LinkButton 
-                        href="/startup_portfolio" 
+                        href={"/startup-portfolio"}
                         children={"View Startup Portfolio"}
-                        fullWidthOnMobile={true}>
+                        fullWidthOnMobile={true}
+                        openInNewTab={false}>
                     </LinkButton>
                 </div>
             </section>
