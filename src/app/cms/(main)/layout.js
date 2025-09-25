@@ -16,8 +16,8 @@ export default async function Layout({ children }) {
         </div>
         <Navigation />
       </aside>
-      <main className="grow flex flex-col p-8 overflow-y-auto">
-        <div className='sticky top-0 self-end'>
+      <main className="grow flex flex-col p-8 overflow-y-auto bg-gray-50">
+        <div className='sticky top-0 self-end bg-gray-50 pb-4 z-10'>
           <Login session={session} />
         </div>
         <div className="grow">

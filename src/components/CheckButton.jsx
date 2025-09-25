@@ -14,7 +14,7 @@ export default function CheckButton(props) {
         type="checkbox"
         className="opacity-0 fixed translate-[9999px]"
         {...props}
-        value={state}
+        checked={state}
         onChange={(e) => setState(e.target.checked)}
         tabIndex={0}
       />

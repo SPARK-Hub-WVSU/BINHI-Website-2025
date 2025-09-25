@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import 'quill/dist/quill.core.css';
 
-export default function TextEditor({ name }) {
+export default function TextEditor({ name, defaultValue = '' }) {
   const editorContainer = useRef(null);
   const toolbarContainer = useRef(null);
 
@@ -10,7 +10,7 @@ export default function TextEditor({ name }) {
    * @type {import('quill').default | undefined}
    */
   let quill;
-  let [text, setText] = useState('');
+  let [text, setText] = useState(defaultValue);
 
   useEffect(() => {
     if (quill) return;
@@ -25,6 +25,11 @@ export default function TextEditor({ name }) {
         // debug: 'info'
       });
 
+      // Set initial content if defaultValue exists
+      if (defaultValue) {
+        quill.root.innerHTML = defaultValue;
+      }
+
       quill.on('text-change', (delta, oldContent, source) => {
         if (source !== 'user') return;
   
@@ -32,7 +37,7 @@ export default function TextEditor({ name }) {
       })
     });
 
-  }, [editorContainer]);
+  }, [editorContainer, defaultValue]);
 
   return (
     <div className="border border-secondary-neutral-light rounded-xl flex flex-col h-full">
