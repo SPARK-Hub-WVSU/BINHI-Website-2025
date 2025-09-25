@@ -6,12 +6,22 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
-export default async function CreateNewArticle() {
+export default async function EditArticle({ params }) {
+  const { id } = params;
+  
+  // Fetch article data
+  const articleData = await articles.getData(parseInt(id));
+  if (!articleData || articleData.length === 0) {
+    redirect('/cms/news');
+  }
+  
+  const article = articleData[0];
+  
   /** @param {FormData} formData  */
-  async function submit(formData) {
+  async function updateArticle(formData) {
     'use server';
 
-    console.log('=== CREATE ARTICLE SERVER ACTION STARTED ===');
+    console.log('=== UPDATE ARTICLE SERVER ACTION STARTED ===');
 
     const data = {
       images: formData.get('coverImages[]')?.split(',').filter(img => img.length > 0) || [],
@@ -32,18 +42,19 @@ export default async function CreateNewArticle() {
     }
 
     console.log('Form validation passed');
+    console.log('Article ID to update:', id);
 
     try {
-      console.log('Starting database insert operation...');
-      const result = await articles.insert(data);
-      console.log('Database insert completed successfully:', result);
+      console.log('Starting database update operation...');
+      const result = await articles.update(parseInt(id), data);
+      console.log('Database update completed successfully:', result);
       
       if (result && result.length > 0) {
-        console.log('Insert confirmed, redirecting to success...');
-        redirect('/cms/news?success=created');
+        console.log('Update confirmed, redirecting to success...');
+        redirect('/cms/news?success=updated');
       } else {
-        console.error('Insert returned empty result');
-        redirect('/cms/news?error=create_failed');
+        console.error('Update returned empty result');
+        redirect('/cms/news?error=update_failed');
       }
     } catch (error) {
       // Next.js redirect() throws a NEXT_REDIRECT error by design - this is normal behavior
@@ -52,12 +63,12 @@ export default async function CreateNewArticle() {
         throw error; // Re-throw to let Next.js handle the redirect
       }
       
-      console.error('=== CREATE FAILED ===');
+      console.error('=== UPDATE FAILED ===');
       console.error('Error type:', error.constructor.name);
       console.error('Error message:', error.message);
       console.error('Error stack:', error.stack);
-      console.error('==================');
-      redirect('/cms/news?error=create_failed');
+      console.error('===================');
+      redirect('/cms/news?error=update_failed');
     }
   }
 
@@ -67,16 +78,17 @@ export default async function CreateNewArticle() {
         <Link href="/cms/news" className="hover:text-accent transition">
           News Articles
         </Link>{' '}
-        <span className="mx-4">{`>`}</span> New Article
+        <span className="mx-4">{`>`}</span> Edit Article
       </h2>
       <form
-        action={submit}
+        action={updateArticle}
         className="mt-8 grid grid-cols-3 gap-x-4 gap-y-8 max-w-xl">
         <label className="grid gap-2 col-span-2">
           <span className="text-sm">Article Title</span>
           <input
             name="title"
             type="text"
+            defaultValue={article.title}
             className="rounded-md border border-secondary-neutral-light p-1"
             required
           />
@@ -87,8 +99,8 @@ export default async function CreateNewArticle() {
           <input
             name="date"
             type="date"
+            defaultValue={article.date}
             className="rounded-md border border-secondary-neutral-light p-1"
-            defaultValue={new Date().toISOString().split('T')[0]}
           />
         </label>
 
@@ -98,6 +110,7 @@ export default async function CreateNewArticle() {
             type="text"
             name="author"
             className="rounded-md border border-secondary-neutral-light p-1" 
+            defaultValue={article.author}
             placeholder="Enter author name"
             required
           />
@@ -105,21 +118,21 @@ export default async function CreateNewArticle() {
 
         <label className="flex gap-2 row-start-3 col-span-3">
           <span className="text-sm">Mark as top story?</span>
-          <CheckButton name="markAsTopStory" />
+          <CheckButton name="markAsTopStory" checked={article.isTopStory || false} />
         </label>
 
         <div className="flex flex-col gap-2 row-start-4">
           <span className="text-sm">Cover Images</span>
-          <ImageUploader name="coverImages[]" />
+          <ImageUploader name="coverImages[]" defaultImages={article.images} />
         </div>
 
         <div className="flex flex-col gap-2 row-start-4 col-span-2">
           <span className="text-sm">Article Description</span>
-          <TextEditor name="description" />
+          <TextEditor name="description" defaultValue={article.description} />
         </div>
 
         <button className="bg-primary text-background rounded-lg py-1.5 cursor-pointer">
-          Add Article
+          Update Article
         </button>
 
         <Link
