@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { articlesTable } from '@/db/schema';
-import { and, eq, isNull, or } from 'drizzle-orm';
+import { and, eq, isNull, or, asc, sql } from 'drizzle-orm';
 import { stripHtmlBrowser } from '@/lib/text-utils';
 
 // Transform CMS article data to match news page expectations
@@ -65,9 +65,49 @@ const articles = {
     async insert(data) {
         try {
             console.log('Inserting article data:', data);
-            const result = await db.insert(articlesTable).values(data).returning({ insertedID: articlesTable.id });
+            
+            // Find the lowest available ID by checking for gaps
+            const allArticles = await db.select({ id: articlesTable.id })
+                .from(articlesTable)
+                .orderBy(asc(articlesTable.id));
+            
+            let availableId = null;
+            
+            if (allArticles.length === 0) {
+                // No articles exist, start with ID 1
+                availableId = 1;
+            } else {
+                // Look for gaps in the sequence
+                const usedIds = allArticles.map(article => article.id).sort((a, b) => a - b);
+                
+                // Check for gaps starting from 1
+                for (let i = 1; i <= usedIds[usedIds.length - 1]; i++) {
+                    if (!usedIds.includes(i)) {
+                        availableId = i;
+                        break;
+                    }
+                }
+                
+                // If no gaps found, use the next number after the highest ID
+                if (!availableId) {
+                    availableId = usedIds[usedIds.length - 1] + 1;
+                }
+            }
+            
+            console.log(`Using ID: ${availableId}`);
+            
+            // Insert with the determined ID using raw SQL to override identity
+            const result = await db.execute(
+                sql`INSERT INTO articles (id, images, title, date, description, author, "isTopStory", "isDeleted") 
+                    VALUES (${availableId}, ${data.images || []}, ${data.title}, ${data.date || sql`CURRENT_DATE`}, ${data.description || ''}, ${data.author}, ${data.isTopStory || false}, ${data.isDeleted || false}) 
+                    RETURNING id as "insertedID"`
+            );
+            
+            // Update the sequence to prevent conflicts
+            await db.execute(sql`SELECT setval(pg_get_serial_sequence('articles', 'id'), (SELECT MAX(id) FROM articles))`);
+            
             console.log('Insert successful:', result);
-            return result;
+            return [{ insertedID: availableId }];
         } catch (error) {
             console.error('Database insert error:', error);
             throw error;

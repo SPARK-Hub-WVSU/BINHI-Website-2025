@@ -6,17 +6,17 @@ export default function StatsCards({ totalArticles, topStoriesCount, deletedCoun
       name: 'Total Articles',
       value: totalArticles,
       icon: NewspaperIcon,
-      color: 'bg-blue-500',
-      bgColor: 'bg-blue-50',
-      textColor: 'text-blue-700'
+      color: 'bg-primary',
+      bgColor: 'bg-light-accent',
+      textColor: 'text-primary'
     },
     {
       name: 'Top Stories',
       value: topStoriesCount,
       icon: StarIcon,
-      color: 'bg-yellow-500',
-      bgColor: 'bg-yellow-50',
-      textColor: 'text-yellow-700'
+      color: 'bg-accent',
+      bgColor: 'bg-secondary-lighter',
+      textColor: 'text-secondary'
     },
     {
       name: 'In Trash',
@@ -35,7 +35,7 @@ export default function StatsCards({ totalArticles, topStoriesCount, deletedCoun
           <div className="flex items-center justify-between">
             <div>
               <p className={`text-sm font-medium ${stat.textColor} opacity-70`}>{stat.name}</p>
-              <p className={`text-3xl font-bold ${stat.textColor} mt-1`}>{stat.value}</p>
+              <p className={`text-3xl font-bold text-foreground mt-1`}>{stat.value}</p>
             </div>
             <div className={`${stat.color} p-3 rounded-lg`}>
               <stat.icon className="size-6 text-white" />

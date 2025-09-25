@@ -11,7 +11,10 @@ export default function TextEditor({ name, defaultValue = '' }) {
    * @type {import('quill').default | undefined}
    */
   let quill;
-  let [text, setText] = useState(defaultValue);
+  
+  // Clean the defaultValue before using it
+  const cleanedDefaultValue = cleanHtmlFormatting(defaultValue);
+  let [text, setText] = useState(cleanedDefaultValue);
 
   useEffect(() => {
     if (quill) return;
@@ -26,9 +29,9 @@ export default function TextEditor({ name, defaultValue = '' }) {
         // debug: 'info'
       });
 
-      // Set initial content if defaultValue exists
-      if (defaultValue) {
-        quill.root.innerHTML = defaultValue;
+      // Set initial content if defaultValue exists - use cleaned version
+      if (cleanedDefaultValue) {
+        quill.root.innerHTML = cleanedDefaultValue;
       }
 
       quill.on('text-change', (delta, oldContent, source) => {
@@ -41,7 +44,7 @@ export default function TextEditor({ name, defaultValue = '' }) {
       })
     });
 
-  }, [editorContainer, defaultValue]);
+  }, [editorContainer, cleanedDefaultValue]);
 
   return (
     <div className="border border-secondary-neutral-light rounded-xl flex flex-col h-full">

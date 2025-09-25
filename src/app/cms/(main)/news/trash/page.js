@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import TrashActions from './TrashActions';
 import CleanAllButton from './CleanAllButton';
 import ToastHandler from '../ToastHandler';
-import { stripHtml, stripHtmlBrowser, formatTimeAgo } from '@/lib/text-utils';
+import { stripHtml, stripHtmlBrowser, formatTimeAgo, formatRelativeDate } from '@/lib/text-utils';
 
 export default async function TrashBin() {
   const deletedArticles = await articles.getAllDeleted();

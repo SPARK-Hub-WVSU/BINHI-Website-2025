@@ -74,74 +74,203 @@ export default async function EditArticle({ params }) {
   }
 
   return (
-    <>
-      <h2>
-        <Link href="/cms/news" className="hover:text-accent transition">
-          News Articles
-        </Link>{' '}
-        <span className="mx-4">{`>`}</span> Edit Article
-      </h2>
-      <form
-        action={updateArticle}
-        className="mt-8 grid grid-cols-3 gap-x-4 gap-y-8 max-w-xl">
-        <label className="grid gap-2 col-span-2">
-          <span className="text-sm">Article Title</span>
-          <input
-            name="title"
-            type="text"
-            defaultValue={article.title}
-            className="rounded-md border border-secondary-neutral-light p-1"
-            required
-          />
-        </label>
-
-        <label className="grid gap-2">
-          <span className="text-sm">Publication Date</span>
-          <input
-            name="date"
-            type="date"
-            defaultValue={article.date}
-            className="rounded-md border border-secondary-neutral-light p-1"
-          />
-        </label>
-
-        <label className="grid gap-2 col-span-3">
-          <span className="text-sm">Article Author</span>
-          <input
-            type="text"
-            name="author"
-            className="rounded-md border border-secondary-neutral-light p-1" 
-            defaultValue={article.author}
-            placeholder="Enter author name"
-            required
-          />
-        </label>
-
-        <label className="flex gap-2 row-start-3 col-span-3">
-          <span className="text-sm">Mark as top story?</span>
-          <CheckButton name="markAsTopStory" checked={article.isTopStory || false} />
-        </label>
-
-        <div className="flex flex-col gap-2 row-start-4">
-          <span className="text-sm">Cover Images</span>
-          <ImageUploader name="coverImages[]" defaultImages={article.images} />
+    <div className="min-h-screen bg-background">
+      {/* Header Section */}
+      <div className="bg-white border-b border-secondary-neutral-light px-4 py-6 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <nav className="flex items-center text-sm text-muted mb-4">
+            <Link href="/cms/news" className="hover:text-primary transition-colors duration-200 font-medium">
+              News Articles
+            </Link>
+            <span className="mx-2 text-muted-light">/</span>
+            <span className="text-foreground font-medium">Edit Article</span>
+          </nav>
+          
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold text-foreground">Edit Article</h1>
+              <p className="mt-2 text-muted">Update and refine your article content</p>
+              <div className="mt-3 inline-flex items-center px-3 py-1 rounded-full bg-light-accent">
+                <span className="text-sm text-primary font-medium">"{article.title}"</span>
+              </div>
+            </div>
+            <div className="mt-4 sm:mt-0 sm:ml-6">
+              <div className="flex items-center space-x-2 text-sm text-muted bg-light-accent px-3 py-2 rounded-lg">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                <span className="font-medium">Editing Mode</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div className="flex flex-col gap-2 row-start-4 col-span-2">
-          <span className="text-sm">Article Description</span>
-          <TextEditor name="description" defaultValue={article.description} />
-        </div>
+      {/* Form Section */}
+      <div className="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <form action={updateArticle} className="space-y-6">
+          {/* Basic Information Card */}
+          <div className="bg-white rounded-xl shadow-sm border border-secondary-neutral-light overflow-hidden hover:shadow-md transition-shadow duration-200">
+            <div className="px-6 py-4 border-b border-secondary-neutral-light bg-light-accent">
+              <h2 className="text-lg font-semibold text-foreground flex items-center">
+                <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                Basic Information
+              </h2>
+            </div>
+            
+            <div className="p-6">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Article Title */}
+                <div className="lg:col-span-2">
+                  <label htmlFor="title" className="block text-sm font-semibold text-foreground mb-2">
+                    Article Title <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    required
+                    defaultValue={article.title}
+                    placeholder="Enter a compelling article title"
+                    className="w-full px-4 py-3 border border-secondary-neutral-light rounded-lg focus:ring-2 focus:ring-primary focus:border-primary hover:border-primary transition-all duration-200 text-sm bg-white"
+                  />
+                  <p className="mt-1 text-xs text-muted">This will be the main headline for your article</p>
+                </div>
 
-        <button className="bg-primary text-background rounded-lg py-1.5 cursor-pointer">
-          Update Article
-        </button>
+                {/* Publication Date */}
+                <div>
+                  <label htmlFor="date" className="block text-sm font-semibold text-foreground mb-2">
+                    Publication Date
+                  </label>
+                  <input
+                    id="date"
+                    name="date"
+                    type="date"
+                    defaultValue={article.date}
+                    className="w-full px-4 py-3 border border-secondary-neutral-light rounded-lg focus:ring-2 focus:ring-primary focus:border-primary hover:border-primary transition-all duration-200 text-sm bg-white"
+                  />
+                </div>
 
-        <Link
-          href="/cms/news"
-          className="text-center py-1.5 text-secondary font-medium">
-          Cancel
-        </Link>
-      </form>
-    </>
+                {/* Article Author */}
+                <div className="lg:col-span-2">
+                  <label htmlFor="author" className="block text-sm font-semibold text-foreground mb-2">
+                    Author <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="author"
+                    name="author"
+                    type="text"
+                    required
+                    defaultValue={article.author}
+                    placeholder="Enter author name"
+                    className="w-full px-4 py-3 border border-secondary-neutral-light rounded-lg focus:ring-2 focus:ring-primary focus:border-primary hover:border-primary transition-all duration-200 text-sm bg-white"
+                  />
+                </div>
+
+                {/* Top Story Toggle */}
+                <div className="flex items-center">
+                  <div className="bg-secondary-lighter rounded-lg p-4 w-full">
+                    <label className="flex items-center cursor-pointer">
+                      <CheckButton name="markAsTopStory" checked={article.isTopStory || false} />
+                      <div className="ml-3">
+                        <span className="text-sm font-semibold text-foreground block">Mark as top story</span>
+                        <span className="text-xs text-muted">Feature this article prominently</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Content Card */}
+          <div className="bg-white rounded-xl shadow-sm border border-secondary-neutral-light overflow-hidden hover:shadow-md transition-shadow duration-200">
+            <div className="px-6 py-4 border-b border-secondary-neutral-light bg-light-accent">
+              <h2 className="text-lg font-semibold text-foreground flex items-center">
+                <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                Article Content
+              </h2>
+            </div>
+            
+            <div className="p-6">
+              <label htmlFor="description" className="block text-sm font-semibold text-foreground mb-3">
+                Update Your Article
+              </label>
+              <div className="border border-secondary-neutral-light rounded-lg overflow-hidden hover:border-primary transition-colors duration-200">
+                <TextEditor name="description" defaultValue={article.description} />
+              </div>
+              <p className="mt-3 text-xs text-muted">Use the rich text editor above to update your article content with headers, lists, links, and more.</p>
+            </div>
+          </div>
+
+          {/* Media Card */}
+          <div className="bg-white rounded-xl shadow-sm border border-secondary-neutral-light overflow-hidden hover:shadow-md transition-shadow duration-200">
+            <div className="px-6 py-4 border-b border-secondary-neutral-light bg-light-accent">
+              <h2 className="text-lg font-semibold text-foreground flex items-center">
+                <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                Cover Images
+              </h2>
+            </div>
+            
+            <div className="p-6">
+              <label className="block text-sm font-semibold text-foreground mb-3">
+                Update Article Images
+              </label>
+              <div className="border-2 border-dashed border-secondary-neutral-light rounded-lg p-6 hover:border-primary hover:bg-light-accent transition-all duration-200">
+                <ImageUploader name="coverImages[]" defaultImages={article.images} />
+              </div>
+              <p className="mt-3 text-xs text-muted">
+                Add, remove, or replace images for your article. Multiple images will be displayed in an interactive carousel for readers.
+              </p>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="bg-white rounded-xl shadow-sm border border-secondary-neutral-light overflow-hidden">
+            <div className="px-6 py-4 border-b border-secondary-neutral-light bg-light-accent">
+              <div className="flex items-center text-sm text-muted">
+                <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="font-medium">Changes will be saved automatically</span>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              <div className="flex flex-col sm:flex-row gap-3 justify-end">
+                <Link
+                  href="/cms/news"
+                  className="inline-flex items-center justify-center px-6 py-3 border border-secondary-neutral-light rounded-lg text-sm font-medium text-muted bg-white hover:bg-background hover:text-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  Cancel
+                </Link>
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center px-8 py-3 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform hover:scale-105 transition-all duration-200"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Update Article
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }

@@ -16,12 +16,15 @@ export default async function News() {
   const allArticles = await articles.getAll();
   
   // Separate top stories and regular articles
-  const topStories = allArticles.filter(article => article.isTopStory);
+  let topStories = allArticles.filter(article => article.isTopStory);
   const regularArticles = allArticles.filter(article => !article.isTopStory);
   
   // Sort articles by date (newest first)
   topStories.sort((a, b) => new Date(b.date) - new Date(a.date));
   regularArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  // Limit top stories to maximum of 3 (take the 3 most recent)
+  topStories = topStories.slice(0, 3);
 
   // Helper: Page intro section with title and subtitle
   const intro = (children) => (
@@ -42,6 +45,7 @@ export default async function News() {
   // - Shows a carousel on mobile (InsetCarousel)
   // - Shows a grid on desktop (InsetArticle)
   const insets = () => {
+    // Use top stories if available, otherwise use first 3 regular articles
     const storiesToShow = topStories.length > 0 ? topStories : regularArticles.slice(0, 3);
     
     if (storiesToShow.length === 0) {
@@ -56,8 +60,8 @@ export default async function News() {
       <>
         {/* Mobile: Carousel for top stories */}
         <div className="block sm:hidden">
-          {/* Only show first 3 articles in the carousel */}
-          <InsetCarousel articles={storiesToShow.slice(0, 3)} />
+          {/* Show all available stories (max 3) in the carousel */}
+          <InsetCarousel articles={storiesToShow} />
         </div>
         {/* Desktop: Grid for top stories */}
         <div className="hidden sm:block">
@@ -74,8 +78,8 @@ export default async function News() {
               <InsetArticle data={storiesToShow[1]} className="sm:min-h-75 lg:min-h-100" />
             </div>
           )}
-          {/* 3+ articles: main + two stacked */}
-          {storiesToShow.length >= 3 && (
+          {/* 3 articles: main + two stacked */}
+          {storiesToShow.length === 3 && (
             <div className="grid grid-cols-[3fr_2fr] gap-4">
               <InsetArticle data={storiesToShow[0]} />
               <div className="flex flex-col gap-4">

@@ -10,7 +10,6 @@
  * - URL state management for SSR compatibility
  */
 
-import Image from "next/image";
 import { useState, useEffect } from 'react';
 
 // --- Asset Imports ---
@@ -19,6 +18,7 @@ import placeholderPhoto from '@/assets/placeholder-photo.png';
 // --- Component Imports ---
 import Toast from '@/components/Toast';
 import SocialShareButtons from '@/components/SocialShareButtons';
+import ImageCarousel from '@/components/ImageCarousel';
 
 // --- Hook Imports ---
 import useCopyToClipboard from '@/hooks/useCopyToClipboard';
@@ -81,13 +81,15 @@ export default function ArticleContent({ data, writerName }) {
 
                 {/* Article Image and Content */}
                 <div className="max-w-[1000px] w-full">
-                    <Image
-                        src={data.images && data.images[0] ? data.images[0] : placeholderPhoto}
-                        alt={data.title}
-                        width={750}
-                        height={422}
-                        className="relative aspect-video object-center object-cover w-full h-full rounded-lg my-8 sm:my-10 md:my-12 lg:my-15"
-                    />
+                    {/* Image Carousel - shows single image or carousel based on number of images */}
+                    <div className="my-8 sm:my-10 md:my-12 lg:my-15">
+                        <ImageCarousel 
+                            images={data.images && data.images.length > 0 ? data.images : [placeholderPhoto]}
+                            alt={data.title}
+                            className="w-full"
+                        />
+                    </div>
+                    
                     <div className="flex flex-col">
                         <div
                             className="article-content text-gray-800 word-wrap break-word overflow-wrap-anywhere
