@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { date, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, date, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 
 export const articlesTable = pgTable("articles", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -7,7 +7,10 @@ export const articlesTable = pgTable("articles", {
     title: varchar({ length: 255 }).notNull(),
     date: date().defaultNow().notNull(),
     description: text(),
-    author: integer().references(() => usersTable.id).notNull()
+    author: varchar({ length: 255 }).notNull(),
+    isTopStory: boolean().default(false).notNull(),
+    isDeleted: boolean().default(false).notNull(),
+    deletedAt: date()
 })
 
 export const usersTable = pgTable("users", {
