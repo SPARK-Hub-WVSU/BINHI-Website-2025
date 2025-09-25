@@ -55,23 +55,26 @@ export default async function News() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-full overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold text-foreground">News Articles</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 lg:mb-8 max-w-full">
+        <h1 className="text-xl lg:text-2xl font-bold text-foreground break-words min-w-0">News Articles</h1>
         
-        <div className="flex gap-3">
-          <Link className="flex gap-2 items-center text-muted bg-secondary-neutral-light hover:bg-secondary-lighter rounded-lg px-4 py-2 text-sm font-medium transition-colors" href="/cms/news/trash">
-            <TrashIcon className="size-4" /> 
-            Trash Bin {deletedCount > 0 && (
-              <span className="bg-red-500 text-white text-xs rounded-full px-2 py-0.5 ml-1">
+        <div className="flex flex-col sm:flex-row gap-2 lg:gap-3 flex-shrink-0">
+          <Link className="flex gap-2 items-center justify-center text-muted bg-secondary-neutral-light hover:bg-secondary-lighter rounded-lg px-3 lg:px-4 py-2 text-sm font-medium transition-colors" href="/cms/news/trash">
+            <TrashIcon className="size-4 flex-shrink-0" /> 
+            <span className="hidden sm:inline">Trash Bin</span>
+            <span className="sm:hidden">Trash</span>
+            {deletedCount > 0 && (
+              <span className="bg-red-500 text-white text-xs rounded-full px-2 py-0.5 ml-1 flex-shrink-0">
                 {deletedCount}
               </span>
             )}
           </Link>
-          <Link className="flex gap-2 items-center text-white bg-primary hover:bg-primary-dark rounded-lg px-4 py-2 text-sm font-medium transition-colors" href="/cms/news/new">
-            <PlusIcon className="size-4" /> 
-            New Article
+          <Link className="flex gap-2 items-center justify-center text-white bg-primary hover:bg-primary-dark rounded-lg px-3 lg:px-4 py-2 text-sm font-medium transition-colors" href="/cms/news/new">
+            <PlusIcon className="size-4 flex-shrink-0" /> 
+            <span className="hidden sm:inline">New Article</span>
+            <span className="sm:hidden">New</span>
           </Link>
         </div>
       </div>
@@ -84,18 +87,18 @@ export default async function News() {
       />
 
       {/* Top Stories Section */}
-      <div className="mb-12">
-        <div className="flex items-center gap-3 mb-6">
-          <h2 className="text-xl font-semibold text-foreground">Top Stories</h2>
+      <div className="mb-8 lg:mb-12">
+        <div className="flex items-center gap-3 mb-4 lg:mb-6">
+          <h2 className="text-lg lg:text-xl font-semibold text-foreground">Top Stories</h2>
           <span className="bg-secondary-lighter text-secondary text-xs font-medium px-2.5 py-0.5 rounded-full">
             {topStories.length} stories
           </span>
         </div>
         
         {topStories.length === 0 ? (
-          <div className="text-center py-12 bg-background rounded-xl border-2 border-dashed border-secondary-neutral-light">
+          <div className="text-center py-8 lg:py-12 bg-background rounded-lg lg:rounded-xl border-2 border-dashed border-secondary-neutral-light">
             <div className="text-muted-light mb-2">
-              <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="mx-auto h-10 w-10 lg:h-12 lg:w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
@@ -103,7 +106,7 @@ export default async function News() {
             <p className="text-sm text-muted">Mark articles as top stories to feature them here</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {topStories.map((article) => (
               <ArticleCard
                 key={`topstory-${article.id}`}
@@ -118,17 +121,17 @@ export default async function News() {
 
       {/* All Articles Section */}
       <div>
-        <div className="flex items-center gap-3 mb-6">
-          <h2 className="text-xl font-semibold text-foreground">All Articles</h2>
+        <div className="flex items-center gap-3 mb-4 lg:mb-6">
+          <h2 className="text-lg lg:text-xl font-semibold text-foreground">All Articles</h2>
           <span className="bg-light-accent text-primary text-xs font-medium px-2.5 py-0.5 rounded-full">
             {allArticles.length} articles
           </span>
         </div>
         
         {allArticles.length === 0 ? (
-          <div className="text-center py-12 bg-background rounded-xl border-2 border-dashed border-secondary-neutral-light">
+          <div className="text-center py-8 lg:py-12 bg-background rounded-lg lg:rounded-xl border-2 border-dashed border-secondary-neutral-light">
             <div className="text-muted-light mb-2">
-              <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="mx-auto h-10 w-10 lg:h-12 lg:w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
@@ -142,7 +145,7 @@ export default async function News() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {allArticles.map((article) => (
               <ArticleCard
                 key={`article-${article.id}`}

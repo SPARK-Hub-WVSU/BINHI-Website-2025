@@ -43,13 +43,14 @@ export default function CleanAllButton({ articlesCount, onCleanAll }) {
       type="button"
       onClick={handleCleanAll}
       disabled={isProcessing || articlesCount === 0}
-      className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+      className="flex items-center justify-center gap-2 px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] whitespace-nowrap">
       {isProcessing ? (
-        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-700"></div>
+        <div className="animate-spin rounded-full h-3 lg:h-4 w-3 lg:w-4 border-b-2 border-red-700"></div>
       ) : (
-        <TrashIcon className="size-4" />
+        <TrashIcon className="size-3 lg:size-4 flex-shrink-0" />
       )}
-      <span>{isProcessing ? 'Cleaning...' : 'Clean All Trash'}</span>
+      <span className="hidden sm:inline">{isProcessing ? 'Cleaning...' : 'Clean All Trash'}</span>
+      <span className="sm:hidden">{isProcessing ? 'Cleaning...' : 'Clean All'}</span>
     </button>
   );
 }

@@ -44,29 +44,29 @@ export default function TrashActions({ articleId, onRestore, onPermanentDelete }
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
       <button 
         onClick={handleRestore}
         disabled={isRestoring || isDeleting}
-        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+        className="flex items-center justify-center gap-2 px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] sm:min-h-0">
         {isRestoring ? (
-          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-green-700"></div>
+          <div className="animate-spin rounded-full h-3 lg:h-4 w-3 lg:w-4 border-b-2 border-green-700"></div>
         ) : (
-          <ArrowUturnLeftIcon className="size-4" />
+          <ArrowUturnLeftIcon className="size-3 lg:size-4 flex-shrink-0" />
         )}
-        <span>{isRestoring ? 'Restoring...' : 'Restore'}</span>
+        <span className="truncate">{isRestoring ? 'Restoring...' : 'Restore'}</span>
       </button>
       
       <button 
         onClick={handlePermanentDelete}
         disabled={isRestoring || isDeleting}
-        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+        className="flex items-center justify-center gap-2 px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] sm:min-h-0">
         {isDeleting ? (
-          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-700"></div>
+          <div className="animate-spin rounded-full h-3 lg:h-4 w-3 lg:w-4 border-b-2 border-red-700"></div>
         ) : (
-          <TrashIcon className="size-4" />
+          <TrashIcon className="size-3 lg:size-4 flex-shrink-0" />
         )}
-        <span>{isDeleting ? 'Deleting...' : 'Delete Forever'}</span>
+        <span className="truncate">{isDeleting ? 'Deleting...' : 'Delete Forever'}</span>
       </button>
     </div>
   );

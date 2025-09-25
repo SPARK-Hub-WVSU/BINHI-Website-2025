@@ -1,5 +1,103 @@
 @import "tailwindcss";
 
+/* Mobile Scrolling Improvements */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Mobile Layout Fixes */
+@media (max-width: 1024px) {
+  /* Ensure no unnecessary spacing from sticky elements */
+  .sticky {
+    position: sticky;
+    top: 0;
+  }
+  
+  /* Prevent double spacing on mobile navigation */
+  main {
+    min-height: calc(100vh - 0px);
+  }
+}
+
+/* Dropdown Menu Fixes */
+.relative {
+  position: relative;
+  z-index: auto;
+}
+
+/* Ensure dropdowns are never clipped */
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Prevent content from clipping dropdowns */
+main, .main-content {
+  overflow: visible;
+}
+
+/* Prevent unwanted scrollbars in cards and containers */
+.stats-card,
+.card,
+.bg-white {
+  overflow: hidden;
+}
+
+/* Ensure flex containers don't create scrollbars */
+.flex {
+  min-width: 0;
+}
+
+.flex > * {
+  min-width: 0;
+}
+
+/* Touch Friendly Interactive Elements */
+@media (max-width: 768px) {
+  button, 
+  .btn, 
+  .button, 
+  input[type="submit"], 
+  input[type="button"],
+  a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Prevent zoom on form inputs */
+  input, 
+  select, 
+  textarea {
+    font-size: 16px;
+  }
+  
+  /* Ensure all containers respect viewport width */
+  .container,
+  .max-w-full,
+  div,
+  section,
+  main {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
 /* Article Content Formatting */
 .article-content {
   line-height: 1.8;
