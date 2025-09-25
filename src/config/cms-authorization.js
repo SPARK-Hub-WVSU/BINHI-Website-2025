@@ -15,7 +15,7 @@
 export const AUTHORIZED_CMS_USERS = [
     // BINHI Core Team
     'spark.hub@wvsu.edu.ph',
-    'binhi.incubator@wvsu.edu.ph',
+    'binhi@wvsu.edu.ph',
     
     // Administrators
     'admin@wvsu.edu.ph',
