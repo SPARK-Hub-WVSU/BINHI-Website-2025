@@ -1,27 +1,51 @@
 import { db } from '@/db';
 import { articlesTable } from '@/db/schema';
 import { and, eq, isNull, or } from 'drizzle-orm';
+import { stripHtmlBrowser } from '@/lib/text-utils';
+
+// Transform CMS article data to match news page expectations
+function transformArticleData(article) {
+    return {
+        id: article.id,
+        headline: article.title,
+        summary: stripHtmlBrowser(article.description, 150),
+        image: article.images && article.images.length > 0 ? article.images[0] : null,
+        date: article.date,
+        author: article.author,
+        isTopStory: article.isTopStory,
+        isDeleted: article.isDeleted,
+        deletedAt: article.deletedAt,
+        // Keep original fields for CMS operations
+        title: article.title,
+        description: article.description,
+        images: article.images
+    };
+}
 
 const articles = {
-    getData(id) {
-        return db.select().from(articlesTable).where(eq(articlesTable.id, id));
+    async getData(id) {
+        const result = await db.select().from(articlesTable).where(eq(articlesTable.id, id));
+        return result.map(transformArticleData);
     },
 
-    getAll() {
-        return db.select().from(articlesTable).where(or(eq(articlesTable.isDeleted, false), isNull(articlesTable.isDeleted)));
+    async getAll() {
+        const result = await db.select().from(articlesTable).where(or(eq(articlesTable.isDeleted, false), isNull(articlesTable.isDeleted)));
+        return result.map(transformArticleData);
     },
 
-    getAllDeleted() {
-        return db.select().from(articlesTable).where(eq(articlesTable.isDeleted, true));
+    async getAllDeleted() {
+        const result = await db.select().from(articlesTable).where(eq(articlesTable.isDeleted, true));
+        return result.map(transformArticleData);
     },
 
-    getTopStories() {
-        return db.select().from(articlesTable).where(
+    async getTopStories() {
+        const result = await db.select().from(articlesTable).where(
             and(
                 eq(articlesTable.isTopStory, true),
                 or(eq(articlesTable.isDeleted, false), isNull(articlesTable.isDeleted))
             )
         );
+        return result.map(transformArticleData);
     },
 
     async update(id, data) {

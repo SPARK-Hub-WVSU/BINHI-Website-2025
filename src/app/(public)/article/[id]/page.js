@@ -1,4 +1,133 @@
-"use client";
+import { notFound } from 'next/navigation';/**/**/**
+
+import ArticleContent from './ArticleContent';
+
+import * as articles from '@/actions/fetch-articles'; * Article Detail Page Component
+
+
+
+export default async function ArticleDetailPage({ params }) { *  * Article Detail Page Component * Article Detail Page Component
+
+    try {
+
+        const data = await articles.getData(parseInt(params.id)); * Server-side rendered article detail page that:
+
+        
+
+        if (!data) { * - Fetches article data on the server for SEO optimization *  * 
+
+            notFound();
+
+        } * - Handles 404 cases for non-existent articles
+
+
+
+        const writerName = data.author || 'BINHI Editorial Team'; * - Delegates interactive functionality to client component * Server-side rendered article detail page that: * Server-side rendered article detail page that:
+
+        return <ArticleContent data={data} writerName={writerName} />;
+
+    } catch (error) { * - Provides loading states and error handling
+
+        console.error('Error fetching article:', error);
+
+        notFound(); *  * - Fetches article data on the server for SEO optimization * - Fetches article data on the server for SEO optimization
+
+    }
+
+} * @param {Object} params - Route parameters containing article ID
+
+ * @returns {JSX.Element} Article detail page * - Handles 404 cases for non-existent articles * - Handles 404 cases for non-existent articles
+
+ */
+
+ * - Delegates interactive functionality to client component * - Delegates interactive functionality to client component
+
+import { notFound } from 'next/navigation';
+
+ * - Provides loading states and error handling * - Provides loading states and error handling
+
+// --- Component Imports ---
+
+import ArticleContent from './ArticleContent'; *  * 
+
+
+
+// --- Data Imports --- * @param {Object} params - Route parameters containing article ID * @param {Object} params - Route parameters containing article ID
+
+import * as articles from '@/actions/fetch-articles';
+
+ * @returns {JSX.Element} Article detail page * @returns {JSX.Element} Article detail page
+
+export default async function ArticleDetailPage({ params }) {
+
+    // --- Server-side Data Fetching --- */ */
+
+    try {
+
+        const data = await articles.getData(parseInt(params.id));
+
+        
+
+        if (!data) {import { notFound } from 'next/navigation';import { notFound } from 'next/navigation';
+
+            notFound();
+
+        }
+
+
+
+        const writerName = data.author || 'BINHI Editorial Team';// --- Component Imports ---// --- Component Imports ---
+
+
+
+        return <ArticleContent data={data} writerName={writerName} />;import ArticleContent from './ArticleContent';import ArticleContent from './ArticleContent';
+
+    } catch (error) {
+
+        console.error('Error fetching article:', error);
+
+        notFound();
+
+    }// --- Data Imports ---// --- Data Imports ---
+
+}
+import * as articles from '@/actions/fetch-articles';import * as articles from '@/actions/fetch-articles';
+
+
+
+export default async function ArticleDetailPage({ params }) {export default async function ArticleDetailPage({ params }) {
+
+    // --- Server-side Data Fetching ---    // --- Server-side Data Fetching ---
+
+    try {    try {
+
+        const data = await articles.getData(parseInt(params.id));        const data = await articles.getData(parseInt(params.id));
+
+                
+
+        if (!data) {        if (!data) {
+
+            notFound();            notFound();
+
+        }        }
+
+
+
+        const writerName = data.author || 'BINHI Editorial Team';        const writerName = data.author || 'BINHI Editorial Team';
+
+
+
+        return <ArticleContent data={data} writerName={writerName} />;        return <ArticleContent data={data} writerName={writerName} />;
+
+    } catch (error) {    } catch (error) {
+
+        console.error('Error fetching article:', error);        console.error('Error fetching article:', error);
+
+        notFound();        notFound();
+
+    }    }
+
+}}
 
 /**
  * Article Page Component
@@ -30,9 +159,8 @@ import useCopyToClipboard from '@/hooks/useCopyToClipboard';
 // --- Icon Imports ---
 import { FaArrowRight } from "react-icons/fa";
 
-// --- Data Imports (Commented for production) ---
-// import articles from "@/actions/fetch-articles";
-// import users from "@/actions/fetch-users";
+// --- Data Imports ---
+import articles from "@/actions/fetch-articles";
 
 // --- Dummy Data for Demonstration ---
 // In production, replace these with real data fetching logic.
@@ -54,111 +182,35 @@ const dummyUsers = [
 /**
  * Article Page Component
  * 
- * Displays a complete article page with comprehensive functionality including:
- * - Article metadata display (title, date, author)
- * - Responsive featured image with Next.js Image optimization
- * - Full article content rendering with HTML support
- * - Social sharing capabilities (Facebook, Twitter/X, Copy Link)
- * - Toast notification system for user feedback
- * - Fully responsive design for all device sizes
- * - Server-side rendering compatibility with hydration safety
- * 
- * Key Features:
- * - Prevents hydration mismatches by using safe initial state
- * - Implements proper SEO structure with semantic HTML
- * - Provides accessible interactions and ARIA labels
- * - Uses memoized components for optimal performance
- * - Includes comprehensive error handling
- * 
- * Architecture:
- * - Uses separated, reusable components (Toast, SocialShareButtons)
- * - Implements custom hooks for clipboard functionality
- * - Follows React best practices for state management
- * - Maintains clean separation of concerns
- * 
  * @param {Object} props - Component props
  * @param {Object} props.params - Next.js route parameters
  * @param {string} props.params.id - Article ID from URL parameter (/article/[id])
  * 
  * @returns {JSX.Element} Complete article page with social sharing and responsive design
- * 
- * @example
- * // This component is automatically rendered by Next.js routing
- * // when user navigates to /article/123
- * // The [id] parameter is passed via props.params.id
- * 
- * @todo Replace dummy data with real API calls to fetch article and user data
- * @todo Add loading states and skeleton UI for better UX
- * @todo Implement error boundaries for robust error handling
- * @todo Add article not found (404) page handling
- * @todo Consider adding article reading time estimation
- * @todo Implement article view tracking/analytics
- * 
- * @see {@link SocialShareButtons} for social sharing implementation
- * @see {@link Toast} for notification system
- * @see {@link useCopyToClipboard} for clipboard functionality
  */
-export default function Article({ params }) {
-    // --- State Management ---
+export default async function Article({ params }) {
+    // --- Data Fetching ---
+    const articleData = await articles.getData(params.id);
+    const data = articleData[0];
     
-    /**
-     * Current page URL state to prevent SSR/CSR hydration mismatch
-     * Initialized with server-safe fallback URL, updated to actual URL on client
-     * 
-     * @type {[string, Function]} URL state and setter
-     */
-    const [currentUrl, setCurrentUrl] = useState(`https://binhi.wvsu.edu.ph/article/${dummyArticle.id}`);
+    // Handle article not found
+    if (!data) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-[400px] p-7">
+                <h1 className="text-2xl font-bold text-gray-600 mb-4">Article Not Found</h1>
+                <p className="text-gray-500 mb-6">The article you're looking for doesn't exist or has been removed.</p>
+                <a 
+                    href="/news"
+                    className="px-6 py-3 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors"
+                >
+                    Back to News
+                </a>
+            </div>
+        );
+    }
     
-    /**
-     * Copy to clipboard functionality with integrated toast notifications
-     * Provides copyToClipboard function and manages toast state automatically
-     * 
-     * @type {Object} Clipboard hook return object
-     * @property {Function} copyToClipboard - Function to copy text to clipboard
-     * @property {boolean} showToast - Whether toast should be visible
-     * @property {string} toastMessage - Message to display in toast
-     * @property {string} toastType - Type of toast (success, error, etc.)
-     */
-    const { copyToClipboard, showToast, toastMessage, toastType } = useCopyToClipboard();
-
-    // --- Effects ---
-    
-    /**
-     * Set the actual browser URL on client side only to prevent hydration mismatch
-     * This ensures the URL state is consistent between server and client renders
-     */
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setCurrentUrl(window.location.href);
-        }
-    }, []);
-
-    // --- Event Handlers ---
-    
-    /**
-     * Handle copy link button click
-     * Uses the custom hook to copy current page URL to clipboard
-     * Automatically triggers appropriate toast notification
-     */
-    const handleCopyLink = () => {
-        copyToClipboard(currentUrl);
-    };
-
-    // --- Data Processing ---
-    
-    /**
-     * Article data retrieval and processing
-     * TODO: Replace with actual API call
-     * Example: const data = (await articles.getData(params.id))[0];
-     */
-    const data = dummyArticle;
-    
-    /**
-     * Author name lookup and fallback handling
-     * TODO: Replace with actual API call
-     * Example: const writerName = (await users.getData(data.author))[0].name;
-     */
-    const writerName = dummyUsers.find(u => u.id === data.author)?.name || "Unknown Author";
+    // Use the author name from CMS data
+    const writerName = data.author || "Unknown Author";
 
     // --- Component Render ---
     
