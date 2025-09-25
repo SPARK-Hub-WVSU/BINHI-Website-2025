@@ -26,7 +26,7 @@ export default function CtaSection({
 }) {
   return (
     <section className="py-10 md:py-15 lg:py-20
-                           bg-white">
+                           bg-background">
       <div className="max-w-5xl mx-auto px-5 md:px-10 text-center">
 
         {/* Title */}

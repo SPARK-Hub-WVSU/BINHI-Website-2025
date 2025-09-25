@@ -91,7 +91,7 @@ export default function Home() {
 
 
       {/* ------------------- MISSION  -------------------*/}
-      <section className="relative bg-white">
+      <section className="relative bg-background">
         <div className="w-full h-100 md:h-185 mission absolute -top-2 md:-top-5 z-0"></div>
 
 
@@ -156,7 +156,7 @@ export default function Home() {
 
 
       {/* -------------- STARTUP STARTERS  ---------------*/}
-      <section className="relative bg-white">
+      <section className="relative bg-background">
 
         <Image
           alt="Building Background Image"
@@ -203,7 +203,7 @@ export default function Home() {
 
 
       {/* -------------- IMPACT SECTION ---------------*/}
-      <section className="-mt-15 sm:-mt-20 md:-mt-30 lg:-mt-35 bg-white">
+      <section className="-mt-15 sm:-mt-20 md:-mt-30 lg:-mt-35 bg-background">
 
         <div className="relative z-20 -mb-1">
           <Image src={bgImpactWave} alt="" className="w-full block" />
@@ -298,7 +298,7 @@ export default function Home() {
 
 
       {/* -------------- INNOVATION PARTNERS SECTION ---------------*/}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
 
           {/* Title and Subtitle */}
@@ -384,7 +384,7 @@ export default function Home() {
 
 
       {/* -------------- TESTIMONIALS SECTION ---------------*/}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
 
           {/* Title */}

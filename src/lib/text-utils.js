@@ -208,3 +208,45 @@ export function formatDate(dateString) {
     day: 'numeric' 
   });
 }
+
+/**
+ * Cleans HTML content for better text flow and formatting
+ * Removes unnecessary line breaks and improves readability
+ * @param {string} html - HTML string to clean
+ * @returns {string} - Cleaned HTML with better formatting
+ */
+export function cleanHtmlFormatting(html) {
+  if (!html) return '';
+  
+  let cleaned = html;
+  
+  // Remove empty paragraphs and divs
+  cleaned = cleaned.replace(/<p[^>]*>[\s&nbsp;]*<\/p>/gi, '');
+  cleaned = cleaned.replace(/<div[^>]*>[\s&nbsp;]*<\/div>/gi, '');
+  
+  // Replace multiple consecutive <br> tags with paragraph breaks
+  cleaned = cleaned.replace(/(<br[^>]*>\s*){2,}/gi, '</p><p>');
+  
+  // Remove trailing <br> tags at the end of paragraphs
+  cleaned = cleaned.replace(/<br[^>]*>\s*<\/p>/gi, '</p>');
+  
+  // Remove leading <br> tags at the start of paragraphs
+  cleaned = cleaned.replace(/<p[^>]*>\s*<br[^>]*>/gi, '<p>');
+  
+  // Replace single <br> with space to improve word flow
+  cleaned = cleaned.replace(/<br[^>]*>/gi, ' ');
+  
+  // Clean up multiple spaces
+  cleaned = cleaned.replace(/\s+/g, ' ');
+  
+  // Ensure proper paragraph structure
+  if (cleaned && !cleaned.includes('<p>')) {
+    // If no paragraphs exist, wrap content in paragraph tags
+    cleaned = `<p>${cleaned}</p>`;
+  }
+  
+  // Clean up any empty paragraphs that might have been created
+  cleaned = cleaned.replace(/<p[^>]*>[\s&nbsp;]*<\/p>/gi, '');
+  
+  return cleaned.trim();
+}

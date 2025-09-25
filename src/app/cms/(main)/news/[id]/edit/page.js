@@ -5,6 +5,7 @@ import TextEditor from '@/components/TextEditor';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { cleanHtmlFormatting } from '@/lib/text-utils';
 
 export default async function EditArticle({ params }) {
   const { id } = params;
@@ -27,7 +28,7 @@ export default async function EditArticle({ params }) {
       images: formData.get('coverImages[]')?.split(',').filter(img => img.length > 0) || [],
       title: formData.get('title') || '',
       date: formData.get('date') || new Date().toISOString().split('T')[0],
-      description: formData.get('description') || '',
+      description: cleanHtmlFormatting(formData.get('description') || ''),
       author: formData.get('author') || '',
       isTopStory: formData.get('markAsTopStory') === 'on'
     };

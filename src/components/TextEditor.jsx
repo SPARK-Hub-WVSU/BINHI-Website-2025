@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import 'quill/dist/quill.core.css';
+import { cleanHtmlFormatting } from '@/lib/text-utils';
 
 export default function TextEditor({ name, defaultValue = '' }) {
   const editorContainer = useRef(null);
@@ -33,7 +34,10 @@ export default function TextEditor({ name, defaultValue = '' }) {
       quill.on('text-change', (delta, oldContent, source) => {
         if (source !== 'user') return;
   
-        setText(quill.getSemanticHTML());
+        // Get the HTML and clean it for better formatting
+        const rawHtml = quill.getSemanticHTML();
+        const cleanedHtml = cleanHtmlFormatting(rawHtml);
+        setText(cleanedHtml);
       })
     });
 
