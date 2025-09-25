@@ -23,6 +23,8 @@ export default function InsetArticle({ data, className = '' }) {
             <Image
                 src={data.image || placeholderPhoto}
                 alt={data.headline}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="absolute inset-0 object-center object-cover w-full h-full -z-[2]"
             />
             {/* Headline, responsive font size, color transition on hover */}

@@ -22,8 +22,8 @@ export default function GridArticle({ data }) {
                 src={data.image || placeholderPhoto}
                 alt={data.headline}
                 className="aspect-[4/3] min-w-[100px] min-h-[100px] sm:min-w-[250px] object-cover object-center h-full"
-                width={data.width || 800}
-                height={data.height || 450}
+                width={250}
+                height={188}
             />
             {/* Article text content */}
             <div className="flex flex-col gap-4">
